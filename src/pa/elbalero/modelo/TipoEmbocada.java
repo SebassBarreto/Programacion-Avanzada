@@ -2,5 +2,5 @@
 package pa.elbalero.modelo;
 
 public enum TipoEmbocada {
-    pipol, olanda, perros, ola;
+    SIMPLE, DOBLE, VERTICAL, MARIQUITA, PUNIALADA, PURTINIA, DOMINIO_DE_REVES; 
 }
