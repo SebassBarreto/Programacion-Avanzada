@@ -8,7 +8,8 @@ public enum TipoEmbocada {
     MARIQUITA("Mariquita",4), 
     PUNIALADA("Puñalada",5),
     PURTINIA("Purtiña",6),
-    DOMINIO_DE_REVES("Dominio de revés", 8); 
+    DOMINIO_DE_REVES("Dominio de revés", 8),
+    SIN_EMBOCADA("Sin embocada",0); 
     
     private final String texto;
     private final int puntos;
