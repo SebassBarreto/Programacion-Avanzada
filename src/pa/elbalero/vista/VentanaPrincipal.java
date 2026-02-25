@@ -5,12 +5,12 @@ package pa.elbalero.vista;
  *
  * @author Valen Aguilar
  */
-public class MainFrame extends javax.swing.JFrame {
+public class VentanaPrincipal extends javax.swing.JFrame {
 
     /**
      * Creates new form Ventana
      */
-    public MainFrame() {
+    public VentanaPrincipal() {
         initComponents();
     }
 
