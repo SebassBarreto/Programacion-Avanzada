@@ -7,7 +7,7 @@ public class ControlJugador {
     private Jugador jugador;
     private Equipo equipo;
     
-    public void crearJugador(String nombre, int codigo){
+    public void crearJugador(String nombre, String codigo){
         jugador = new Jugador();
         jugador.setNombre(nombre);
         jugador.setCodigo(codigo);
@@ -18,7 +18,7 @@ public class ControlJugador {
     }
     
     public String obtenerCodigoJugador(){
-        return Integer.toString(jugador.getCodigo());
+        return jugador.getCodigo();
     }
     
 }

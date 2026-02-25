@@ -4,8 +4,11 @@ package pa.elbalero.modelo;
 
 public class Jugador {
     private String nombre;
-    private int codigo;
+    private String codigo;
 
+    public Jugador() {
+    }
+    
     public String getNombre() {
         return nombre;
     }
@@ -14,11 +17,11 @@ public class Jugador {
         this.nombre = nombre;
     }
 
-    public int getCodigo() {
+    public String getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
     
