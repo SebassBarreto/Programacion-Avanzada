@@ -1,10 +1,11 @@
 
+
 package pa.elbalero.modelo;
 
-/**
- *
- * @author Asus
- */
 public class Jugador {
+    private String nombre;
+    private int codigo;
+    private String proyecto_curricular;
+    
     
 }
