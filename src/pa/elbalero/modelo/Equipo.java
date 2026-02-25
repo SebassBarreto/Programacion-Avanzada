@@ -4,6 +4,7 @@ package pa.elbalero.modelo;
 public class Equipo {
     private String nombre;
     private Jugador[] jugadores;
+    private String proyecto_curricular;
 
     public Equipo() {
     }
@@ -24,5 +25,12 @@ public class Equipo {
         this.jugadores = arreglo;
     }
     
+    public String getProyecto_curricular() {
+        return proyecto_curricular;
+    }
+
+    public void setProyecto_curricular(String proyecto_curricular) {
+        this.proyecto_curricular = proyecto_curricular;
+    }
     
 }

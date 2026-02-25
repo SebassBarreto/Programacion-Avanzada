@@ -7,13 +7,18 @@ public class ControlJugador {
     private Jugador jugador;
     private Equipo equipo;
     
-    public void crearJugador(String nombre, int codigo, String proyectoc ){
+    public void crearJugador(String nombre, int codigo){
         jugador = new Jugador();
         jugador.setNombre(nombre);
         jugador.setCodigo(codigo);
-        jugador.setProyecto_curricular(proyectoc);
-        
     }
     
+    public String obtenerNombreJugador(){
+        return jugador.getNombre();
+    }
+    
+    public String obtenerCodigoJugador(){
+        return Integer.toString(jugador.getCodigo());
+    }
     
 }
