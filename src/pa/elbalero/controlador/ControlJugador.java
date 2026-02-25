@@ -8,10 +8,10 @@ public class ControlJugador {
     private Equipo equipo;
     
     public void crearJugador(String nombre, int codigo){
-        jugador = new Jugador();
-        jugador.setNombre(nombre);
-        jugador.setCodigo(codigo);
+        jugador = new Jugador(nombre,codigo);
     }
+    
+    //Falta la validación de datos
     
     public String obtenerNombreJugador(){
         return jugador.getNombre();
