@@ -10,10 +10,15 @@ import java.io.RandomAccessFile;
 public class RepositorioResultadosRandomAccessFile {
     
     private String leerCadenaFija(RandomAccessFile raf) throws IOException{
+        //crea un array vacio de 30 espacios
         char[] buffer = new char[RegistroRandomAccessFile.TAM_CADENA];
         
+        for (int i = 0; i < RegistroRandomAccessFile.TAM_CADENA; i++) {
+            buffer[i] = raf.readChar();
+        }
         
-        return null;
+        //hace append a los chars y borra los espacios basura
+        return new String(buffer).trim();
         
     }
     private void escribirCadenaFija(RandomAccessFile raf, String valor) throws IOException {
@@ -40,7 +45,16 @@ public class RepositorioResultadosRandomAccessFile {
             raf.writeInt(registro.getPuntaje());
     }
     
-    
+    public RegistroRandomAccessFile leerRegistro(RandomAccessFile raf) throws IOException{
+        RegistroRandomAccessFile registro = new RegistroRandomAccessFile();
+        registro.setClave(raf.readInt());
+        registro.setJugador1(leerCadenaFija(raf));
+        registro.setJugador2(leerCadenaFija(raf));
+        registro.setJugador3(leerCadenaFija(raf));
+        registro.setPuntaje(raf.readInt());
+        
+        return registro;
+    }
 
     
 }
