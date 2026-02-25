@@ -1,13 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package pa.elbalero.modelo;
 
-/**
- *
- * @author Asus
- */
 public class Equipo {
+    private String nombre;
+    //private Jugador jugador;
+    
+    Jugador[] jugador = new Jugador[3];
+
+    public Equipo() {
+    }
+    
     
 }
