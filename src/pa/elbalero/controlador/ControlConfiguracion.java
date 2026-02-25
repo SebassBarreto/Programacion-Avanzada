@@ -1,13 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package pa.elbalero.controlador;
 
-/**
- *
- * @author Asus
- */
+//Calcula tiempos por jugador y administra configuración.
+
 public class ControlConfiguracion {
     
 }

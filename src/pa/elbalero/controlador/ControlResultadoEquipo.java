@@ -1,13 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package pa.elbalero.controlador;
 
-/**
- *
- * @author Asus
- */
+//Suma puntos e intentos en el resultado del equipo.
+
 public class ControlResultadoEquipo {
     
 }

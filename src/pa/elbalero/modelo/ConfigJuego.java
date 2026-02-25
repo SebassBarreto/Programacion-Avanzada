@@ -1,13 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package pa.elbalero.modelo;
 
-/**
- *
- * @author Asus
- */
+//Guarda parámetros de configuración (tiempo total por equipo, intervalo, probabilidad si aplica).
+
 public class ConfigJuego {
     
 }
