@@ -1,13 +1,16 @@
-
 package pa.elbalero.modelo;
 
 public class Equipo {
+    
     private String proyecto_curricular;
     private String nombre;
     private Jugador[] jugadores; //tamaño fijo 3
     private ResultadoEquipo resultado;
 
-    public Equipo() {
+    public Equipo(String nombre, Jugador[] jugadores, String proyecto_curricular) {
+        this.nombre = nombre;
+        this.jugadores = jugadores;
+        this.proyecto_curricular = proyecto_curricular;
     }
 
     public Equipo(String proyecto_curricular, String nombre, Jugador[] jugadores, ResultadoEquipo resultado) {

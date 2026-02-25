@@ -7,11 +7,13 @@ public class ControlJugador {
     private Jugador jugador;
     private Equipo equipo;
     
+
     public void crearJugador(String nombre, String codigo){
         jugador = new Jugador();
         jugador.setNombre(nombre);
         jugador.setCodigo(codigo);
     }
+    //Falta la validación de datos
     
     public String obtenerNombreJugador(){
         return jugador.getNombre();

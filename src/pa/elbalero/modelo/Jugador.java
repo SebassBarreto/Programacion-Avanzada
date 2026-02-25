@@ -1,5 +1,3 @@
-
-
 package pa.elbalero.modelo;
 
 public class Jugador {
@@ -9,6 +7,12 @@ public class Jugador {
     public Jugador() {
     }
     
+
+    public Jugador(String nombre, String codigo) {
+        this.nombre = nombre;
+        this.codigo = codigo;
+    }
+
     public String getNombre() {
         return nombre;
     }
