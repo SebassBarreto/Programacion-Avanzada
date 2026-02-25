@@ -2,5 +2,27 @@
 package pa.elbalero.modelo;
 
 public enum TipoEmbocada {
-    SIMPLE, DOBLE, VERTICAL, MARIQUITA, PUNIALADA, PURTINIA, DOMINIO_DE_REVES; 
+    SIMPLE("Simple", 2), 
+    DOBLE("Doble", 10),
+    VERTICAL("Vertical",3), 
+    MARIQUITA("Mariquita",4), 
+    PUNIALADA("Puñalada",5),
+    PURTINIA("Purtiña",6),
+    DOMINIO_DE_REVES("Dominio de revés", 8); 
+    
+    private final String texto;
+    private final int puntos;
+   
+    TipoEmbocada(String texto, int puntos){
+        this.texto = texto;
+        this.puntos = puntos;
+    }
+
+    public String getTexto() {
+        return texto;
+    }
+
+    public int getPuntos() {
+        return puntos;
+    }
 }

@@ -1,49 +1,49 @@
 package pa.elbalero.modelo;
 
+/**
+ * Representa un equipo con datos básicos y su resultado.
+ */
 public class Equipo {
-    
-    private String proyecto_curricular;
-    private String nombre;
-    private Jugador[] jugadores; //tamaño fijo 3
+
+    private String nombreEquipo;
+    private String proyectoCurricular;
+    private Jugador[] jugadores; // tamaño fijo 3
     private ResultadoEquipo resultado;
 
-    public Equipo(String nombre, Jugador[] jugadores, String proyecto_curricular) {
-        this.nombre = nombre;
-        this.jugadores = jugadores;
-        this.proyecto_curricular = proyecto_curricular;
+    public Equipo() {
     }
 
-    public Equipo(String proyecto_curricular, String nombre, Jugador[] jugadores, ResultadoEquipo resultado) {
-        this.proyecto_curricular = proyecto_curricular;
-        this.nombre = nombre;
+    public Equipo(String nombreEquipo, String proyectoCurricular, Jugador[] jugadores, ResultadoEquipo resultado) {
+        this.nombreEquipo = nombreEquipo;
+        this.proyectoCurricular = proyectoCurricular;
         this.jugadores = jugadores;
         this.resultado = resultado;
     }
-    
-    public String getNombre() {
-        return nombre;
+
+    public String getNombreEquipo() {
+        return nombreEquipo;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombreEquipo(String nombreEquipo) {
+        this.nombreEquipo = nombreEquipo;
     }
 
-    public Jugador[] getJugador() {
+    public String getProyectoCurricular() {
+        return proyectoCurricular;
+    }
+
+    public void setProyectoCurricular(String proyectoCurricular) {
+        this.proyectoCurricular = proyectoCurricular;
+    }
+
+    public Jugador[] getJugadores() {
         return jugadores;
     }
 
-    public void setJugador(Jugador[] arreglo) {
-        this.jugadores = arreglo;
-    }
-    
-    public String getProyecto_curricular() {
-        return proyecto_curricular;
+    public void setJugadores(Jugador[] jugadores) {
+        this.jugadores = jugadores;
     }
 
-    public void setProyecto_curricular(String proyecto_curricular) {
-        this.proyecto_curricular = proyecto_curricular;
-    }
-    
     public ResultadoEquipo getResultado() {
         return resultado;
     }
