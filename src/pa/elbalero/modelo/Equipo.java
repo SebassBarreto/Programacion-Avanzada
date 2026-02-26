@@ -8,16 +8,14 @@ public class Equipo {
     private String nombreEquipo;
     private String proyectoCurricular;
     private Jugador[] jugadores; // tamaño fijo 3
-    private ResultadoEquipo resultado;
 
     public Equipo() {
     }
 
-    public Equipo(String nombreEquipo, String proyectoCurricular, Jugador[] jugadores, ResultadoEquipo resultado) {
+    public Equipo(String nombreEquipo, String proyectoCurricular, Jugador[] jugadores) {
         this.nombreEquipo = nombreEquipo;
         this.proyectoCurricular = proyectoCurricular;
         this.jugadores = jugadores;
-        this.resultado = resultado;
     }
 
     public String getNombreEquipo() {
@@ -42,13 +40,5 @@ public class Equipo {
 
     public void setJugadores(Jugador[] jugadores) {
         this.jugadores = jugadores;
-    }
-
-    public ResultadoEquipo getResultado() {
-        return resultado;
-    }
-
-    public void setResultado(ResultadoEquipo resultado) {
-        this.resultado = resultado;
     }
 }
