@@ -4,6 +4,9 @@ package pa.elbalero.modelo;
 public class ResultadoEquipo {
     private int puntos, intentos, embocados;
 
+    public ResultadoEquipo() {
+    }
+    
     public ResultadoEquipo(int puntos, int intentos, int embocados) {
         this.puntos = puntos;
         this.intentos = intentos;
