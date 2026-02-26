@@ -20,7 +20,6 @@ public class Ventana extends javax.swing.JFrame {
         setMaximumSize(new java.awt.Dimension(900, 600));
         setMinimumSize(new java.awt.Dimension(900, 600));
         setName("Ventana"); // NOI18N
-        setPreferredSize(new java.awt.Dimension(900, 600));
         setResizable(false);
         setSize(new java.awt.Dimension(900, 800));
 

@@ -3,34 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group name="JavaTesting">
-            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/ElBalero/src/pa/elbalero/modelo/ResultadoEquipo.java</file>
-            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/ElBalero/src/pa/elbalero/vista/PanelControl.java</file>
-            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/ElBalero/src/pa/elbalero/vista/PanelEstado.java</file>
-            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/ElBalero/src/pa/elbalero/vista/PanelGrillaEquipos.java</file>
-            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/ElBalero/src/pa/elbalero/controlador/ControlCarga.java</file>
-            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/ElBalero/src/pa/elbalero/modelo/Jugador.java</file>
             <file>file:/C:/Users/Asus/Documents/NetBeansProjects/ElBalero/src/pa/elbalero/controlador/ControlJugador.java</file>
-            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/ElBalero/src/pa/elbalero/controlador/ControlConfiguracion.java</file>
-            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/ElBalero/src/pa/elbalero/modelo/RegistroRandomAccessFile.java</file>
-            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/ElBalero/src/pa/elbalero/vista/PanelJugador.java</file>
-            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/ElBalero/src/pa/elbalero/controlador/ControlResultadoEquipo.java</file>
             <file>file:/C:/Users/Asus/Documents/NetBeansProjects/ElBalero/src/pa/elbalero/modelo/Equipo.java</file>
-            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/ElBalero/src/pa/elbalero/controlador/Launcher.java</file>
-            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/ElBalero/src/pa/elbalero/modelo/SerializadorEquipos.java</file>
-            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/ElBalero/src/pa/elbalero/modelo/ConfigJuego.java</file>
-            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/ElBalero/src/pa/elbalero/controlador/ControlGanador.java</file>
-            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/ElBalero/src/pa/elbalero/controlador/ControlIntento.java</file>
-            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/ElBalero/src/pa/elbalero/controlador/ControlPrincipal.java</file>
-            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/ElBalero/src/pa/elbalero/modelo/DesSerializadorEquipos.java</file>
-            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/ElBalero/src/pa/elbalero/modelo/RepositorioResultadosRandomAccessFile.java</file>
-            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/ElBalero/src/pa/elbalero/controlador/ControlPersistencia.java</file>
-            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/ElBalero/src/pa/elbalero/modelo/Intento.java</file>
-            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/ElBalero/src/pa/elbalero/modelo/CargadorPropertiesEquipo.java</file>
-            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/ElBalero/src/pa/elbalero/modelo/TipoEmbocada.java</file>
-            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/ElBalero/src/pa/elbalero/controlador/ControlVista.java</file>
+            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/ElBalero/src/pa/elbalero/vista/PanelInicio.java</file>
+            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/ElBalero/src/pa/elbalero/vista/PanelGrillaEquipos.java</file>
+            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/ElBalero/src/pa/elbalero/controlador/ControlEquipo.java</file>
         </group>
         <group>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Programacion-Avanzada/src/pa/elbalero/vista/VentanaPrincipal.java</file>
+            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/ElBalero/src/pa/elbalero/modelo/Equipo.java</file>
         </group>
     </open-files>
 </project-private>
