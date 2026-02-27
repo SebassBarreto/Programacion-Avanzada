@@ -8,6 +8,8 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import pa.elbalero.vista.Emergente;
+import pa.elbalero.vista.PanelCreditos;
+import pa.elbalero.vista.PanelIngresarTiempo;
 import pa.elbalero.vista.PanelPrincipal;
 import pa.elbalero.vista.PanelSobreElJuego;
 import pa.elbalero.vista.Ventana;
@@ -19,6 +21,10 @@ public class ControlVista implements ActionListener{
     private PanelPrincipal panelPrincipal;
     private PanelSobreElJuego panelSobreElJuego;
     private Emergente emergente;
+    private PanelCreditos panelCreditos;
+    private PanelIngresarTiempo panelIngresarTiempo;
+    
+    
     public ControlVista(ControlPrincipal controlPrincipal){
         this.controlPrincipal = controlPrincipal;
         ventana = new Ventana(); //Creamos la ventana
@@ -27,6 +33,9 @@ public class ControlVista implements ActionListener{
         emergente = new Emergente();
         panelPrincipal = new PanelPrincipal(this); 
         panelSobreElJuego = new PanelSobreElJuego(this);
+        panelCreditos = new PanelCreditos(this);
+        panelIngresarTiempo = new PanelIngresarTiempo(this);
+        
         
         //BOTONES
         panelPrincipal.jButton1Jugar.addActionListener(this);
@@ -44,23 +53,24 @@ public class ControlVista implements ActionListener{
         panelSobreElJuego.jButton1VolverPantallaPrincipal.addActionListener(this);
         panelSobreElJuego.jButton1VolverPantallaPrincipal.setActionCommand("Volver a pantalla principal");
         
-        cambiarAPanelPrincipal();//Ponemos en la ventana el Panel Principal
+        panelCreditos.jButton1VolverPantallaPrincipal.addActionListener(this);
+        panelCreditos.jButton1VolverPantallaPrincipal.setActionCommand("Volver a pantalla principal");
+        
+        panelIngresarTiempo.jButton1VolverPantallaPrincipal.addActionListener(this);
+        panelIngresarTiempo.jButton1VolverPantallaPrincipal.setActionCommand("Volver a pantalla principal");
+        
+        cambiarPanel(panelPrincipal);//Ponemos en la ventana el Panel Principal
         
         ventana.setVisible(true); //Ventana visible en pantalla    
     }
     
-    public void cambiarAPanelPrincipal() {
-        ventana.setContentPane(panelPrincipal);
+    public void cambiarPanel(javax.swing.JPanel panel) {
+        ventana.setContentPane(panel);
         ventana.revalidate();
         ventana.repaint();
     }
     
-    public void cambiarAPanelSobreElJuego() {
-        ventana.setContentPane(panelSobreElJuego);
-        ventana.revalidate();
-        ventana.repaint();
-    }
-    
+
     
     
     private void sonido(String soundName) { //Método de nuestros sonidos ;)
@@ -79,15 +89,15 @@ public class ControlVista implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equalsIgnoreCase("Jugar")){
-            
+            cambiarPanel(panelIngresarTiempo);
         } else if (e.getActionCommand().equalsIgnoreCase("SobreElJuego")){
-            cambiarAPanelSobreElJuego();
+            cambiarPanel(panelSobreElJuego);
             
         } else if (e.getActionCommand().equalsIgnoreCase("Creditos")){
-            
+            cambiarPanel(panelCreditos);
             
         }else if (e.getActionCommand().equalsIgnoreCase("Volver a pantalla principal")){
-            cambiarAPanelPrincipal();
+            cambiarPanel(panelPrincipal);
             
         }else if (e.getActionCommand().equalsIgnoreCase("Salir")){
             emergente.confirmacionSalir();

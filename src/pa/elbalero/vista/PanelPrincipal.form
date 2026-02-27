@@ -38,6 +38,9 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Maiandra GD" size="36" style="1"/>
         </Property>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Hand Cursor"/>
+        </Property>
         <Property name="label" type="java.lang.String" value="Jugar"/>
       </Properties>
       <AuxValues>
@@ -58,6 +61,9 @@
           <Font name="Maiandra GD" size="24" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Sobre el juego"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Hand Cursor"/>
+        </Property>
       </Properties>
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Reglas del juego"/>
@@ -79,6 +85,9 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Maiandra GD" size="36" style="1"/>
         </Property>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Hand Cursor"/>
+        </Property>
         <Property name="label" type="java.lang.String" value="Salir"/>
       </Properties>
       <AuxValues>
@@ -99,6 +108,9 @@
           <Font name="Maiandra GD" size="36" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Cr&#xe9;ditos"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Hand Cursor"/>
+        </Property>
       </Properties>
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Sobre los desarrolladores"/>
