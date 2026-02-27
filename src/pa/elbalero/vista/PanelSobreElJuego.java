@@ -1,9 +1,11 @@
 
 package pa.elbalero.vista;
 
+import pa.elbalero.controlador.ControlVista;
+
 public class PanelSobreElJuego extends javax.swing.JPanel {
 
-    public PanelSobreElJuego() {
+    public PanelSobreElJuego(ControlVista controlVista) {
         initComponents();
         
     }
@@ -17,6 +19,8 @@ public class PanelSobreElJuego extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1VolverPantallaPrincipal = new pa.elbalero.vista.RoundButton();
+        jLabel1 = new javax.swing.JLabel();
         jPanel1 = new PanelFondo("Imgs/1PantallaPrincipal.png");
 
         setMaximumSize(new java.awt.Dimension(900, 600));
@@ -24,6 +28,17 @@ public class PanelSobreElJuego extends javax.swing.JPanel {
         setName(""); // NOI18N
         setPreferredSize(new java.awt.Dimension(900, 600));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton1VolverPantallaPrincipal.setFont(new java.awt.Font("Maiandra GD", 0, 14)); // NOI18N
+        jButton1VolverPantallaPrincipal.setText("← ");
+        jButton1VolverPantallaPrincipal.setToolTipText("");
+        add(jButton1VolverPantallaPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 50, 50));
+        jButton1VolverPantallaPrincipal.getAccessibleContext().setAccessibleName("Volver");
+
+        jLabel1.setBackground(new java.awt.Color(245, 246, 183));
+        jLabel1.setForeground(new java.awt.Color(245, 246, 183));
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\USUARIO\\Documents\\NetBeansProjects\\Programacion-Avanzada\\Imgs\\4ReglasDelJuego.png")); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 600));
 
         jPanel1.setMaximumSize(new java.awt.Dimension(900, 600));
         jPanel1.setMinimumSize(new java.awt.Dimension(900, 6000));
@@ -45,6 +60,8 @@ public class PanelSobreElJuego extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton jButton1VolverPantallaPrincipal;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

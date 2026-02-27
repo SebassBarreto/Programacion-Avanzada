@@ -1,9 +1,11 @@
 
 package pa.elbalero.vista;
 
+import pa.elbalero.controlador.ControlVista;
+
 public class PanelPrincipal extends javax.swing.JPanel {
 
-    public PanelPrincipal() {
+    public PanelPrincipal(ControlVista controlVista) {
         initComponents();
         
     }
@@ -17,6 +19,10 @@ public class PanelPrincipal extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1Jugar = new javax.swing.JButton();
+        jButton2SobreElJuego = new javax.swing.JButton();
+        jButton3Salir = new javax.swing.JButton();
+        jButton4Creditos = new javax.swing.JButton();
         jPanel1 = new PanelFondo("Imgs/1PantallaPrincipal.png");
 
         setMaximumSize(new java.awt.Dimension(900, 600));
@@ -24,6 +30,28 @@ public class PanelPrincipal extends javax.swing.JPanel {
         setName(""); // NOI18N
         setPreferredSize(new java.awt.Dimension(900, 600));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton1Jugar.setBackground(new java.awt.Color(245, 246, 183));
+        jButton1Jugar.setFont(new java.awt.Font("Maiandra GD", 1, 36)); // NOI18N
+        jButton1Jugar.setLabel("Jugar");
+        add(jButton1Jugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(582, 152, 210, 60));
+
+        jButton2SobreElJuego.setBackground(new java.awt.Color(245, 246, 183));
+        jButton2SobreElJuego.setFont(new java.awt.Font("Maiandra GD", 1, 24)); // NOI18N
+        jButton2SobreElJuego.setText("Sobre el juego");
+        add(jButton2SobreElJuego, new org.netbeans.lib.awtextra.AbsoluteConstraints(582, 237, 210, 60));
+        jButton2SobreElJuego.getAccessibleContext().setAccessibleName("Reglas del juego");
+
+        jButton3Salir.setBackground(new java.awt.Color(245, 246, 183));
+        jButton3Salir.setFont(new java.awt.Font("Maiandra GD", 1, 36)); // NOI18N
+        jButton3Salir.setLabel("Salir");
+        add(jButton3Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(582, 321, 210, 60));
+
+        jButton4Creditos.setBackground(new java.awt.Color(245, 246, 183));
+        jButton4Creditos.setFont(new java.awt.Font("Maiandra GD", 1, 36)); // NOI18N
+        jButton4Creditos.setText("Créditos");
+        add(jButton4Creditos, new org.netbeans.lib.awtextra.AbsoluteConstraints(582, 406, 210, 60));
+        jButton4Creditos.getAccessibleContext().setAccessibleName("Sobre los desarrolladores");
 
         jPanel1.setMaximumSize(new java.awt.Dimension(900, 600));
         jPanel1.setMinimumSize(new java.awt.Dimension(900, 6000));
@@ -45,6 +73,10 @@ public class PanelPrincipal extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton jButton1Jugar;
+    public javax.swing.JButton jButton2SobreElJuego;
+    public javax.swing.JButton jButton3Salir;
+    public javax.swing.JButton jButton4Creditos;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

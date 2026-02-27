@@ -1,4 +1,3 @@
-
 package pa.elbalero.vista;
 
 import javax.swing.JButton;        // Clase base del botón en Swing
@@ -27,27 +26,25 @@ public class RoundButton extends JButton {
     // Método encargado de dibujar el componente
     @Override
     protected void paintComponent(Graphics g) {
-
-        // Convertimos Graphics a Graphics2D para usar dibujo avanzado
         Graphics2D g2 = (Graphics2D) g.create();
 
-        // Activa suavizado de bordes (antialiasing)
         g2.setRenderingHint(
-            RenderingHints.KEY_ANTIALIASING,
-            RenderingHints.VALUE_ANTIALIAS_ON
+                RenderingHints.KEY_ANTIALIASING,
+                RenderingHints.VALUE_ANTIALIAS_ON
         );
 
-        // Usa el color de fondo asignado al botón
-        g2.setColor(getBackground());
+        int diameter = Math.min(getWidth(), getHeight());
 
-        // Dibuja un óvalo que ocupará todo el botón
-        // Si ancho = alto → será un círculo perfecto
-        g2.fillOval(0, 0, getWidth(), getHeight());
+        if (getModel().isArmed()) {
+            g2.setColor(getBackground().darker());
+        } else {
+            g2.setColor(getBackground());
+        }
 
-        // Permite que JButton dibuje texto o iconos encima
-        super.paintComponent(g2);
+        g2.fillOval(0, 0, diameter, diameter);
 
-        // Libera recursos gráficos utilizados
+        super.paintComponent(g);
+
         g2.dispose();
     }
 
@@ -64,12 +61,12 @@ public class RoundButton extends JButton {
     public boolean contains(int x, int y) {
 
         // Si la forma no existe o cambió el tamaño del botón
-        if (shape == null ||
-            !shape.getBounds().equals(getBounds())) {
+        if (shape == null
+                || !shape.getBounds().equals(getBounds())) {
 
             // Se crea una nueva forma circular
             shape = new Ellipse2D.Float(
-                0, 0, getWidth(), getHeight()
+                    0, 0, getWidth(), getHeight()
             );
         }
 
