@@ -85,6 +85,7 @@ public class ControlVista implements ActionListener{
             
         } else if (e.getActionCommand().equalsIgnoreCase("Creditos")){
             
+            
         }else if (e.getActionCommand().equalsIgnoreCase("Volver a pantalla principal")){
             cambiarAPanelPrincipal();
             
