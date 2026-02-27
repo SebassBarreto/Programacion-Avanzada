@@ -1,9 +1,9 @@
 
 package pa.elbalero.vista;
 
-public class PanelPrincipal extends javax.swing.JPanel {
+public class PanelSobreElJuego extends javax.swing.JPanel {
 
-    public PanelPrincipal() {
+    public PanelSobreElJuego() {
         initComponents();
         
     }

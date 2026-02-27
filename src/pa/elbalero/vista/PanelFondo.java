@@ -8,6 +8,7 @@ import java.awt.Image;
 public class PanelFondo extends JPanel {
 
     private Image imagen;
+
     // constructor vacío (IMPORTANTE para el wizard)
     public PanelFondo() {
     }
@@ -19,7 +20,17 @@ public class PanelFondo extends JPanel {
 
     // cualquier panel puede decidir su imagen
     public void setImagen(String ruta) {
-        imagen = new ImageIcon(getClass().getResource(ruta)).getImage();
+//        imagen = new ImageIcon(getClass().getResource(ruta)).getImage();
+//        repaint();
+        ImageIcon icono = new ImageIcon(ruta);
+
+        if (icono.getIconWidth() == -1) {
+            throw new RuntimeException(
+                    "No se encontró la imagen: " + ruta
+            );
+        }
+
+        imagen = icono.getImage();
         repaint();
     }
 

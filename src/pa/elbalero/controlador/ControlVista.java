@@ -11,13 +11,25 @@ public class ControlVista implements ActionListener{
     private ControlPrincipal controlPrincipal;
     private Ventana ventana;
     private PanelPrincipal panelPrincipal;
+    
     public ControlVista(ControlPrincipal controlPrincipal){
         this.controlPrincipal = controlPrincipal;
-        ventana = new Ventana();
+        ventana = new Ventana(); //Creamos la ventana
+        
+        //Creamos los paneles
         panelPrincipal = new PanelPrincipal();
         
+        cambiarAPanelPrincipal();//Ponemos en la ventana el Panel Principal
+        
+        ventana.setVisible(true); //Ventana visible en pantalla
         
         
+    }
+    
+    public void cambiarAPanelPrincipal() {
+        ventana.setContentPane(panelPrincipal);
+        ventana.revalidate();
+        ventana.repaint();
     }
 
     @Override
