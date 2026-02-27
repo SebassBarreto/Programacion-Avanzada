@@ -1,11 +1,10 @@
 package pa.elbalero.controlador;
 
-/**
- *
- * @author Asus
- */
 public class ControlPrincipal {
+    private ControlVista controlVista;
+    
     public ControlPrincipal(){
-        
+        controlVista = new ControlVista(this);
     }
+    
 }

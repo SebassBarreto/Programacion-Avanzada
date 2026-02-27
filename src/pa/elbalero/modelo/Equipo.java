@@ -1,9 +1,11 @@
 package pa.elbalero.modelo;
 
+import java.io.Serializable;
+
 /**
  * Representa un equipo con datos básicos y su resultado.
  */
-public class Equipo {
+public class Equipo implements Serializable{
 
     private String nombreEquipo;
     private String proyectoCurricular;
