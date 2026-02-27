@@ -7,7 +7,6 @@ import pa.elbalero.modelo.ResultadoEquipo;
 public class ControlEquipo {
     private Equipo equipo;
     private Jugador[] arreglo;
-    private ResultadoEquipo resultado;
     
     public ControlEquipo(){
        arreglo = new Jugador[2];
@@ -19,7 +18,7 @@ public class ControlEquipo {
         arreglo[0] = jugador1;
         arreglo[1] = jugador2;
         arreglo[2] = jugador3;
-        equipo = new Equipo(nombre, proyectoc, arreglo,resultado);
+        equipo = new Equipo(nombre, proyectoc, arreglo);
     }
     
     public String obtenerNombreEquipo(){

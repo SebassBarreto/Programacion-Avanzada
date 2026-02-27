@@ -10,10 +10,20 @@
             <file>file:/C:/Users/Asus/Documents/NetBeansProjects/ElBalero/src/pa/elbalero/controlador/ControlEquipo.java</file>
         </group>
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/USER/Documents/NetBeansProjects/Programacion-Avanzada/src/pa/elbalero/controlador/ControlEquipo.java</file>
             <file>file:/C:/Users/USER/Documents/NetBeansProjects/Programacion-Avanzada/src/pa/elbalero/modelo/ResultadoEquipo.java</file>
             <file>file:/C:/Users/USER/Documents/NetBeansProjects/Programacion-Avanzada/src/pa/elbalero/modelo/Equipo.java</file>
             <file>file:/C:/Users/USER/Documents/NetBeansProjects/Programacion-Avanzada/src/pa/elbalero/modelo/Intento.java</file>
+=======
+            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/ElBalero/Specs/data/datos.properties</file>
+            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/ElBalero/src/pa/elbalero/modelo/Equipo.java</file>
+            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/ElBalero/src/pa/elbalero/modelo/DesSerializadorEquipos.java</file>
+            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/ElBalero/src/pa/elbalero/modelo/ConfigJuego.java</file>
+            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/ElBalero/src/pa/elbalero/controlador/ControlEquipo.java</file>
+            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/ElBalero/src/pa/elbalero/modelo/CargadorPropertiesEquipo.java</file>
+            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/ElBalero/src/pa/elbalero/modelo/TipoEmbocada.java</file>
+>>>>>>> 20a9ae961e8badb250039d89d42ecba9dfa7a1a4
         </group>
     </open-files>
 </project-private>
