@@ -8,12 +8,12 @@ package pa.elbalero.vista;
  *
  * @author Asus
  */
-public class PanelControl extends javax.swing.JPanel {
+public class PanelIngresarTiempo extends javax.swing.JPanel {
 
     /**
      * Creates new form PanelControl
      */
-    public PanelControl() {
+    public PanelIngresarTiempo() {
         initComponents();
     }
 

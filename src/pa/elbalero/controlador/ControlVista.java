@@ -3,6 +3,11 @@ package pa.elbalero.controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.InputStream;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import pa.elbalero.vista.Emergente;
 import pa.elbalero.vista.PanelPrincipal;
 import pa.elbalero.vista.PanelSobreElJuego;
 import pa.elbalero.vista.Ventana;
@@ -13,12 +18,13 @@ public class ControlVista implements ActionListener{
     private Ventana ventana;
     private PanelPrincipal panelPrincipal;
     private PanelSobreElJuego panelSobreElJuego;
-    
+    private Emergente emergente;
     public ControlVista(ControlPrincipal controlPrincipal){
         this.controlPrincipal = controlPrincipal;
         ventana = new Ventana(); //Creamos la ventana
         
         //PANELES
+        emergente = new Emergente();
         panelPrincipal = new PanelPrincipal(this); 
         panelSobreElJuego = new PanelSobreElJuego(this);
         
@@ -54,6 +60,21 @@ public class ControlVista implements ActionListener{
         ventana.revalidate();
         ventana.repaint();
     }
+    
+    
+    
+    private void sonido(String soundName) { //Método de nuestros sonidos ;)
+        try {
+            String path = "/Sonido/" + soundName + ".wav";
+            InputStream is = getClass().getResourceAsStream(path);
+            AudioInputStream audio = AudioSystem.getAudioInputStream(is);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audio);
+            clip.start();
+        } catch (Exception e) {
+            System.err.println("Error con sonido WAV: " + e.getMessage());
+        }
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -61,11 +82,14 @@ public class ControlVista implements ActionListener{
             
         } else if (e.getActionCommand().equalsIgnoreCase("SobreElJuego")){
             cambiarAPanelSobreElJuego();
+            
         } else if (e.getActionCommand().equalsIgnoreCase("Creditos")){
             
         }else if (e.getActionCommand().equalsIgnoreCase("Volver a pantalla principal")){
             cambiarAPanelPrincipal();
-        }else if (e.getActionCommand().equalsIgnoreCase(",")){
+            
+        }else if (e.getActionCommand().equalsIgnoreCase("Salir")){
+            emergente.confirmacionSalir();
             
         }else if (e.getActionCommand().equalsIgnoreCase(",,")){
             
