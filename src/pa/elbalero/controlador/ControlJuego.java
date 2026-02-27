@@ -8,6 +8,6 @@ package pa.elbalero.controlador;
  *
  * @author Asus
  */
-public class GestorSerializacion {
+public class ControlJuego {
     
 }

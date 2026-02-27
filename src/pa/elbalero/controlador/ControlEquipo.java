@@ -2,7 +2,6 @@ package pa.elbalero.controlador;
 
 import pa.elbalero.modelo.Equipo;
 import pa.elbalero.modelo.Jugador;
-import pa.elbalero.modelo.ResultadoEquipo;
 
 public class ControlEquipo {
     private Equipo equipo;
