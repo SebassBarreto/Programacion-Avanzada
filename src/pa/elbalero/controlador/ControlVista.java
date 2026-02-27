@@ -3,6 +3,10 @@ package pa.elbalero.controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.InputStream;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import pa.elbalero.vista.PanelPrincipal;
 import pa.elbalero.vista.PanelSobreElJuego;
 import pa.elbalero.vista.Ventana;
@@ -53,6 +57,23 @@ public class ControlVista implements ActionListener{
         ventana.setContentPane(panelSobreElJuego);
         ventana.revalidate();
         ventana.repaint();
+    }
+    
+    public void mostrarMensaje(String cadena) {
+        //JOptionPane.showMessageDialog(null, cadena);
+    }
+    
+    private void sonido(String soundName) { //Método de nuestros sonidos ;)
+        try {
+            String path = "/Sonido/" + soundName + ".wav";
+            InputStream is = getClass().getResourceAsStream(path);
+            AudioInputStream audio = AudioSystem.getAudioInputStream(is);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audio);
+            clip.start();
+        } catch (Exception e) {
+            System.err.println("Error con sonido WAV: " + e.getMessage());
+        }
     }
 
     @Override
