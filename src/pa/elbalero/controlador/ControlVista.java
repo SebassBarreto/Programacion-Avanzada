@@ -7,6 +7,7 @@ import java.io.InputStream;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import pa.elbalero.vista.Emergente;
 import pa.elbalero.vista.PanelPrincipal;
 import pa.elbalero.vista.PanelSobreElJuego;
 import pa.elbalero.vista.Ventana;
@@ -17,12 +18,13 @@ public class ControlVista implements ActionListener{
     private Ventana ventana;
     private PanelPrincipal panelPrincipal;
     private PanelSobreElJuego panelSobreElJuego;
-    
+    private Emergente emergente;
     public ControlVista(ControlPrincipal controlPrincipal){
         this.controlPrincipal = controlPrincipal;
         ventana = new Ventana(); //Creamos la ventana
         
         //PANELES
+        emergente = new Emergente();
         panelPrincipal = new PanelPrincipal(this); 
         panelSobreElJuego = new PanelSobreElJuego(this);
         
@@ -59,9 +61,7 @@ public class ControlVista implements ActionListener{
         ventana.repaint();
     }
     
-    public void mostrarMensaje(String cadena) {
-        //JOptionPane.showMessageDialog(null, cadena);
-    }
+    
     
     private void sonido(String soundName) { //Método de nuestros sonidos ;)
         try {
@@ -82,11 +82,14 @@ public class ControlVista implements ActionListener{
             
         } else if (e.getActionCommand().equalsIgnoreCase("SobreElJuego")){
             cambiarAPanelSobreElJuego();
+            
         } else if (e.getActionCommand().equalsIgnoreCase("Creditos")){
             
         }else if (e.getActionCommand().equalsIgnoreCase("Volver a pantalla principal")){
             cambiarAPanelPrincipal();
-        }else if (e.getActionCommand().equalsIgnoreCase(",")){
+            
+        }else if (e.getActionCommand().equalsIgnoreCase("Salir")){
+            emergente.confirmacionSalir();
             
         }else if (e.getActionCommand().equalsIgnoreCase(",,")){
             
