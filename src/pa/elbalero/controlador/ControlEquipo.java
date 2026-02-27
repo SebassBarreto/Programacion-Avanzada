@@ -2,11 +2,10 @@ package pa.elbalero.controlador;
 
 import pa.elbalero.modelo.Equipo;
 import pa.elbalero.modelo.Jugador;
-import pa.elbalero.modelo.ResultadoEquipo;
 
 public class ControlEquipo {
     private Equipo equipo;
-    private Jugador[] arreglo;
+    private final Jugador[] arreglo;
     
     public ControlEquipo(){
        arreglo = new Jugador[2];
@@ -18,7 +17,7 @@ public class ControlEquipo {
         arreglo[0] = jugador1;
         arreglo[1] = jugador2;
         arreglo[2] = jugador3;
-        equipo = new Equipo(nombre, proyectoc, arreglo);
+        equipo = new Equipo(nombre, proyectoc, arreglo, 0);
     }
     
     public String obtenerNombreEquipo(){
@@ -32,6 +31,5 @@ public class ControlEquipo {
     public String obtenerJugadores(){
         return ""; //En proceso
     }
-    
     
 }
