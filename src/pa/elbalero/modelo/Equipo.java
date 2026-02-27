@@ -10,14 +10,16 @@ public class Equipo implements Serializable{
     private String nombreEquipo;
     private String proyectoCurricular;
     private Jugador[] jugadores; // tamaño fijo 3
+    private transient int Puntaje;
 
     public Equipo() {
     }
 
-    public Equipo(String nombreEquipo, String proyectoCurricular, Jugador[] jugadores) {
+    public Equipo(String nombreEquipo, String proyectoCurricular, Jugador[] jugadores, int Puntaje) {
         this.nombreEquipo = nombreEquipo;
         this.proyectoCurricular = proyectoCurricular;
         this.jugadores = jugadores;
+        this.Puntaje = Puntaje;
     }
 
     public String getNombreEquipo() {
@@ -43,4 +45,13 @@ public class Equipo implements Serializable{
     public void setJugadores(Jugador[] jugadores) {
         this.jugadores = jugadores;
     }
+
+    public int getPuntaje() {
+        return Puntaje;
+    }
+
+    public void setPuntaje(int Puntaje) {
+        this.Puntaje = Puntaje;
+    }
+    
 }
