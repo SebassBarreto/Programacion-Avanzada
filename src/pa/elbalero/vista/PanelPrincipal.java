@@ -17,7 +17,7 @@ public class PanelPrincipal extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new PanelFondo("pa.elbalero.imagenes/1PantallaPrincipal.png");
+        jPanel1 = new PanelFondo("Imgs/1PantallaPrincipal.png");
 
         setMaximumSize(new java.awt.Dimension(900, 600));
         setMinimumSize(new java.awt.Dimension(900, 600));
