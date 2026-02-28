@@ -5,6 +5,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFileChooser;
 import pa.elbalero.modelo.ConexionSerializacion;
 import pa.elbalero.modelo.Equipo;
 
@@ -18,9 +21,10 @@ public class ControlPrincipal {
     private ControlRAF controlRAF;
     private ControlSerializacion controlSerializacion;
 
-    private List<Equipo> equiposInscritos;
+    //private List<Equipo> equiposInscritos;
     private int tiempoCompetencia;
-
+    private double tiempoPorEquipo;
+    private double tiempoPorJugador;
     private Equipo equipoGanadorActual;
     private int puntosGanadorActual;
     private int embocadasGanadorActual;
@@ -28,9 +32,8 @@ public class ControlPrincipal {
     public ControlPrincipal() {
 
         //Inicializamos la lista dinamica vacia
-        this.equiposInscritos = new ArrayList<>();
-
-        //Insranciamos los controladores de persistencia (Archivos)
+        //this.equiposInscritos = new ArrayList<>();
+        //Instanciamos los controladores de persistencia (Archivos)
         this.controlProperties = new ControlProperties(this);
         this.controlRAF = new ControlRAF(this);
         this.controlSerializacion = new ControlSerializacion(this, new ConexionSerializacion());
@@ -39,10 +42,45 @@ public class ControlPrincipal {
         this.controlJugador = new ControlJugador(this);
         this.controlEquipo = new ControlEquipo(this, this.controlJugador);
         this.controlJuego = new ControlJuego(this, this.controlEquipo, new Random());
-
+        
+        cargarDatosIniciales();
         //Por ultimo, inicializamos la Vista
         //Se hace al final para asegurar que toda la logica ya existe si la vista dispara un evento
         this.controlVista = new ControlVista(this);
+    }
+
+    public File seleccionarArchivo() {
+
+        JFileChooser chooser = new JFileChooser();
+
+        int opcion = chooser.showOpenDialog(null);
+
+        if (opcion == JFileChooser.APPROVE_OPTION) {
+            return chooser.getSelectedFile();
+        }
+
+        return null;
+    }
+    
+    public void cargarDatosIniciales() {
+        File archivo = seleccionarArchivo();
+         int ejecuciones = controlProperties.obtenerNumeroEjecuciones();
+        if (ejecuciones == 0) {
+            try {
+                cargarEquiposDesdeProperties(archivo);
+            } catch (IOException ex) {
+                
+            }
+        } else {
+            try {
+                precargarEquiposSerializados(archivo);
+            } catch (IOException ex) {
+                
+            } catch (ClassNotFoundException ex) {
+                
+            }
+        }
+        //controlProperties.actualizarEjecuciones(ejecuciones + 1);
     }
 
     //Metodos de  (la vista los va a llamar para los eventos)
@@ -54,7 +92,7 @@ public class ControlPrincipal {
      * @throws IOException
      */
     public void cargarEquiposDesdeProperties(File archivoProperties) throws IOException {
-        this.equiposInscritos = controlProperties.cargarEquipos(archivoProperties);
+        controlEquipo.setEquiposInscritos(controlProperties.cargarEquipos(archivoProperties));
     }
 
     /**
@@ -66,7 +104,7 @@ public class ControlPrincipal {
      * @throws ClassNotFoundException
      */
     public void precargarEquiposSerializados(File archivoSerializado) throws IOException, ClassNotFoundException {
-        this.equiposInscritos = controlSerializacion.cargarEquipos(archivoSerializado);
+        controlEquipo.setEquiposInscritos(controlSerializacion.cargarEquipos(archivoSerializado));
     }
 
     /**
@@ -75,7 +113,9 @@ public class ControlPrincipal {
      * @param t
      */
     public void setTiempoDeLaCompetencia(int t) {
-        this.tiempoCompetencia = t;
+        tiempoCompetencia = t;
+        tiempoPorEquipo = tiempoCompetencia/controlEquipo.getCantidadEquipos();
+        tiempoPorJugador = tiempoPorEquipo/3;
     }
 
     /**
@@ -85,13 +125,13 @@ public class ControlPrincipal {
      * @return falso si se invalidó algo
      */
     public boolean ejecutarTorneo() {
-        if (equiposInscritos.isEmpty() || tiempoCompetencia <= 0) {
+        if (controlEquipo.getEquiposInscritos().isEmpty() || tiempoCompetencia <= 0) {
             return false;
         }
 
         //Delegando al motor del juego que haga los ciclos y calculos
         Object[] resultados;
-        resultados = controlJuego.iniciarTorneo((ArrayList<Equipo>) equiposInscritos, tiempoCompetencia);
+        resultados = controlJuego.iniciarTorneo((ArrayList<Equipo>) controlEquipo.getEquiposInscritos(), tiempoCompetencia);
 
         //Si el torneo arrojo resutlado valido entonces que lo guarde en las variables de clase o sea memoria VOLATIL
         if (resultados != null) {
@@ -125,14 +165,14 @@ public class ControlPrincipal {
     }
 
     public void serializarEquiposAlFinalizar(File archivoSerializado) throws IOException {
-        if (!equiposInscritos.isEmpty()) {
-            controlSerializacion.guardarEquipo(archivoSerializado, equiposInscritos);
+        if (!controlEquipo.getEquiposInscritos().isEmpty()) {
+            controlSerializacion.guardarEquipo(archivoSerializado, controlEquipo.getEquiposInscritos());
         }
     }
 
     //geetters para que la vista pueda consultar el estado
     public List<Equipo> getEquiposInscritos() {
-        return equiposInscritos;
+        return controlEquipo.getEquiposInscritos();
     }
 
     public Equipo getEquipoGanadorActual() {
@@ -146,5 +186,31 @@ public class ControlPrincipal {
     public int getEmbocadasGanadorActual() {
         return embocadasGanadorActual;
     }
+    
+    public String parametrosDelJuego(){
+        
+        String p = "<html>"
+        + "Tiempo total = " + tiempoCompetencia + "<br>"
+        + "Cantidad de equipos = " + controlEquipo.getCantidadEquipos() + "<br>"
+        + "Tiempo por equipo = " + tiempoPorEquipo + "<br>"
+        + "Tiempo por jugador = " + tiempoPorJugador + "<br><br>"
+        + "Si está de acuerdo con los parámetros, dé click en el botón "
+        + "<b>Aceptar</b>; de lo contrario oprima el botón "
+        + "<b>Volver</b> e ingrese nuevamente el tiempo."
+        + "</html>";       
+        
+        return p;
+    }
 
+    public void cargarDatosAGrilla(){
+        controlEquipo.cargarDatosAGrilla();
+    }
+    
+    public void agregarFilaGrilla(Object[] fila){
+        controlVista.actualizarGrilla();
+    }
+    
+    public void actualizarGrilla(){
+        controlVista.actualizarGrilla();
+    }
 }

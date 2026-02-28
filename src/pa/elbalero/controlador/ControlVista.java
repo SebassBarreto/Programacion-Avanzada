@@ -6,7 +6,10 @@ import java.io.InputStream;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.swing.ImageIcon;
+import javax.swing.table.DefaultTableModel;
 import pa.elbalero.vista.Emergente;
+import pa.elbalero.vista.PanelCompetencia;
 import pa.elbalero.vista.PanelCreditos;
 import pa.elbalero.vista.PanelIngresarTiempo;
 import pa.elbalero.vista.PanelParametrosDelJuego;
@@ -24,6 +27,8 @@ public class ControlVista implements ActionListener {
     private PanelCreditos panelCreditos;
     private PanelIngresarTiempo panelIngresarTiempo;
     private PanelParametrosDelJuego panelParametrosDelJuego;
+    private PanelCompetencia panelCompetencia;
+    private DefaultTableModel modelo;
 
     public ControlVista(ControlPrincipal controlPrincipal) {
         this.controlPrincipal = controlPrincipal;
@@ -36,7 +41,7 @@ public class ControlVista implements ActionListener {
         panelCreditos = new PanelCreditos(this);
         panelIngresarTiempo = new PanelIngresarTiempo(this);
         panelParametrosDelJuego = new PanelParametrosDelJuego(this);
-        
+        panelCompetencia = new PanelCompetencia(this);
 
         //BOTONES
         panelPrincipal.jButton1Jugar.addActionListener(this);
@@ -63,6 +68,12 @@ public class ControlVista implements ActionListener {
         panelIngresarTiempo.jButton1AceptarTiempo.addActionListener(this);
         panelIngresarTiempo.jButton1AceptarTiempo.setActionCommand("Aceptar Tiempo");
 
+        panelParametrosDelJuego.jButton1VolverPantallaPrincipal.addActionListener(this);;
+        panelParametrosDelJuego.jButton1VolverPantallaPrincipal.setActionCommand("Volver a pantalla ingresar tiempo");
+
+        panelParametrosDelJuego.jButton1AceptarParametros.addActionListener(this);
+        panelParametrosDelJuego.jButton1AceptarParametros.setActionCommand("Iniciar Competencia");
+
         cambiarPanel(panelPrincipal);//Ponemos en la ventana el Panel Principal
         ventana.setLocationRelativeTo(null);
         ventana.setVisible(true); //Ventana visible en pantalla    
@@ -83,8 +94,16 @@ public class ControlVista implements ActionListener {
             clip.open(audio);
             clip.start();
         } catch (Exception e) {
-            System.err.println("Error con sonido WAV: " + e.getMessage());
+
         }
+    }
+
+    public void actualizarGrilla() {
+        modelo.setRowCount(0);
+    }
+
+    public void agregarFilaGrilla(Object[] fila) {
+        modelo.addRow(fila);
     }
 
     @Override
@@ -105,7 +124,6 @@ public class ControlVista implements ActionListener {
             emergente.confirmacionSalir();
 
         } else if (e.getActionCommand().equalsIgnoreCase("Aceptar Tiempo")) {
-            
             String texto = panelIngresarTiempo.jTextFieldTiempo.getText();
             if (texto.isEmpty()) {
                 panelIngresarTiempo.jTextFieldTiempo.setText("");
@@ -115,13 +133,31 @@ public class ControlVista implements ActionListener {
                 emergente.mostrarMensaje("Solo se permiten números enteros positivos");
             } else {
                 int tiempo = Integer.parseInt(panelIngresarTiempo.jTextFieldTiempo.getText());
+                controlPrincipal.setTiempoDeLaCompetencia(tiempo);
+                panelParametrosDelJuego.jLabelParametrosDelJuego.setText(controlPrincipal.parametrosDelJuego());
                 cambiarPanel(panelParametrosDelJuego);
             }
-            
+            panelIngresarTiempo.jTextFieldTiempo.setText("");
+
+        } else if (e.getActionCommand().equalsIgnoreCase("Volver a pantalla ingresar tiempo")) {
+            cambiarPanel(panelIngresarTiempo);
+
+        } else if (e.getActionCommand().equalsIgnoreCase("Iniciar Competencia")) {
+            panelCompetencia.configurarTabla();
+            controlPrincipal.actualizarGrilla();
+            cambiarPanel(panelCompetencia);
+
+        } else if (e.getActionCommand().equalsIgnoreCase(",,,,.")) {
+
         } else if (e.getActionCommand().equalsIgnoreCase(",,,")) {
 
-        } else if (e.getActionCommand().equalsIgnoreCase(",,,,")) {
+        } else if (e.getActionCommand().equalsIgnoreCase(",,")) {
+
+        } else if (e.getActionCommand().equalsIgnoreCase(",.,")) {
+
+        } else if (e.getActionCommand().equalsIgnoreCase(",,,,..")) {
 
         }
+
     }
 }

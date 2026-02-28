@@ -23,11 +23,7 @@ public class ConexionProperties {
         
         try(FileInputStream entrada = new FileInputStream(archivo)){
             propiedades.load(entrada);
-        }
-        
+        }       
         return propiedades;
-    }
-    
-
-    
+    }    
 }

@@ -23,8 +23,9 @@ public class PanelSobreElJuego extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(900, 600));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jButton1VolverPantallaPrincipal.setBackground(new java.awt.Color(221, 168, 88));
         jButton1VolverPantallaPrincipal.setFont(new java.awt.Font("Maiandra GD", 0, 14)); // NOI18N
-        jButton1VolverPantallaPrincipal.setIcon(new javax.swing.ImageIcon("C:\\Users\\USUARIO\\Documents\\NetBeansProjects\\Programacion-Avanzada\\Imgs\\Flechas\\1FlechaAmarilloBienQuemado.png")); // NOI18N
+        jButton1VolverPantallaPrincipal.setIcon(new javax.swing.ImageIcon("C:\\Users\\USUARIO\\Documents\\NetBeansProjects\\Programacion-Avanzada\\Imgs\\Flechas\\FlechaAtras.png")); // NOI18N
         jButton1VolverPantallaPrincipal.setToolTipText("");
         jButton1VolverPantallaPrincipal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1VolverPantallaPrincipal.setPreferredSize(new java.awt.Dimension(50, 50));

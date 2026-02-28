@@ -24,6 +24,7 @@ public class ControlJuego {
         this.generadorAzarGlobal = new Random();
     }
 
+    
     /**
      * Motor principal del juego. 
      * Recibe la lista de equipos inscritos y el tiempo total asignado, simula el torneo completo 

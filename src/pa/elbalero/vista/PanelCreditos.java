@@ -27,8 +27,9 @@ public class PanelCreditos extends javax.swing.JPanel {
         jPanel1.setMinimumSize(new java.awt.Dimension(900, 600));
         jPanel1.setPreferredSize(new java.awt.Dimension(900, 600));
 
+        jButton1VolverPantallaPrincipal.setBackground(new java.awt.Color(255, 255, 255));
         jButton1VolverPantallaPrincipal.setFont(new java.awt.Font("Maiandra GD", 0, 14)); // NOI18N
-        jButton1VolverPantallaPrincipal.setIcon(new javax.swing.ImageIcon("C:\\Users\\USUARIO\\Documents\\NetBeansProjects\\Programacion-Avanzada\\Imgs\\Flechas\\2FlechaBlanca.png")); // NOI18N
+        jButton1VolverPantallaPrincipal.setIcon(new javax.swing.ImageIcon("C:\\Users\\USUARIO\\Documents\\NetBeansProjects\\Programacion-Avanzada\\Imgs\\Flechas\\FlechaAtras.png")); // NOI18N
         jButton1VolverPantallaPrincipal.setToolTipText("");
         jButton1VolverPantallaPrincipal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1VolverPantallaPrincipal.setPreferredSize(new java.awt.Dimension(50, 50));

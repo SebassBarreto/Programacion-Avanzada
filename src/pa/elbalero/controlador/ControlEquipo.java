@@ -1,5 +1,7 @@
 package pa.elbalero.controlador;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import pa.elbalero.modelo.Equipo;
 import pa.elbalero.modelo.Jugador;
@@ -9,19 +11,32 @@ public class ControlEquipo {
     private ControlPrincipal controlPrincipal;
     private ControlJugador controlJugador;
 
+    private List<Equipo> equiposInscritos;
+
     private Equipo equipoActual;
 
     public ControlEquipo(ControlPrincipal controlPrincipal, ControlJugador controlJugador) {
         this.controlPrincipal = controlPrincipal;
         this.controlJugador = controlJugador;
+        //Inicializamos la lista dinamica vacia
+        this.equiposInscritos = new ArrayList<>();
     }
 
     public void setEquipoActual(Equipo equipoActual) {
         this.equipoActual = equipoActual;
     }
 
+    public void setEquiposInscritos(List<Equipo> equipos) {
+        this.equiposInscritos = equipos;
+    }
+
+    public List<Equipo> getEquiposInscritos() {
+        return equiposInscritos;
+    }
+
     /**
      * Simula el turno de un equipo de jugar
+     *
      * @param tiempoTotalEquipo
      * @param generador
      * @return
@@ -42,10 +57,10 @@ public class ControlEquipo {
             Jugador jugadorDeTurno = jugadores[i];
 
             if (jugadorDeTurno != null) {
-                controlJugador.setJugadorActual(jugadorDeTurno);
-                controlJugador.jugarTurno(intentosPorJugador, generador);
-                puntosTotales += controlJugador.getPuntosObtenidos();
-                embocadasTotales += controlJugador.getEmbocadas();
+//                controlJugador.setJugadorActual(jugadorDeTurno);
+//                controlJugador.jugarTurno(intentosPorJugador, generador);
+//                puntosTotales += controlJugador.getPuntosObtenidos();
+//                embocadasTotales += controlJugador.getEmbocadas();
             }
 
         }
@@ -55,6 +70,32 @@ public class ControlEquipo {
 
     public Equipo getEquipoActual() {
         return equipoActual;
+    }
+
+    public int getCantidadEquipos() {
+        return equiposInscritos.size();
+    }
+
+    public void cargarDatosAGrilla() {
+        controlPrincipal.actualizarGrilla();
+        for (Equipo equipo : getEquiposInscritos()) {
+            for (Jugador jugador
+                    : equipo.getJugadores()) {
+                Object[] fila = {
+                    equipo.getProyectoCurricular(),
+                    equipo.getNombreEquipo(),
+                    null,
+                    jugador.getNombre(),
+                    jugador.getPuntaje(),
+                    jugador.getEmbocadasAcertadas(),
+                    jugador.getEmbocadasDesacertadas(),
+                    jugador.getEmbocadasAcertadas()
+                    + jugador.getEmbocadasDesacertadas(),
+                    0
+                };
+                controlPrincipal.agregarFilaGrilla(fila);
+            }
+        }
     }
 
 }

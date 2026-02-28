@@ -13,9 +13,11 @@ public class Equipo implements Serializable{
     private String proyectoCurricular;
     private Jugador[] jugadores; // tamaño fijo 3
 
+    //Constructor Vacío
     public Equipo() { 
     }
-
+    
+    //Constructor con Atributos
     public Equipo(String nombreEquipo, String proyectoCurricular, Jugador[] jugadores) {
         this.nombreEquipo = nombreEquipo;
         this.proyectoCurricular = proyectoCurricular;
@@ -37,7 +39,8 @@ public class Equipo implements Serializable{
     public void setProyectoCurricular(String proyectoCurricular) {
         this.proyectoCurricular = proyectoCurricular;
     }
-
+    
+    //Devuelve los jugadores
     public Jugador[] getJugadores() {
         return jugadores;
     }
