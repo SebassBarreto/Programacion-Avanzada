@@ -7,18 +7,25 @@ import java.io.Serializable;
  */
 public class Equipo implements Serializable{
 
+    private static final long serialVersionUID = 1L;
+    
     private String nombreEquipo;
     private String proyectoCurricular;
     private Jugador[] jugadores; // tamaño fijo 3
+    private int victorias;
+    private int intentosEmbocados;
+    
     private transient int Puntaje;
 
-    public Equipo() {
+    public Equipo() { 
     }
 
-    public Equipo(String nombreEquipo, String proyectoCurricular, Jugador[] jugadores, int Puntaje) {
+    public Equipo(String nombreEquipo, String proyectoCurricular, Jugador[] jugadores, int victorias, int intentosEmbocados, int Puntaje) {
         this.nombreEquipo = nombreEquipo;
         this.proyectoCurricular = proyectoCurricular;
         this.jugadores = jugadores;
+        this.victorias = victorias;
+        this.intentosEmbocados = intentosEmbocados;
         this.Puntaje = Puntaje;
     }
 
@@ -44,6 +51,22 @@ public class Equipo implements Serializable{
 
     public void setJugadores(Jugador[] jugadores) {
         this.jugadores = jugadores;
+    }
+
+    public int getVictorias() {
+        return victorias;
+    }
+
+    public void setVictorias(int victorias) {
+        this.victorias = victorias;
+    }
+
+    public int getIntentosEmbocados() {
+        return intentosEmbocados;
+    }
+
+    public void setIntentosEmbocados(int intentosEmbocados) {
+        this.intentosEmbocados = intentosEmbocados;
     }
 
     public int getPuntaje() {
