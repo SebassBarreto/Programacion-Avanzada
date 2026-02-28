@@ -1,0 +1,65 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package pa.elbalero.controlador;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
+import pa.elbalero.modelo.ConexionProperties;
+import pa.elbalero.modelo.Equipo;
+import pa.elbalero.modelo.Jugador;
+
+/**
+ *
+ * @author Asus
+ */
+public class ControlProperties {
+
+    private ConexionProperties conexion;
+
+    public ControlProperties(ConexionProperties conexion) {
+        this.conexion = conexion;
+    }
+
+    public List<Equipo> cargarEquipos(File archivo) throws IOException {
+        
+        Properties propiedades = new Properties();
+        List<Equipo> listaEquipos = new ArrayList<>();
+
+        try (FileInputStream entrada = new FileInputStream(archivo)) {
+            propiedades.load(entrada);
+
+            int totalEquipos = Integer.parseInt(propiedades.getProperty("total_equipos", "0"));
+
+            for (int i = 1; i <= totalEquipos; i++) {
+                String formato = "equipo." + i + ".";
+
+                String nombreEquipo = propiedades.getProperty(formato + "nombre");
+                String proyecto = propiedades.getProperty(formato + "proyecto");
+
+                Jugador j1 = new Jugador(propiedades.getProperty(formato + "j1.nombre"), propiedades.getProperty(formato + "j1.cod"));
+                Jugador j2 = new Jugador(propiedades.getProperty(formato + "j2.nombre"), propiedades.getProperty(formato + "j2.cod"));
+                Jugador j3 = new Jugador(propiedades.getProperty(formato + "j3.nombre"), propiedades.getProperty(formato + "j3.cod"));
+
+                Jugador[] arregloJugadores = new Jugador[3];
+
+                arregloJugadores[1] = j1;
+                arregloJugadores[2] = j2;
+                arregloJugadores[3] = j3;
+
+                Equipo nuevoEquipo = new Equipo(nombreEquipo, proyecto, arregloJugadores, 0, 0, 0);
+
+                listaEquipos.add(nuevoEquipo);
+
+            }
+
+        }
+        return listaEquipos;
+
+    }
+}
