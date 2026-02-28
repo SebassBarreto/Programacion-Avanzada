@@ -21,6 +21,5 @@ public class ControlJugador {
     
     public String obtenerCodigoJugador(){
         return jugador.getCodigo();
-    }
-    
+    }  
 }

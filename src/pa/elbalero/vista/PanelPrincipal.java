@@ -28,23 +28,27 @@ public class PanelPrincipal extends javax.swing.JPanel {
 
         jButton1Jugar.setBackground(new java.awt.Color(245, 246, 183));
         jButton1Jugar.setFont(new java.awt.Font("Maiandra GD", 1, 36)); // NOI18N
+        jButton1Jugar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1Jugar.setLabel("Jugar");
         add(jButton1Jugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(582, 152, 210, 60));
 
         jButton2SobreElJuego.setBackground(new java.awt.Color(245, 246, 183));
         jButton2SobreElJuego.setFont(new java.awt.Font("Maiandra GD", 1, 24)); // NOI18N
         jButton2SobreElJuego.setText("Sobre el juego");
+        jButton2SobreElJuego.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         add(jButton2SobreElJuego, new org.netbeans.lib.awtextra.AbsoluteConstraints(582, 237, 210, 60));
         jButton2SobreElJuego.getAccessibleContext().setAccessibleName("Reglas del juego");
 
         jButton3Salir.setBackground(new java.awt.Color(245, 246, 183));
         jButton3Salir.setFont(new java.awt.Font("Maiandra GD", 1, 36)); // NOI18N
+        jButton3Salir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3Salir.setLabel("Salir");
         add(jButton3Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(582, 321, 210, 60));
 
         jButton4Creditos.setBackground(new java.awt.Color(245, 246, 183));
         jButton4Creditos.setFont(new java.awt.Font("Maiandra GD", 1, 36)); // NOI18N
         jButton4Creditos.setText("Créditos");
+        jButton4Creditos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         add(jButton4Creditos, new org.netbeans.lib.awtextra.AbsoluteConstraints(582, 406, 210, 60));
         jButton4Creditos.getAccessibleContext().setAccessibleName("Sobre los desarrolladores");
 

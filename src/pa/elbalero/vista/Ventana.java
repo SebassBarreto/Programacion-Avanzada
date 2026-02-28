@@ -5,6 +5,7 @@ public class Ventana extends javax.swing.JFrame {
 
     public Ventana() {
         initComponents();
+        
     }
 
     

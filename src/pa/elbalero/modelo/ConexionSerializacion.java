@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-public class Serializador {
+public class ConexionSerializacion {
 
     public void escribirObjeto(File archivo, Object datos) throws IOException {
 
