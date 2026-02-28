@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package pa.elbalero.modelo;
 
 import java.io.File;
@@ -15,6 +11,12 @@ import java.util.Properties;
  */
 public class ConexionProperties {
     
+    /**
+     *
+     * @param archivo
+     * @return propiedades
+     * @throws IOException
+     */
     public Properties leerArchivo(File archivo) throws IOException{
         
         Properties propiedades = new Properties();

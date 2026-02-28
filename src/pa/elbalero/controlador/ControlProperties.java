@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package pa.elbalero.controlador;
 
 import java.io.File;
@@ -10,7 +6,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
-import pa.elbalero.modelo.ConexionProperties;
 import pa.elbalero.modelo.Equipo;
 import pa.elbalero.modelo.Jugador;
 
@@ -19,11 +14,11 @@ import pa.elbalero.modelo.Jugador;
  * @author Asus
  */
 public class ControlProperties {
+    
+    private ControlPrincipal controlPrincipal;
 
-    private ConexionProperties conexion;
-
-    public ControlProperties(ConexionProperties conexion) {
-        this.conexion = conexion;
+    public ControlProperties(ControlPrincipal controlPrincipal) {
+        this.controlPrincipal = controlPrincipal;
     }
 
     public List<Equipo> cargarEquipos(File archivo) throws IOException {

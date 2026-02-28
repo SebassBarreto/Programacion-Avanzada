@@ -12,10 +12,13 @@ import pa.elbalero.modelo.ConexionSerializacion;
  */
 public class ControlSerializacion {
     
-    private ConexionSerializacion conexionSerializacion;
+    private ControlPrincipal controlPrincipal;
+    private ConexionSerializacion  conexionSerializacion;
+    
 
-    public ControlSerializacion(ConexionSerializacion conexionSerializacion) {
-        this.conexionSerializacion = conexionSerializacion;
+    public ControlSerializacion(ControlPrincipal controlPrincipal, ConexionSerializacion conexionSerializacion) {
+        this.controlPrincipal = controlPrincipal;
+        conexionSerializacion = new ConexionSerializacion();
     }
     
     public void guardarEquipo(File archivo, List<Equipo> listaEquipos) throws IOException{
