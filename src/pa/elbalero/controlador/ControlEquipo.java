@@ -17,7 +17,8 @@ public class ControlEquipo {
         arreglo[0] = jugador1;
         arreglo[1] = jugador2;
         arreglo[2] = jugador3;
-       // equipo = new Equipo(nombre, proyectoc, arreglo, 0); aqui marca error
+        //String nombreEquipo, String proyectoCurricular, Jugador[] jugadores, int victorias, int intentosEmbocados, int Puntaje
+        equipo = new Equipo(nombre, proyectoc, arreglo, 0,0,0);
     }
     
     public String obtenerNombreEquipo(){
