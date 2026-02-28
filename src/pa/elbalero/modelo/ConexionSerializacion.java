@@ -10,6 +10,12 @@ import java.io.ObjectOutputStream;
 
 public class ConexionSerializacion {
 
+    /**
+     * Escribe el objeto en un archivo
+     * @param archivo
+     * @param datos
+     * @throws IOException
+     */
     public void escribirObjeto(File archivo, Object datos) throws IOException {
 
         try (FileOutputStream fileOut = new FileOutputStream(archivo)) {

@@ -15,9 +15,16 @@ public class ControlRAF {
         this.controlPrincipal = controlPrincipal;
         this.conexionRaf = new ConexionRandomAccessFile();
     }
-
-    //Guarda al ganador en el historial. 
-    //Coordina el calculo del ID y averigua si había ganado antes.
+    
+    /**
+     * Guarda al ganador en el historial. 
+     * Coordina el calculo del ID y averigua si había ganado antes.
+     * @param file
+     * @param ganador
+     * @param puntajeFinal
+     * @param embocadasTotales
+     * @throws IOException
+     */
     public void registrarGanador(File file, Equipo ganador, int puntajeFinal, int embocadasTotales) throws IOException {
 
         String nombreEquipo = ganador.getNombreEquipo();
@@ -40,7 +47,15 @@ public class ControlRAF {
         conexionRaf.escribirRegistro(file, nuevaClave, nombreEquipo, j1, j2, j3, puntajeFinal, embocadasTotales, victoriasPrevias, haGanadoAntes);
     }
 
-    //Lee el historial completo para buscar un equipo específico y contar sus victorias.
+   
+
+    /**
+     * Lee el historial completo para buscar un equipo específico y contar sus victorias.
+     * @param file
+     * @param nombreEquipoBuscado
+     * @return
+     * @throws IOException
+     */
     public int contarVictoriasHistoricas(File file, String nombreEquipoBuscado) throws IOException {
 
         int totalRegistros = conexionRaf.contarRegistros(file);

@@ -20,6 +20,12 @@ public class ControlEquipo {
         this.equipoActual = equipoActual;
     }
 
+    /**
+     * Simula el turno de un equipo de jugar
+     * @param tiempoTotalEquipo
+     * @param generador
+     * @return
+     */
     public int[] jugarTurnoEquipo(int tiempoTotalEquipo, Random generador) {
         if (equipoActual == null || equipoActual.getJugadores() == null) {
             return new int[]{0, 0};

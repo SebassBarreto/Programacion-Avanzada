@@ -21,6 +21,12 @@ public class ControlProperties {
         this.controlPrincipal = controlPrincipal;
     }
 
+    /**
+     * Carga los equipos desde un archivo de propiedades
+     * @param archivo
+     * @return lista de los equipos
+     * @throws IOException
+     */
     public List<Equipo> cargarEquipos(File archivo) throws IOException {
         
         Properties propiedades = new Properties();

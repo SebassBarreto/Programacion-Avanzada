@@ -25,15 +25,11 @@ public class ControlJuego {
     }
 
     /**
-     * Motor principal del juego. Recibe la lista de equipos inscritos y el
-     * tiempo total asignado, simula el torneo completo y devuelve el arreglo
-     * con los datos del ganador.
-     *
+     * Motor principal del juego. 
+     * Recibe la lista de equipos inscritos y el tiempo total asignado, simula el torneo completo 
      * @param equiposParticipantes Lista dinámica (ArrayList) con los equipos.
      * @param tiempoTotal El tiempo (en intentos) que jugará cada equipo.
-     * @return Un objeto genérico o arreglo (dependiendo de cómo lo maneje el
-     * Principal) con el Equipo Ganador, sus Puntos y sus Aciertos. En este
-     * caso, retornamos un Map.Entry o un arreglo de Objetos por simplicidad.
+     * @return Un arreglo de objetos con el Equipo Ganador, sus Puntos y sus Aciertos, retornamos un map entry.
      */
     public Object[] iniciarTorneo(ArrayList<Equipo> equiposParticipantes, int tiempoTotal) {
         if (equiposParticipantes == null || equiposParticipantes.isEmpty()) {
