@@ -28,7 +28,5 @@ public class ControlSerializacion {
     public List<Equipo> cargarEquipos(File archivo) throws IOException, ClassNotFoundException{
         Object datosRecuperados = conexionSerializacion.leerObjeto(archivo);
         return (List<Equipo>) datosRecuperados;
-    }
-            
-    
+    }   
 }
