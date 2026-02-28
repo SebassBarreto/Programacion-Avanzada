@@ -43,9 +43,9 @@ public class ControlProperties {
 
                 Jugador[] arregloJugadores = new Jugador[3];
 
-                arregloJugadores[1] = j1;
-                arregloJugadores[2] = j2;
-                arregloJugadores[3] = j3;
+                arregloJugadores[0] = j1;
+                arregloJugadores[1] = j2;
+                arregloJugadores[2] = j3;
 
                 Equipo nuevoEquipo;
                 nuevoEquipo = new Equipo(nombreEquipo, proyecto, arregloJugadores);
