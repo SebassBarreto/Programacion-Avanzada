@@ -47,7 +47,8 @@ public class ControlProperties {
                 arregloJugadores[2] = j2;
                 arregloJugadores[3] = j3;
 
-                Equipo nuevoEquipo = new Equipo(nombreEquipo, proyecto, arregloJugadores, 0, 0, 0);
+                Equipo nuevoEquipo;
+                nuevoEquipo = new Equipo(nombreEquipo, proyecto, arregloJugadores);
 
                 listaEquipos.add(nuevoEquipo);
 

@@ -1,36 +1,54 @@
 package pa.elbalero.controlador;
 
+import java.util.Random;
 import pa.elbalero.modelo.Equipo;
 import pa.elbalero.modelo.Jugador;
 
 public class ControlEquipo {
-    private Equipo equipo;
-    private final Jugador[] arreglo;
-    
-    public ControlEquipo(){
-       arreglo = new Jugador[2];
-       
+
+    private ControlPrincipal controlPrincipal;
+    private ControlJugador controlJugador;
+
+    private Equipo equipoActual;
+
+    public ControlEquipo(ControlPrincipal controlPrincipal, ControlJugador controlJugador) {
+        this.controlPrincipal = controlPrincipal;
+        this.controlJugador = controlJugador;
     }
-    //Falta verificar que el Equipo si tenga 3 jugadores y los datos completos
-    
-    public void crearEquipo(Jugador jugador1, Jugador jugador2, Jugador jugador3, String nombre, String proyectoc){
-        arreglo[0] = jugador1;
-        arreglo[1] = jugador2;
-        arreglo[2] = jugador3;
-        //String nombreEquipo, String proyectoCurricular, Jugador[] jugadores, int victorias, int intentosEmbocados, int Puntaje
-        equipo = new Equipo(nombre, proyectoc, arreglo, 0,0,0);
+
+    public void setEquipoActual(Equipo equipoActual) {
+        this.equipoActual = equipoActual;
     }
-    
-    public String obtenerNombreEquipo(){
-        return equipo.getNombreEquipo();
+
+    public int[] jugarTurnoEquipo(int tiempoTotalEquipo, Random generador) {
+        if (equipoActual == null || equipoActual.getJugadores() == null) {
+            return new int[]{0, 0};
+        }
+
+        int intentosPorJugador = tiempoTotalEquipo / 3;
+
+        Jugador[] jugadores = equipoActual.getJugadores();
+
+        int puntosTotales = 0;
+        int embocadasTotales = 0;
+
+        for (int i = 0; i < 3; i++) {
+            Jugador jugadorDeTurno = jugadores[i];
+
+            if (jugadorDeTurno != null) {
+                controlJugador.setJugadorActual(jugadorDeTurno);
+                controlJugador.jugarTurno(intentosPorJugador, generador);
+                puntosTotales += controlJugador.getPuntosObtenidos();
+                embocadasTotales += controlJugador.getEmbocadas();
+            }
+
+        }
+        //Retornamos la estructura estatica con los resultados finales para control principal
+        return new int[]{puntosTotales, embocadasTotales};
     }
-    
-    public String obtenerProyectoCurricular(){
-        return equipo.getProyectoCurricular();
+
+    public Equipo getEquipoActual() {
+        return equipoActual;
     }
-    
-    public String obtenerJugadores(){
-        return ""; //En proceso
-    }
-    
+
 }
