@@ -3,6 +3,10 @@ package pa.elbalero.vista;
 
 import pa.elbalero.controlador.ControlVista;
 
+/**
+ * Panel de la vista que muestra un resumen de los parametros calculados de la competencia.
+ * Permite al usuario confirmar o volver a ingresar el tiempo antes de iniciar el torneo.
+ */
 public class PanelParametrosDelJuego extends javax.swing.JPanel {
 
     public PanelParametrosDelJuego(ControlVista controlVista) {

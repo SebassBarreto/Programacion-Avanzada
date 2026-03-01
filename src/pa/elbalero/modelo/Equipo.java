@@ -3,7 +3,9 @@ package pa.elbalero.modelo;
 import java.io.Serializable;
 
 /**
- * Representa un equipo con datos básicos y su resultado.
+ * Representa un equipo participante en la competencia del balero.
+ * Cada equipo tiene un nombre un proyecto curricular y un arreglo de tres jugadores.
+ * Implementa Serializable para permitir la persistencia de datos.
  */
 public class Equipo implements Serializable{
 
@@ -17,7 +19,12 @@ public class Equipo implements Serializable{
     public Equipo() { 
     }
     
-    //Constructor con Atributos
+    /**
+     * Crea un equipo con todos sus datos basicos y su arreglo de jugadores
+     * @param nombreEquipo nombre identificador del equipo
+     * @param proyectoCurricular nombre del proyecto curricular al que pertenece
+     * @param jugadores arreglo estatico de tres jugadores que conforman el equipo
+     */
     public Equipo(String nombreEquipo, String proyectoCurricular, Jugador[] jugadores) {
         this.nombreEquipo = nombreEquipo;
         this.proyectoCurricular = proyectoCurricular;

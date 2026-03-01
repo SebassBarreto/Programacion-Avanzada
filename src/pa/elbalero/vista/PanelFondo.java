@@ -5,6 +5,10 @@ import javax.swing.ImageIcon;
 import java.awt.Graphics;
 import java.awt.Image;
 
+/**
+ * JPanel personalizado que dibuja una imagen de fondo escalada al tamano del panel.
+ * Se usa como fondo decorativo en los diferentes paneles de la interfaz.
+ */
 public class PanelFondo extends JPanel {
 
     private Image imagen;
@@ -13,11 +17,20 @@ public class PanelFondo extends JPanel {
     public PanelFondo() {
     }
 
+    /**
+     * Crea el panel y carga la imagen de fondo desde la ruta indicada
+     * @param ruta ruta relativa o absoluta de la imagen a cargar
+     */
     // constructor con imagen
     public PanelFondo(String ruta) {
         setImagen(ruta);
     }
 
+    /**
+     * Carga una imagen desde la ruta proporcionada y la establece como fondo.
+     * Lanza una excepcion si la imagen no se encuentra en la ruta dada.
+     * @param ruta ruta del archivo de imagen
+     */
     // cualquier panel puede decidir su imagen
     public void setImagen(String ruta) {
 //        imagen = new ImageIcon(getClass().getResource(ruta)).getImage();
@@ -34,6 +47,11 @@ public class PanelFondo extends JPanel {
         repaint();
     }
 
+    /**
+     * Dibuja la imagen de fondo escalada al tamano completo del panel.
+     * Se invoca automaticamente por Swing cada vez que el panel necesita repintarse.
+     * @param g objeto Graphics proporcionado por el sistema de pintado de Swing
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);

@@ -2,6 +2,11 @@ package pa.elbalero.modelo;
 
 import java.io.Serializable;
 
+/**
+ * Representa un jugador individual dentro de un equipo.
+ * Almacena el nombre el codigo de estudiante y las estadisticas de embocadas.
+ * Implementa Serializable para poder ser persistido junto con su equipo.
+ */
 public class Jugador implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -15,6 +20,12 @@ public class Jugador implements Serializable {
     public Jugador() {
     }
 
+    /**
+     * Crea un jugador con su nombre y codigo de estudiante.
+     * Las estadisticas se inicializan en cero.
+     * @param nombre nombre del jugador
+     * @param codigo codigo de estudiante del jugador
+     */
     public Jugador(String nombre, String codigo) {
         this.nombre = nombre;
         this.codigo = codigo;
@@ -63,14 +74,24 @@ public class Jugador implements Serializable {
         this.embocadasDesacertadas = embocadasDesacertadas;
     }
 
+    /**
+     * Suma puntos al puntaje acumulado del jugador
+     * @param puntos cantidad de puntos a agregar segun el tipo de embocada
+     */
     public void agregarPuntaje(int puntos) {
         this.puntaje += puntos;
     }
 
+    /**
+     * Incrementa en uno el contador de embocadas acertadas del jugador
+     */
     public void incrementarAcertadas() {
         this.embocadasAcertadas++;
     }
 
+    /**
+     * Incrementa en uno el contador de embocadas fallidas del jugador
+     */
     public void incrementarDesacertadas() {
         this.embocadasDesacertadas++;
     }

@@ -3,6 +3,10 @@ package pa.elbalero.vista;
 
 import pa.elbalero.controlador.ControlVista;
 
+/**
+ * Panel de la vista que muestra la informacion de los desarrolladores del proyecto.
+ * Incluye un boton para volver a la pantalla principal.
+ */
 public class PanelCreditos extends javax.swing.JPanel {
 
     public PanelCreditos(ControlVista controlVista) {

@@ -4,7 +4,11 @@ import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
  
- // Escribir y leer bytes puros usando Registros de Longitud Fija.
+/**
+ * Clase del modelo encargada de escribir y leer registros de longitud fija
+ * en un archivo de acceso aleatorio (RandomAccessFile).
+ * Cada registro ocupa exactamente 217 bytes con campos de tamano fijo.
+ */
 public class ConexionRandomAccessFile {
 
     // Tamaño estricto en bytes (4 + 50 + 50 + 50 + 50 + 4 + 4 + 4 + 1) = 217 bytes.
@@ -13,7 +17,12 @@ public class ConexionRandomAccessFile {
     public ConexionRandomAccessFile() {
     }
 
-    //Garantiza que el String ocupe exactamente 50 bytes (25 chars).
+    /**
+     * Rellena o recorta una cadena para que ocupe exactamente 25 caracteres (50 bytes en UTF).
+     * Si es menor a 25 se rellena con espacios. Si es mayor se recorta.
+     * @param cadena texto original a ajustar
+     * @return cadena de exactamente 25 caracteres
+     */
     private String llenarCampoString(String cadena) {
         if (cadena == null) {
             cadena = "N/A";
@@ -29,7 +38,21 @@ public class ConexionRandomAccessFile {
         return cadena;
     }
 
-    //Escribe datos primitivos al final del archivo ocupando exactamente 217 bytes 
+    /**
+     * Escribe un registro completo al final del archivo RAF con los datos del ganador.
+     * El registro ocupa 217 bytes: clave(4) + nombreEquipo(50) + j1(50) + j2(50) + j3(50) + puntaje(4) + embocadas(4) + victorias(4) + haGanadoAntes(1)
+     * @param file archivo de acceso aleatorio donde se persiste
+     * @param clave identificador autoincremental del registro
+     * @param nombreEquipo nombre del equipo ganador
+     * @param nomJ1 nombre del primer jugador
+     * @param nomJ2 nombre del segundo jugador
+     * @param nomJ3 nombre del tercer jugador
+     * @param puntaje puntos totales obtenidos por el equipo
+     * @param embocadas cantidad total de embocadas acertadas
+     * @param victorias numero de victorias previas del equipo
+     * @param haGanadoAntes true si el equipo ya habia ganado antes
+     * @throws IOException si ocurre un error al escribir en el archivo
+     */
     public void escribirRegistro(File file, int clave, String nombreEquipo,
             String nomJ1, String nomJ2, String nomJ3,
             int puntaje, int embocadas, int victorias, boolean haGanadoAntes) throws IOException {

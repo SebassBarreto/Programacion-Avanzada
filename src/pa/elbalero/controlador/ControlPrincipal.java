@@ -13,6 +13,11 @@ import pa.elbalero.modelo.Equipo;
 import pa.elbalero.modelo.Jugador;
 import pa.elbalero.modelo.TipoEmbocada;
 
+/**
+ * Controlador principal que coordina toda la logica del juego del balero.
+ * Actua como fachada central entre la vista y los controladores especializados.
+ * Gestiona la carga de datos la ejecucion del torneo y la persistencia de resultados.
+ */
 public class ControlPrincipal {
 
     private ControlVista controlVista;
@@ -31,6 +36,10 @@ public class ControlPrincipal {
     private int embocadasGanadorActual;
     private final Random generadorAzarGlobal;
 
+    /**
+     * Inicializa todos los controladores de persistencia y logica del juego.
+     * Carga los datos iniciales y finalmente instancia la vista grafica.
+     */
     public ControlPrincipal() {
         //Inicializamos la lista dinamica vacia
         //this.equiposInscritos = new ArrayList<>();
@@ -49,6 +58,10 @@ public class ControlPrincipal {
         controlVista = new ControlVista(this);
     }
 
+    /**
+     * Abre un JFileChooser para que el usuario seleccione un archivo del sistema.
+     * @return el archivo seleccionado o null si el usuario cancelo la operacion
+     */
     public File seleccionarArchivo() {
         JFileChooser chooser = new JFileChooser();
         int opcion = chooser.showOpenDialog(null);
@@ -58,6 +71,10 @@ public class ControlPrincipal {
         return null;
     }
 
+    /**
+     * Determina si es la primera ejecucion o una posterior y carga los equipos
+     * desde un archivo .properties o desde un archivo serializado respectivamente.
+     */
     public void cargarDatosIniciales() {
         File archivo = seleccionarArchivo();
         int ejecuciones = controlProperties.obtenerNumeroEjecuciones();
@@ -163,6 +180,12 @@ public class ControlPrincipal {
         return victoriasHistoricas;
     }
 
+    /**
+     * Serializa la lista de equipos inscritos en un archivo para su posterior precarga.
+     * Solo escribe si la lista no esta vacia.
+     * @param archivoSerializado archivo destino donde se guardaran los objetos serializados
+     * @throws IOException si ocurre un error al escribir el archivo
+     */
     public void serializarEquiposAlFinalizar(File archivoSerializado) throws IOException {
         if (!controlEquipo.getEquiposInscritos().isEmpty()) {
             controlSerializacion.guardarEquipo(archivoSerializado, controlEquipo.getEquiposInscritos());
@@ -186,6 +209,11 @@ public class ControlPrincipal {
         return embocadasGanadorActual;
     }
 
+    /**
+     * Genera un texto HTML con los parametros calculados de la competencia
+     * para ser mostrado en la interfaz grafica antes de iniciar el torneo.
+     * @return cadena HTML con tiempo total cantidad de equipos tiempo por equipo y tiempo por jugador
+     */
     public String parametrosDelJuego() {
 
         String p = "<html>"
@@ -201,18 +229,32 @@ public class ControlPrincipal {
         return p;
     }
 
+    /**
+     * Delega al controlador de equipos la tarea de cargar los datos en la grilla de la vista
+     */
     public void cargarDatosAGrilla() {
         controlEquipo.cargarDatosAGrilla();
     }
 
+    /**
+     * Agrega una fila de datos a la grilla de la vista a traves del controlador de vista
+     * @param fila arreglo de objetos con los datos de una fila
+     */
     public void agregarFilaGrilla(Object[] fila) {
         controlVista.agregarFilaGrilla(fila);
     }
 
+    /**
+     * Limpia la grilla de la vista para recargar los datos desde cero
+     */
     public void actualizarGrilla() {
         controlVista.actualizarGrilla();
     }
 
+    /**
+     * Convierte el tiempo por jugador de minutos a segundos enteros
+     * @return tiempo disponible para cada jugador expresado en segundos
+     */
     public int getTiempoPorJugadorSegundos() {
         return (int) Math.round(tiempoPorJugador * 60);
     }
@@ -273,12 +315,22 @@ public class ControlPrincipal {
 
     }
 
+    /**
+     * Selecciona aleatoriamente un tipo de embocada del enum TipoEmbocada
+     * @param generador objeto Random inyectado para generar el indice aleatorio
+     * @return un valor aleatorio del enum TipoEmbocada
+     */
     //Saca una jugada aleatoria con los valores del enum entre 0 y la longitud del enum
     private TipoEmbocada obtenerJugadaAleatoria(Random generador) {
         TipoEmbocada[] opciones = TipoEmbocada.values();
         return opciones[generador.nextInt(opciones.length)];
     }
 
+    /**
+     * Ejecuta un unico intento de embocada generando una jugada aleatoria
+     * y delegando el calculo de puntos al controlador del jugador
+     * @param r objeto Random para la generacion aleatoria
+     */
     public void ejecutarIntento(Random r) {
         TipoEmbocada jugada = obtenerJugadaAleatoria(r);
         controlJugador.calcularPuntosJugada(jugada);
@@ -298,10 +350,22 @@ public class ControlPrincipal {
         }
     }
 
+    /**
+     * Ejecuta un intento para el jugador activo segun sus indices de equipo y jugador.
+     * Delega la logica al controlador de equipos.
+     * @param indiceEquipo posicion del equipo en la lista de inscritos
+     * @param indiceJugador posicion del jugador dentro del arreglo del equipo (0 a 2)
+     * @return arreglo con puntaje embocadas acertadas y desacertadas del jugador
+     */
     public Object[] ejecutarIntentoJugadorActual(int indiceEquipo, int indiceJugador) {
         return controlEquipo.ejecutarIntentoJugadorActual(indiceEquipo, indiceJugador, generadorAzarGlobal);
     }
 
+    /**
+     * Recorre todos los equipos inscritos y determina al ganador basandose en
+     * los puntos acumulados por sus jugadores. En caso de empate gana el equipo
+     * con mas embocadas acertadas.
+     */
     public void determinarGanadorDesdeEstado() {
         List<Equipo> equipos = controlEquipo.getEquiposInscritos();
         Equipo ganador = null;
@@ -327,11 +391,19 @@ public class ControlPrincipal {
         this.embocadasGanadorActual = maxEmbocadas;
     }
 
+    /**
+     * Lee el conteo actual de ejecuciones y lo incrementa en uno
+     * persistiendo el nuevo valor en el archivo de propiedades
+     */
     public void actualizarEjecuciones() {
         int n = controlProperties.obtenerNumeroEjecuciones();
         controlProperties.actualizarEjecuciones(n + 1);
     }
 
+    /**
+     * Establece el jugador activo en el controlador de jugador para el proximo intento
+     * @param jugador instancia del jugador que tomara el turno
+     */
     public void setJugadorActual(Jugador jugador) {
         controlJugador.setJugadorActual(jugador);
     }
