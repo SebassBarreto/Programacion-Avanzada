@@ -31,35 +31,34 @@ public class ControlJugador {
         switch (jugada) {
             case SIMPLE:
                 this.puntosObtenidos += 2;
-                this.embocadas++;
-
+                this.embocadasAcertadas++; // ← era embocadas++
                 break;
             case DOBLE:
                 this.puntosObtenidos += 10;
-                this.embocadas++;
+                this.embocadasAcertadas++;
                 break;
             case VERTICAL:
                 this.puntosObtenidos += 3;
-                this.embocadas++;
+                this.embocadasAcertadas++;
                 break;
             case MARIQUITA:
                 this.puntosObtenidos += 4;
-                this.embocadas++;
+                this.embocadasAcertadas++;
                 break;
             case PUNIALADA:
                 this.puntosObtenidos += 5;
-                this.embocadas++;
+                this.embocadasAcertadas++;
                 break;
             case PURTINIA:
                 this.puntosObtenidos += 6;
-                this.embocadas++;
+                this.embocadasAcertadas++;
                 break;
             case DOMINIO_DE_REVES:
                 this.puntosObtenidos += 8;
-                this.embocadas++;
+                this.embocadasAcertadas++;
                 break;
             case SIN_EMBOCADA:
-                //no se hace nada
+                this.embocadasDesacertadas++; // ← faltaba esto
                 break;
         }
         if (jugadorActual != null) {

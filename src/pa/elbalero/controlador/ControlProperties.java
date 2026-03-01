@@ -77,7 +77,7 @@ public class ControlProperties {
         prop.setProperty("ejecuciones",
                 String.valueOf(ejecuciones));
 
-        try (FileOutputStream fos = new FileOutputStream("config.properties")) {
+        try (FileOutputStream fos = new FileOutputStream("conteoEjecuciones.properties")) {
             prop.store(fos, null);
         } catch (Exception e) {
         }

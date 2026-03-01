@@ -2,10 +2,7 @@ package pa.elbalero.controlador;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 import javax.swing.JFileChooser;
 import pa.elbalero.modelo.ConexionSerializacion;
@@ -59,24 +56,39 @@ public class ControlPrincipal {
     }
 
     public void cargarDatosIniciales() {
-        File archivo = seleccionarArchivo();
         int ejecuciones = controlProperties.obtenerNumeroEjecuciones();
+
         if (ejecuciones == 0) {
+            File archivo = seleccionarArchivo();
+            if (archivo == null) {
+                return; // usuario canceló
+            }
             try {
                 cargarEquiposDesdeProperties(archivo);
             } catch (IOException ex) {
-
+                System.out.println("Error cargando properties: " + ex.getMessage());
             }
         } else {
+            File archivo = seleccionarArchivo();
+            if (archivo == null) {
+                return; // usuario canceló
+            }
             try {
                 precargarEquiposSerializados(archivo);
-            } catch (IOException ex) {
-
-            } catch (ClassNotFoundException ex) {
-
+            } catch (IOException | ClassNotFoundException ex) {
+                // Si falla el .bin, intentar cargar properties como respaldo
+                System.out.println("Error cargando serializado, intentando properties...");
+                archivo = seleccionarArchivo();
+                if (archivo != null) {
+                    try {
+                        cargarEquiposDesdeProperties(archivo);
+                    } catch (IOException ex2) {
+                        System.out.println("Error: " + ex2.getMessage());
+                    }
+                }
             }
         }
-        //controlProperties.actualizarEjecuciones(ejecuciones + 1);
+        controlProperties.actualizarEjecuciones(ejecuciones + 1);
     }
 
     //Metodos de  (la vista los va a llamar para los eventos)
@@ -110,33 +122,8 @@ public class ControlPrincipal {
      */
     public void setTiempoDeLaCompetencia(int t) {
         tiempoCompetencia = t;
-        tiempoPorEquipo = tiempoCompetencia / controlEquipo.getCantidadEquipos();
-        tiempoPorJugador = tiempoPorEquipo / 3;
-    }
-
-    /**
-     * Retorna un booleano para indicar a la vista si el torneo se pudo ejecutar
-     * o no
-     *
-     * @return falso si se invalidó algo
-     */
-    public boolean ejecutarTorneo() {
-        if (controlEquipo.getEquiposInscritos().isEmpty() || tiempoCompetencia <= 0) {
-            return false;
-        }
-
-        //Delegando al motor del juego que haga los ciclos y calculos
-        Object[] resultados;
-        resultados = iniciarTorneo((ArrayList<Equipo>) controlEquipo.getEquiposInscritos(), tiempoCompetencia);
-
-        //Si el torneo arrojo resutlado valido entonces que lo guarde en las variables de clase o sea memoria VOLATIL
-        if (resultados != null) {
-            this.equipoGanadorActual = (Equipo) resultados[0];
-            this.puntosGanadorActual = (int) resultados[1];
-            this.embocadasGanadorActual = (int) resultados[2];
-            return true;
-        }
-        return false;
+        tiempoPorEquipo = (double) tiempoCompetencia / controlEquipo.getCantidadEquipos();
+        tiempoPorJugador = tiempoPorEquipo / 3.0;
     }
 
     /**
@@ -211,70 +198,6 @@ public class ControlPrincipal {
         return (int) Math.round(tiempoPorJugador * 60);
     }
 
-    /**
-     * Motor principal del juego. Recibe la lista de equipos inscritos y el
-     * tiempo total asignado, simula el torneo completo
-     *
-     * @param equiposParticipantes Lista dinámica (ArrayList) con los equipos.
-     * @param tiempoTotal El tiempo (en intentos) que jugará cada equipo.
-     * @return Un arreglo de objetos con el Equipo Ganador, sus Puntos y sus
-     * Aciertos, retornamos un map entry.
-     */
-    public Object[] iniciarTorneo(ArrayList<Equipo> equiposParticipantes, int tiempoTotal) {
-        if (equiposParticipantes == null || equiposParticipantes.isEmpty()) {
-            return null;
-        }
-
-        //Estructura de datos para guardar la tabla de posiciones temporal
-        //llave el objeto equipo
-        //valor un arreglo de enteros [Puntos, EmbocadasTotales]
-        Map<Equipo, int[]> tablaPosiciones = new HashMap<>();
-
-        //Fase 1 meter a los equipos a jugar
-        for (Equipo equipoActual : equiposParticipantes) {
-            //Le decimos quien va a jugar
-            controlEquipo.setEquipoActual(equipoActual);
-            //Le ordenamos jugar y recibimos los resultados [puntos, exitos]
-            int[] resultadosRonda = controlEquipo.jugarTurnoEquipo(tiempoTotal, generadorAzarGlobal);
-            //Guardamos el resultado de este equipo en la tabla
-            tablaPosiciones.put(equipoActual, resultadosRonda);
-        }
-
-        //Fase 2 encontramos al ganador aplicando las reglas
-        Equipo equipoGanador = null;
-        int maxPuntos = -1;
-        int minIntentosEmbocados;
-        minIntentosEmbocados = Integer.MAX_VALUE;
-
-        for (Map.Entry<Equipo, int[]> registro : tablaPosiciones.entrySet()) {
-            Equipo equipoEvaluado = registro.getKey();
-            int puntosObtenidos = registro.getValue()[0];
-            int embocadasObtenidas = registro.getValue()[1];
-
-            if (puntosObtenidos > maxPuntos) {
-                maxPuntos = puntosObtenidos;
-                minIntentosEmbocados = embocadasObtenidas;
-                equipoGanador = equipoEvaluado;
-            } //Regla desempate si tienen los mismos puntos, gana el de MENOS intentos embocados
-            else if (puntosObtenidos == maxPuntos) {
-                if (embocadasObtenidas < minIntentosEmbocados) {
-                    minIntentosEmbocados = embocadasObtenidas;
-                    equipoGanador = equipoEvaluado;
-                }
-            }
-        }
-
-        /* 
-         * Fase 3 Retornamos los datos del campein empacados en un arreglo de Objetos 
-         * para el ControlPrincipal .
-         * [0] = Entidad Equipo
-         * [1] = Integer (Puntos)
-         * [2] = Integer (Intentos Exitosos)
-         */
-        return new Object[]{equipoGanador, maxPuntos, minIntentosEmbocados};
-
-    }
-
     //Saca una jugada aleatoria con los valores del enum entre 0 y la longitud del enum
     private TipoEmbocada obtenerJugadaAleatoria(Random generador) {
         TipoEmbocada[] opciones = TipoEmbocada.values();
@@ -300,12 +223,61 @@ public class ControlPrincipal {
         }
     }
 
-    public Object[] ejecutarIntentoJugadorActual(int indiceEquipo,int indiceJugador) {
-        return controlEquipo.ejecutarIntentoJugadorActual(indiceEquipo,indiceJugador,generadorAzarGlobal);
+    public Object[] ejecutarIntentoJugadorActual(int indiceEquipo, int indiceJugador) {
+        return controlEquipo.ejecutarIntentoJugadorActual(indiceEquipo, indiceJugador, generadorAzarGlobal);
     }
-    
-    public void setJugadorActual(Jugador jugador){
+
+    public void setJugadorActual(Jugador jugador) {
         controlJugador.setJugadorActual(jugador);
+    }
+
+    public List<String[]> obtenerHistorialCompleto(File archivoDat) throws IOException {
+        return controlRAF.obtenerHistorialCompleto(archivoDat);
+    }
+
+    public void determinarGanadorVisual() {
+        Equipo ganador = null;
+        int maxPuntos = -1;
+        int minEmbocadas = Integer.MAX_VALUE;
+
+        for (Equipo equipo : controlEquipo.getEquiposInscritos()) {
+            int puntosEquipo = 0;
+            int embocadasEquipo = 0;
+
+            for (Jugador jugador : equipo.getJugadores()) {
+                if (jugador != null) {
+                    puntosEquipo += jugador.getPuntaje();
+                    embocadasEquipo += jugador.getEmbocadasAcertadas();
+                }
+            }
+
+            if (puntosEquipo > maxPuntos) {
+                maxPuntos = puntosEquipo;
+                minEmbocadas = embocadasEquipo;
+                ganador = equipo;
+            } else if (puntosEquipo == maxPuntos) {
+                if (embocadasEquipo < minEmbocadas) {
+                    minEmbocadas = embocadasEquipo;
+                    ganador = equipo;
+                }
+            }
+        }
+
+        this.equipoGanadorActual = ganador;
+        this.puntosGanadorActual = maxPuntos;
+        this.embocadasGanadorActual = minEmbocadas;
+    }
+
+    public void resetearJugadores() {
+        for (Equipo equipo : controlEquipo.getEquiposInscritos()) {
+            for (Jugador jugador : equipo.getJugadores()) {
+                if (jugador != null) {
+                    jugador.setPuntaje(0);
+                    jugador.setEmbocadasAcertadas(0);
+                    jugador.setEmbocadasDesacertadas(0);
+                }
+            }
+        }
     }
 
 }

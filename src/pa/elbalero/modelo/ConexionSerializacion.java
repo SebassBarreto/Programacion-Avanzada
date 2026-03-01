@@ -12,12 +12,12 @@ public class ConexionSerializacion {
 
     /**
      * Escribe el objeto en un archivo
+     *
      * @param archivo
      * @param datos
      * @throws IOException
      */
     public void escribirObjeto(File archivo, Object datos) throws IOException {
-
         try (FileOutputStream fileOut = new FileOutputStream(archivo)) {
             ObjectOutputStream salida = new ObjectOutputStream(fileOut);
 
@@ -27,6 +27,7 @@ public class ConexionSerializacion {
 
     /**
      * Lee el objeto desde un archivo
+     *
      * @param archivo
      * @return Object
      * @throws IOException

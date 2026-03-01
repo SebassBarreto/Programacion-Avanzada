@@ -57,10 +57,11 @@ public class ControlEquipo {
             Jugador jugadorDeTurno = jugadores[i];
 
             if (jugadorDeTurno != null) {
-//                controlJugador.setJugadorActual(jugadorDeTurno);
-//                controlJugador.jugarTurno(intentosPorJugador, generador);
-//                puntosTotales += controlJugador.getPuntosObtenidos();
-//                embocadasTotales += controlJugador.getEmbocadas();
+                controlJugador.setJugadorActual(jugadorDeTurno);
+                controlPrincipal.jugarTurno(intentosPorJugador, generador);
+                jugadorDeTurno.setPuntaje(controlJugador.getPuntosObtenidos());
+                puntosTotales += controlJugador.getPuntosObtenidos();
+                embocadasTotales += controlJugador.getEmbocadas();
             }
 
         }
@@ -110,7 +111,6 @@ public class ControlEquipo {
         return equipo.getJugadores()[indiceJugador];
     }
 
-
     public Jugador getJugador(int indiceEquipo, int indiceJugador) {
         return obtenerJugador(indiceEquipo, indiceJugador);
     }
@@ -128,13 +128,20 @@ public class ControlEquipo {
     }
 
     public Object[] ejecutarIntentoJugadorActual(int indiceEquipo, int indiceJugador, Random generador) {
-        Jugador jugador = obtenerJugador(indiceEquipo, indiceJugador);
-        if (jugador == null) {
-            return null;
-        }
-        controlPrincipal.setJugadorActual(jugador);
-        controlPrincipal.ejecutarIntento(generador);
-        return new Object[]{jugador.getPuntaje(), jugador.getEmbocadasAcertadas(), jugador.getEmbocadasDesacertadas()};
+    Jugador jugador = obtenerJugador(indiceEquipo, indiceJugador);
+    if (jugador == null) return null;
+
+    // Solo setear si es un jugador diferente al actual
+    if (controlJugador.getJugadorActual() != jugador) {
+        controlJugador.setJugadorActual(jugador);
     }
+
+    controlPrincipal.ejecutarIntento(generador);
+    return new Object[]{
+        jugador.getPuntaje(),
+        jugador.getEmbocadasAcertadas(),
+        jugador.getEmbocadasDesacertadas()
+    };
+}
 
 }

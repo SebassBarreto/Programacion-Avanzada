@@ -18,8 +18,8 @@ public class PanelCompetencia extends javax.swing.JPanel {
     public PanelCompetencia(ControlVista controlVista) {
         initComponents();
         labelTimer = new JLabel("00:00");
-        labelTimer.setFont(new Font("Arial", Font.BOLD, 40));
-        add(labelTimer, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 420, 160, 60));
+        labelTimer.setFont(new Font("Arial", Font.BOLD, 80));
+        jPanel1.add(labelTimer, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 450, 300, 60));
         renderer = new RendererTurno();
         Grilla.setDefaultRenderer(Object.class, renderer);
     }
@@ -27,10 +27,9 @@ public class PanelCompetencia extends javax.swing.JPanel {
     public void resaltarTurnoActual(int equipo, int jugador) {
         int filaActiva = equipo * 3 + jugador;
         renderer.setFilaActiva(filaActiva);
+        renderer.setEquipoActivo(equipo); // ← agregar esta línea
         Grilla.repaint();
     }
-    
-    
 
     public void configurarTabla() {
 
@@ -67,15 +66,6 @@ public class PanelCompetencia extends javax.swing.JPanel {
         Grilla.setRowHeight(60); // para fotos
     }
 
-//    public void mostrarTiempo(double minutos) {
-//        int totalSegundos = (int) Math.round(minutos * 60);
-//        int min = totalSegundos / 60;
-//        int seg = totalSegundos % 60;
-//
-//        labelTimer.setText(
-//                String.format("%02d:%02d", min, seg)
-//        );
-//    }
     public void mostrarTiempo(int segundos) {
         int min = segundos / 60;
         int seg = segundos % 60;
@@ -88,44 +78,55 @@ public class PanelCompetencia extends javax.swing.JPanel {
     class RendererTurno extends DefaultTableCellRenderer {
 
         private int filaActiva;
+        private int equipoActivo; // ← nuevo
 
         public void setFilaActiva(int fila) {
             this.filaActiva = fila;
         }
 
+        public void setEquipoActivo(int equipo) { // ← nuevo
+            this.equipoActivo = equipo;
+        }
+
         @Override
         public Component getTableCellRendererComponent(
                 JTable table, Object value,
-                boolean isSelected,
-                boolean hasFocus,
+                boolean isSelected, boolean hasFocus,
                 int row, int column) {
 
-            Component c
-                    = super.getTableCellRendererComponent(
-                            table, value, isSelected, hasFocus, row, column);
+            Component c = super.getTableCellRendererComponent(
+                    table, value, isSelected, hasFocus, row, column);
+
+            int equipoDeFila = row / 3; // cada equipo ocupa 3 filas
 
             if (row == filaActiva) {
-                c.setBackground(Color.YELLOW);
+                // Jugador activo — azul oscuro
+                c.setBackground(new Color(30, 90, 180));
+                c.setForeground(Color.WHITE);
+            } else if (equipoDeFila == equipoActivo) {
+                // Mismo equipo jugando — azul claro
+                c.setBackground(new Color(173, 216, 230));
+                c.setForeground(Color.BLACK);
             } else {
-                c.setBackground(Color.WHITE);
+                // Equipos en espera — gris traslúcido
+                c.setBackground(new Color(220, 220, 220));
+                c.setForeground(new Color(150, 150, 150));
             }
 
             return c;
         }
     }
 
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jButton1VolverPantallaPrincipal = new pa.elbalero.vista.RoundButton();
-        jPanel1 = new PanelFondo("Imgs/2IngresarTiempo.png");
-        jButton1AceptarTiempo = new javax.swing.JButton();
+        jPanel1 = new PanelFondo("Imgs/6FondoMultiusos.png");
         jScrollPane1 = new javax.swing.JScrollPane();
         Grilla = new javax.swing.JTable();
-        jTextFieldTiempo = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(900, 600));
         setMinimumSize(new java.awt.Dimension(900, 600));
@@ -146,13 +147,6 @@ public class PanelCompetencia extends javax.swing.JPanel {
         jPanel1.setPreferredSize(new java.awt.Dimension(900, 600));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1AceptarTiempo.setBackground(new java.awt.Color(153, 0, 0));
-        jButton1AceptarTiempo.setFont(new java.awt.Font("Maiandra GD", 1, 36)); // NOI18N
-        jButton1AceptarTiempo.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1AceptarTiempo.setText("Aceptar");
-        jButton1AceptarTiempo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jButton1AceptarTiempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 460, 240, 60));
-
         Grilla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -166,40 +160,22 @@ public class PanelCompetencia extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(Grilla);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 860, 310));
-
-        jTextFieldTiempo.setFont(new java.awt.Font("Maiandra GD", 1, 48)); // NOI18N
-        jTextFieldTiempo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldTiempoActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jTextFieldTiempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 460, 180, 60));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 860, 350));
 
         jLabel2.setFont(new java.awt.Font("Maiandra GD", 1, 48)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Grilla");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 20, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\USUARIO\\Documents\\NetBeansProjects\\Programacion-Avanzada\\Imgs\\6FondoMultiusos.png")); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 599));
-
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 600));
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTextFieldTiempoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTiempoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldTiempoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JTable Grilla;
-    public javax.swing.JButton jButton1AceptarTiempo;
     public javax.swing.JButton jButton1VolverPantallaPrincipal;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
+    public javax.swing.JPanel jPanel1;
     public javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JTextField jTextFieldTiempo;
     // End of variables declaration//GEN-END:variables
 }

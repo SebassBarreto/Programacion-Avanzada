@@ -3,6 +3,8 @@ package pa.elbalero.modelo;
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.util.ArrayList;
+import java.util.List;
  
  // Escribir y leer bytes puros usando Registros de Longitud Fija.
 public class ConexionRandomAccessFile {
@@ -84,4 +86,39 @@ public class ConexionRandomAccessFile {
             return nombre.trim(); // Eliminamos los espacios en blanco del relleno
         }
     }
+    
+    // En ConexionRandomAccessFile.java
+public List<String[]> leerTodosLosRegistros(File file) throws IOException {
+    List<String[]> registros = new ArrayList<>();
+    int total = contarRegistros(file);
+
+    try (RandomAccessFile raf = new RandomAccessFile(file, "r")) {
+        for (int i = 0; i < total; i++) {
+            raf.seek((long) i * TAMANO_REGISTRO);
+            int clave = raf.readInt();
+            String equipo = leerString(raf);
+            String j1 = leerString(raf);
+            String j2 = leerString(raf);
+            String j3 = leerString(raf);
+            int puntaje = raf.readInt();
+            raf.readInt(); // embocadas
+            raf.readInt(); // victorias
+            raf.readBoolean(); // haGanadoAntes
+
+            registros.add(new String[]{
+                String.valueOf(clave), equipo, j1, j2, j3, String.valueOf(puntaje)
+            });
+        }
+    }
+    return registros;
+}
+
+// Método auxiliar para leer 25 chars (50 bytes)
+private String leerString(RandomAccessFile raf) throws IOException {
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < 25; i++) {
+        sb.append(raf.readChar());
+    }
+    return sb.toString().trim();
+}
 }
