@@ -13,7 +13,7 @@ public class ControlJugador {
     private int embocadas;
     private int embocadasDesacertadas;
     private int embocadasAcertadas;
-    
+
     public ControlJugador(ControlPrincipal controlPrincipal) {
         this.controlPrincipal = controlPrincipal;
     }
@@ -25,8 +25,6 @@ public class ControlJugador {
         this.embocadasAcertadas = 0;
     }
 
-    
-    
     //Calcula los puntos de una jugada con un switch case
     public void calcularPuntosJugada(TipoEmbocada jugada) {
 
@@ -34,7 +32,7 @@ public class ControlJugador {
             case SIMPLE:
                 this.puntosObtenidos += 2;
                 this.embocadas++;
-                
+
                 break;
             case DOBLE:
                 this.puntosObtenidos += 10;
@@ -64,6 +62,12 @@ public class ControlJugador {
                 //no se hace nada
                 break;
         }
+        if (jugadorActual != null) {
+            jugadorActual.setPuntaje(this.puntosObtenidos);
+            jugadorActual.setEmbocadasAcertadas(this.embocadasAcertadas);
+            jugadorActual.setEmbocadasDesacertadas(this.embocadasDesacertadas);
+        }
+
     }
 
     //getters para que el control equipo tome los resultados

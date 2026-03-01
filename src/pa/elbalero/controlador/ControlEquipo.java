@@ -132,7 +132,7 @@ public class ControlEquipo {
         if (jugador == null) {
             return null;
         }
-        //controlPrincipal.setJugadorActual(jugador);
+        controlPrincipal.setJugadorActual(jugador);
         controlPrincipal.ejecutarIntento(generador);
         return new Object[]{jugador.getPuntaje(), jugador.getEmbocadasAcertadas(), jugador.getEmbocadasDesacertadas()};
     }

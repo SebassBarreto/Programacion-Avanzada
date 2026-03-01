@@ -53,7 +53,6 @@ public class ControlProperties {
                 }
 
                 nuevoEquipo = new Equipo(nombreEquipo, proyecto, arregloJugadores);
-                System.out.println("Prueba:" + nombreEquipo + proyecto);
                 listaEquipos.add(nuevoEquipo);
             }
         }

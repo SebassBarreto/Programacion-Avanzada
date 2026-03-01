@@ -10,6 +10,7 @@ import java.util.Random;
 import javax.swing.JFileChooser;
 import pa.elbalero.modelo.ConexionSerializacion;
 import pa.elbalero.modelo.Equipo;
+import pa.elbalero.modelo.Jugador;
 import pa.elbalero.modelo.TipoEmbocada;
 
 public class ControlPrincipal {
@@ -303,8 +304,8 @@ public class ControlPrincipal {
         return controlEquipo.ejecutarIntentoJugadorActual(indiceEquipo,indiceJugador,generadorAzarGlobal);
     }
     
-//    public void setJugadorActual(Jugador jugador){
-//        controlJugador.setJugadorActual(jugador);
-//    }
+    public void setJugadorActual(Jugador jugador){
+        controlJugador.setJugadorActual(jugador);
+    }
 
 }
