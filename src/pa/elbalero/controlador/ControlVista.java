@@ -28,7 +28,6 @@ public class ControlVista implements ActionListener {
     private PanelIngresarTiempo panelIngresarTiempo;
     private PanelParametrosDelJuego panelParametrosDelJuego;
     private PanelCompetencia panelCompetencia;
-    private DefaultTableModel modelo;
 
     public ControlVista(ControlPrincipal controlPrincipal) {
         this.controlPrincipal = controlPrincipal;
@@ -74,6 +73,8 @@ public class ControlVista implements ActionListener {
         panelParametrosDelJuego.jButton1AceptarParametros.addActionListener(this);
         panelParametrosDelJuego.jButton1AceptarParametros.setActionCommand("Iniciar Competencia");
 
+        panelCompetencia.jButton1VolverPantallaPrincipal.addActionListener(this);
+        panelCompetencia.jButton1VolverPantallaPrincipal.setActionCommand("SalirDeLaCompetencia");
         cambiarPanel(panelPrincipal);//Ponemos en la ventana el Panel Principal
         ventana.setLocationRelativeTo(null);
         ventana.setVisible(true); //Ventana visible en pantalla    
@@ -99,10 +100,12 @@ public class ControlVista implements ActionListener {
     }
 
     public void actualizarGrilla() {
+        DefaultTableModel modelo = (DefaultTableModel) panelCompetencia.Grilla.getModel();
         modelo.setRowCount(0);
     }
 
     public void agregarFilaGrilla(Object[] fila) {
+        DefaultTableModel modelo = (DefaultTableModel) panelCompetencia.Grilla.getModel();
         modelo.addRow(fila);
     }
 
@@ -144,11 +147,12 @@ public class ControlVista implements ActionListener {
 
         } else if (e.getActionCommand().equalsIgnoreCase("Iniciar Competencia")) {
             panelCompetencia.configurarTabla();
-            controlPrincipal.actualizarGrilla();
+            controlPrincipal.cargarDatosAGrilla();
             cambiarPanel(panelCompetencia);
 
-        } else if (e.getActionCommand().equalsIgnoreCase(",,,,.")) {
-
+        } else if (e.getActionCommand().equalsIgnoreCase("SalirDeLaCompetencia")) {
+            emergente.confirmacionSalirCompetencia();
+            
         } else if (e.getActionCommand().equalsIgnoreCase(",,,")) {
 
         } else if (e.getActionCommand().equalsIgnoreCase(",,")) {

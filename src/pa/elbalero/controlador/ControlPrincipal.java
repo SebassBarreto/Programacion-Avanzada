@@ -207,7 +207,7 @@ public class ControlPrincipal {
     }
     
     public void agregarFilaGrilla(Object[] fila){
-        controlVista.actualizarGrilla();
+        controlVista.agregarFilaGrilla(fila);
     }
     
     public void actualizarGrilla(){

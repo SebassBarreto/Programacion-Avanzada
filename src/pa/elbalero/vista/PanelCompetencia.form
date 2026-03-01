@@ -116,7 +116,7 @@
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="40" y="100" width="500" height="450"/>
+              <AbsoluteConstraints x="20" y="80" width="860" height="310"/>
             </Constraint>
           </Constraints>
 
@@ -145,12 +145,15 @@
               <Font name="Maiandra GD" size="48" style="1"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldTiempoActionPerformed"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="650" y="372" width="180" height="60"/>
+              <AbsoluteConstraints x="50" y="460" width="180" height="60"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -162,11 +165,11 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="(Minutos)"/>
+            <Property name="text" type="java.lang.String" value="Grilla"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="150" y="40" width="-1" height="-1"/>
+              <AbsoluteConstraints x="390" y="20" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>

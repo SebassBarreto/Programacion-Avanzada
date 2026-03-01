@@ -99,21 +99,30 @@ public class PanelCompetencia extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(Grilla);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 500, 450));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 860, 310));
 
         jTextFieldTiempo.setFont(new java.awt.Font("Maiandra GD", 1, 48)); // NOI18N
-        jPanel1.add(jTextFieldTiempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 372, 180, 60));
+        jTextFieldTiempo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldTiempoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jTextFieldTiempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 460, 180, 60));
 
         jLabel2.setFont(new java.awt.Font("Maiandra GD", 1, 48)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("(Minutos)");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, -1, -1));
+        jLabel2.setText("Grilla");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 20, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\USUARIO\\Documents\\NetBeansProjects\\Programacion-Avanzada\\Imgs\\6FondoMultiusos.png")); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 599));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 600));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextFieldTiempoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTiempoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldTiempoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
