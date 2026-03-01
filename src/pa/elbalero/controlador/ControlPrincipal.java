@@ -110,8 +110,14 @@ public class ControlPrincipal {
      */
     public void setTiempoDeLaCompetencia(int t) {
         tiempoCompetencia = t;
-        tiempoPorEquipo = tiempoCompetencia / controlEquipo.getCantidadEquipos();
-        tiempoPorJugador = tiempoPorEquipo / 3;
+        int cantidadEquipos = controlEquipo.getCantidadEquipos();
+        if (cantidadEquipos > 0) {
+            tiempoPorEquipo = tiempoCompetencia / cantidadEquipos;
+            tiempoPorJugador = tiempoPorEquipo / 3;
+        } else {
+            tiempoPorEquipo = 0;
+            tiempoPorJugador = 0;
+        }
     }
 
     /**
@@ -292,10 +298,10 @@ public class ControlPrincipal {
         }
     }
 
-    public Object[] ejecutarIntentoJugadorActual(int indiceEquipo,int indiceJugador) {
-        return controlEquipo.ejecutarIntentoJugadorActual(indiceEquipo,indiceJugador,generadorAzarGlobal);
+    public Object[] ejecutarIntentoJugadorActual(int indiceEquipo, int indiceJugador) {
+        return controlEquipo.ejecutarIntentoJugadorActual(indiceEquipo, indiceJugador, generadorAzarGlobal);
     }
-    
+
     public void determinarGanadorDesdeEstado() {
         List<Equipo> equipos = controlEquipo.getEquiposInscritos();
         Equipo ganador = null;
