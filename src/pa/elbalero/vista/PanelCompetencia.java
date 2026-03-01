@@ -19,7 +19,7 @@ public class PanelCompetencia extends javax.swing.JPanel {
         initComponents();
         labelTimer = new JLabel("00:00");
         labelTimer.setFont(new Font("Arial", Font.BOLD, 40));
-        add(labelTimer);
+        add(labelTimer, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 410, 200, 50));
         renderer = new RendererTurno();
         Grilla.setDefaultRenderer(Object.class, renderer);
     }
