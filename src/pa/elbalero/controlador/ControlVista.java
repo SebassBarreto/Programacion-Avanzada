@@ -70,6 +70,12 @@ public class ControlVista implements ActionListener {
         panelPrincipal.jButton4Creditos.addActionListener(this);
         panelPrincipal.jButton4Creditos.setActionCommand("Creditos");
 
+        panelPrincipal.jButtonCargarEquipos.addActionListener(this);
+        panelPrincipal.jButtonCargarEquipos.setActionCommand("CargarEquipos");
+
+        panelPrincipal.jButtonPrecargar.addActionListener(this);
+        panelPrincipal.jButtonPrecargar.setActionCommand("PrecargarEquipos");
+
         panelSobreElJuego.jButton1VolverPantallaPrincipal.addActionListener(this);
         panelSobreElJuego.jButton1VolverPantallaPrincipal.setActionCommand("Volver a pantalla principal");
 
@@ -188,7 +194,11 @@ public class ControlVista implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equalsIgnoreCase("Jugar")) {
-            cambiarPanel(panelIngresarTiempo);
+            if (controlPrincipal.getEquiposInscritos().isEmpty()) {
+                emergente.mostrarMensaje("Primero debe cargar los equipos");
+            } else {
+                cambiarPanel(panelIngresarTiempo);
+            }
 
         } else if (e.getActionCommand().equalsIgnoreCase("SobreElJuego")) {
             cambiarPanel(panelSobreElJuego);
@@ -229,6 +239,32 @@ public class ControlVista implements ActionListener {
 
         } else if (e.getActionCommand().equalsIgnoreCase("SalirDeLaCompetencia")) {
             emergente.confirmacionSalirCompetencia();
+
+        } else if (e.getActionCommand().equalsIgnoreCase("CargarEquipos")) {
+            JFileChooser chooser = new JFileChooser();
+            chooser.setDialogTitle("Seleccionar archivo .properties de equipos");
+            if (chooser.showOpenDialog(ventana) == JFileChooser.APPROVE_OPTION) {
+                try {
+                    controlPrincipal.cargarEquiposDesdeProperties(chooser.getSelectedFile());
+                    emergente.mostrarMensaje("Equipos cargados correctamente");
+                } catch (IOException ex) {
+                    emergente.mostrarMensaje("Error al cargar equipos: " + ex.getMessage());
+                }
+                cambiarPanel(panelPrincipal);
+            }
+
+        } else if (e.getActionCommand().equalsIgnoreCase("PrecargarEquipos")) {
+            JFileChooser chooser = new JFileChooser();
+            chooser.setDialogTitle("Seleccionar archivo .ser serializado");
+            if (chooser.showOpenDialog(ventana) == JFileChooser.APPROVE_OPTION) {
+                try {
+                    controlPrincipal.precargarEquiposSerializados(chooser.getSelectedFile());
+                    emergente.mostrarMensaje("Equipos precargados correctamente");
+                } catch (IOException | ClassNotFoundException ex) {
+                    emergente.mostrarMensaje("Error al precargar equipos: " + ex.getMessage());
+                }
+                cambiarPanel(panelPrincipal);
+            }
 
         } else if (e.getActionCommand().equalsIgnoreCase("GuardarYSalir")) {
             JFileChooser chooserRaf = new JFileChooser();

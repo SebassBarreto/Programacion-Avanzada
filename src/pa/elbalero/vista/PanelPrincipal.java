@@ -18,6 +18,8 @@ public class PanelPrincipal extends javax.swing.JPanel {
         jButton2SobreElJuego = new javax.swing.JButton();
         jButton3Salir = new javax.swing.JButton();
         jButton4Creditos = new javax.swing.JButton();
+        jButtonCargarEquipos = new javax.swing.JButton();
+        jButtonPrecargar = new javax.swing.JButton();
         jPanel1 = new PanelFondo("Imgs/1PantallaPrincipal.png");
 
         setMaximumSize(new java.awt.Dimension(900, 600));
@@ -30,27 +32,39 @@ public class PanelPrincipal extends javax.swing.JPanel {
         jButton1Jugar.setFont(new java.awt.Font("Maiandra GD", 1, 36)); // NOI18N
         jButton1Jugar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1Jugar.setLabel("Jugar");
-        add(jButton1Jugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(582, 152, 210, 60));
+        add(jButton1Jugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(582, 70, 210, 60));
 
         jButton2SobreElJuego.setBackground(new java.awt.Color(245, 246, 183));
         jButton2SobreElJuego.setFont(new java.awt.Font("Maiandra GD", 1, 24)); // NOI18N
         jButton2SobreElJuego.setText("Sobre el juego");
         jButton2SobreElJuego.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(jButton2SobreElJuego, new org.netbeans.lib.awtextra.AbsoluteConstraints(582, 237, 210, 60));
+        add(jButton2SobreElJuego, new org.netbeans.lib.awtextra.AbsoluteConstraints(582, 155, 210, 60));
         jButton2SobreElJuego.getAccessibleContext().setAccessibleName("Reglas del juego");
 
         jButton3Salir.setBackground(new java.awt.Color(245, 246, 183));
         jButton3Salir.setFont(new java.awt.Font("Maiandra GD", 1, 36)); // NOI18N
         jButton3Salir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3Salir.setLabel("Salir");
-        add(jButton3Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(582, 321, 210, 60));
+        add(jButton3Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(582, 240, 210, 60));
 
         jButton4Creditos.setBackground(new java.awt.Color(245, 246, 183));
         jButton4Creditos.setFont(new java.awt.Font("Maiandra GD", 1, 36)); // NOI18N
         jButton4Creditos.setText("Créditos");
         jButton4Creditos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(jButton4Creditos, new org.netbeans.lib.awtextra.AbsoluteConstraints(582, 406, 210, 60));
+        add(jButton4Creditos, new org.netbeans.lib.awtextra.AbsoluteConstraints(582, 325, 210, 60));
         jButton4Creditos.getAccessibleContext().setAccessibleName("Sobre los desarrolladores");
+
+        jButtonCargarEquipos.setBackground(new java.awt.Color(245, 246, 183));
+        jButtonCargarEquipos.setFont(new java.awt.Font("Maiandra GD", 1, 24)); // NOI18N
+        jButtonCargarEquipos.setText("Cargar Equipos");
+        jButtonCargarEquipos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        add(jButtonCargarEquipos, new org.netbeans.lib.awtextra.AbsoluteConstraints(582, 410, 210, 60));
+
+        jButtonPrecargar.setBackground(new java.awt.Color(245, 246, 183));
+        jButtonPrecargar.setFont(new java.awt.Font("Maiandra GD", 1, 24)); // NOI18N
+        jButtonPrecargar.setText("Precargar");
+        jButtonPrecargar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        add(jButtonPrecargar, new org.netbeans.lib.awtextra.AbsoluteConstraints(582, 495, 210, 60));
 
         jPanel1.setMaximumSize(new java.awt.Dimension(900, 600));
         jPanel1.setMinimumSize(new java.awt.Dimension(900, 6000));
@@ -76,6 +90,8 @@ public class PanelPrincipal extends javax.swing.JPanel {
     public javax.swing.JButton jButton2SobreElJuego;
     public javax.swing.JButton jButton3Salir;
     public javax.swing.JButton jButton4Creditos;
+    public javax.swing.JButton jButtonCargarEquipos;
+    public javax.swing.JButton jButtonPrecargar;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
