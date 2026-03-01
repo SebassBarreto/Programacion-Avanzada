@@ -2,19 +2,25 @@ package pa.elbalero.controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
+import pa.elbalero.modelo.Equipo;
 import pa.elbalero.vista.Emergente;
 import pa.elbalero.vista.PanelCompetencia;
 import pa.elbalero.vista.PanelCreditos;
 import pa.elbalero.vista.PanelIngresarTiempo;
 import pa.elbalero.vista.PanelParametrosDelJuego;
 import pa.elbalero.vista.PanelPrincipal;
+import pa.elbalero.vista.PanelResultados;
 import pa.elbalero.vista.PanelSobreElJuego;
 import pa.elbalero.vista.Ventana;
 
@@ -29,6 +35,7 @@ public class ControlVista implements ActionListener {
     private PanelIngresarTiempo panelIngresarTiempo;
     private PanelParametrosDelJuego panelParametrosDelJuego;
     private PanelCompetencia panelCompetencia;
+    private PanelResultados panelResultados;
 
     private Timer timerTurno;
 
@@ -48,6 +55,7 @@ public class ControlVista implements ActionListener {
         panelIngresarTiempo = new PanelIngresarTiempo(this);
         panelParametrosDelJuego = new PanelParametrosDelJuego(this);
         panelCompetencia = new PanelCompetencia(this);
+        panelResultados = new PanelResultados(this);
 
         //BOTONES
         panelPrincipal.jButton1Jugar.addActionListener(this);
@@ -161,9 +169,20 @@ public class ControlVista implements ActionListener {
         }
         if (indiceEquipo == controlPrincipal.getEquiposInscritos().size()) {
             timerTurno.stop();
+            mostrarResultados();
             return;
         }
         tiempoRestante = controlPrincipal.getTiempoPorJugadorSegundos();
+    }
+
+    private void mostrarResultados() {
+        controlPrincipal.determinarGanadorDesdeEstado();
+        panelResultados.configurar(
+                controlPrincipal.getEquipoGanadorActual(),
+                controlPrincipal.getPuntosGanadorActual(),
+                controlPrincipal.getEmbocadasGanadorActual()
+        );
+        cambiarPanel(panelResultados);
     }
 
     @Override
@@ -210,6 +229,31 @@ public class ControlVista implements ActionListener {
 
         } else if (e.getActionCommand().equalsIgnoreCase("SalirDeLaCompetencia")) {
             emergente.confirmacionSalirCompetencia();
+
+        } else if (e.getActionCommand().equalsIgnoreCase("GuardarYSalir")) {
+            JFileChooser chooserRaf = new JFileChooser();
+            chooserRaf.setDialogTitle("Seleccionar archivo RAF");
+            if (chooserRaf.showSaveDialog(ventana) == JFileChooser.APPROVE_OPTION) {
+                File archivoRaf = chooserRaf.getSelectedFile();
+                try {
+                    int victorias = controlPrincipal.guardarYConsultarHistorial(archivoRaf);
+                    JFileChooser chooserSer = new JFileChooser();
+                    chooserSer.setDialogTitle("Seleccionar archivo de serialización");
+                    if (chooserSer.showSaveDialog(ventana) == JFileChooser.APPROVE_OPTION) {
+                        controlPrincipal.serializarEquiposAlFinalizar(chooserSer.getSelectedFile());
+                    }
+                    controlPrincipal.actualizarEjecuciones();
+                    Equipo ganadorActual = controlPrincipal.getEquipoGanadorActual();
+                    if (ganadorActual != null) {
+                        JOptionPane.showMessageDialog(ventana,
+                                "El equipo " + ganadorActual.getNombreEquipo() + " ha ganado " + victorias + " vez(ces).",
+                                "Historial", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                    System.exit(0);
+                } catch (IOException ex) {
+                    emergente.mostrarMensaje("Error al guardar: " + ex.getMessage());
+                }
+            }
 
         } else if (e.getActionCommand().equalsIgnoreCase(",,,")) {
 

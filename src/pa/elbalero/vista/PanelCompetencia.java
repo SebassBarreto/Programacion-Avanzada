@@ -27,6 +27,7 @@ public class PanelCompetencia extends javax.swing.JPanel {
     public void resaltarTurnoActual(int equipo, int jugador) {
         int filaActiva = equipo * 3 + jugador;
         renderer.setFilaActiva(filaActiva);
+        renderer.setEquipoActivo(equipo);
         Grilla.repaint();
     }
     
@@ -87,10 +88,15 @@ public class PanelCompetencia extends javax.swing.JPanel {
 
     class RendererTurno extends DefaultTableCellRenderer {
 
-        private int filaActiva;
+        private int filaActiva = -1;
+        private int equipoActivo = -1;
 
         public void setFilaActiva(int fila) {
             this.filaActiva = fila;
+        }
+
+        public void setEquipoActivo(int indiceEquipo) {
+            this.equipoActivo = indiceEquipo;
         }
 
         @Override
@@ -104,10 +110,17 @@ public class PanelCompetencia extends javax.swing.JPanel {
                     = super.getTableCellRendererComponent(
                             table, value, isSelected, hasFocus, row, column);
 
+            int equipoDeFila = row / 3;
+
             if (row == filaActiva) {
+                c.setBackground(new Color(180, 150, 0));
+                c.setForeground(Color.BLACK);
+            } else if (equipoDeFila == equipoActivo) {
                 c.setBackground(Color.YELLOW);
+                c.setForeground(Color.BLACK);
             } else {
-                c.setBackground(Color.WHITE);
+                c.setBackground(new Color(220, 220, 220));
+                c.setForeground(new Color(150, 150, 150));
             }
 
             return c;

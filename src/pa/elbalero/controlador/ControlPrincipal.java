@@ -10,6 +10,7 @@ import java.util.Random;
 import javax.swing.JFileChooser;
 import pa.elbalero.modelo.ConexionSerializacion;
 import pa.elbalero.modelo.Equipo;
+import pa.elbalero.modelo.Jugador;
 import pa.elbalero.modelo.TipoEmbocada;
 
 public class ControlPrincipal {
@@ -242,8 +243,8 @@ public class ControlPrincipal {
         //Fase 2 encontramos al ganador aplicando las reglas
         Equipo equipoGanador = null;
         int maxPuntos = -1;
-        int minIntentosEmbocados;
-        minIntentosEmbocados = Integer.MAX_VALUE;
+        int maxIntentosEmbocados;
+        maxIntentosEmbocados = Integer.MIN_VALUE;
 
         for (Map.Entry<Equipo, int[]> registro : tablaPosiciones.entrySet()) {
             Equipo equipoEvaluado = registro.getKey();
@@ -252,25 +253,17 @@ public class ControlPrincipal {
 
             if (puntosObtenidos > maxPuntos) {
                 maxPuntos = puntosObtenidos;
-                minIntentosEmbocados = embocadasObtenidas;
+                maxIntentosEmbocados = embocadasObtenidas;
                 equipoGanador = equipoEvaluado;
-            } //Regla desempate si tienen los mismos puntos, gana el de MENOS intentos embocados
-            else if (puntosObtenidos == maxPuntos) {
-                if (embocadasObtenidas < minIntentosEmbocados) {
-                    minIntentosEmbocados = embocadasObtenidas;
+            } else if (puntosObtenidos == maxPuntos) {
+                if (embocadasObtenidas > maxIntentosEmbocados) {
+                    maxIntentosEmbocados = embocadasObtenidas;
                     equipoGanador = equipoEvaluado;
                 }
             }
         }
 
-        /* 
-         * Fase 3 Retornamos los datos del campein empacados en un arreglo de Objetos 
-         * para el ControlPrincipal .
-         * [0] = Entidad Equipo
-         * [1] = Integer (Puntos)
-         * [2] = Integer (Intentos Exitosos)
-         */
-        return new Object[]{equipoGanador, maxPuntos, minIntentosEmbocados};
+        return new Object[]{equipoGanador, maxPuntos, maxIntentosEmbocados};
 
     }
 
@@ -303,8 +296,38 @@ public class ControlPrincipal {
         return controlEquipo.ejecutarIntentoJugadorActual(indiceEquipo,indiceJugador,generadorAzarGlobal);
     }
     
-//    public void setJugadorActual(Jugador jugador){
-//        controlJugador.setJugadorActual(jugador);
-//    }
+    public void determinarGanadorDesdeEstado() {
+        List<Equipo> equipos = controlEquipo.getEquiposInscritos();
+        Equipo ganador = null;
+        int maxPuntos = -1;
+        int maxEmbocadas = Integer.MIN_VALUE;
+        for (Equipo equipo : equipos) {
+            int puntosEquipo = 0;
+            int embocadasEquipo = 0;
+            for (Jugador j : equipo.getJugadores()) {
+                if (j != null) {
+                    puntosEquipo += j.getPuntaje();
+                    embocadasEquipo += j.getEmbocadasAcertadas();
+                }
+            }
+            if (puntosEquipo > maxPuntos || (puntosEquipo == maxPuntos && embocadasEquipo > maxEmbocadas)) {
+                maxPuntos = puntosEquipo;
+                maxEmbocadas = embocadasEquipo;
+                ganador = equipo;
+            }
+        }
+        this.equipoGanadorActual = ganador;
+        this.puntosGanadorActual = maxPuntos;
+        this.embocadasGanadorActual = maxEmbocadas;
+    }
+
+    public void actualizarEjecuciones() {
+        int n = controlProperties.obtenerNumeroEjecuciones();
+        controlProperties.actualizarEjecuciones(n + 1);
+    }
+
+    public void setJugadorActual(Jugador jugador) {
+        controlJugador.setJugadorActual(jugador);
+    }
 
 }

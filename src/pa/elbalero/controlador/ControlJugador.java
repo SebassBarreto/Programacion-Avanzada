@@ -21,48 +21,93 @@ public class ControlJugador {
     public void setJugadorActual(Jugador jugador) {
         this.jugadorActual = jugador;
         this.puntosObtenidos = 0;
+        this.embocadas = 0;
         this.embocadasDesacertadas = 0;
         this.embocadasAcertadas = 0;
     }
 
     
     
-    //Calcula los puntos de una jugada con un switch case
     public void calcularPuntosJugada(TipoEmbocada jugada) {
 
         switch (jugada) {
             case SIMPLE:
                 this.puntosObtenidos += 2;
                 this.embocadas++;
-                
+                this.embocadasAcertadas++;
+                if (jugadorActual != null) {
+                    jugadorActual.agregarPuntaje(2);
+                    jugadorActual.incrementarAcertadas();
+                }
                 break;
             case DOBLE:
                 this.puntosObtenidos += 10;
                 this.embocadas++;
+                this.embocadasAcertadas++;
+                if (jugadorActual != null) {
+                    jugadorActual.agregarPuntaje(10);
+                    jugadorActual.incrementarAcertadas();
+                }
                 break;
             case VERTICAL:
                 this.puntosObtenidos += 3;
                 this.embocadas++;
+                this.embocadasAcertadas++;
+                if (jugadorActual != null) {
+                    jugadorActual.agregarPuntaje(3);
+                    jugadorActual.incrementarAcertadas();
+                }
                 break;
             case MARIQUITA:
                 this.puntosObtenidos += 4;
                 this.embocadas++;
+                this.embocadasAcertadas++;
+                if (jugadorActual != null) {
+                    jugadorActual.agregarPuntaje(4);
+                    jugadorActual.incrementarAcertadas();
+                }
                 break;
             case PUNIALADA:
                 this.puntosObtenidos += 5;
                 this.embocadas++;
+                this.embocadasAcertadas++;
+                if (jugadorActual != null) {
+                    jugadorActual.agregarPuntaje(5);
+                    jugadorActual.incrementarAcertadas();
+                }
                 break;
             case PURTINIA:
                 this.puntosObtenidos += 6;
                 this.embocadas++;
+                this.embocadasAcertadas++;
+                if (jugadorActual != null) {
+                    jugadorActual.agregarPuntaje(6);
+                    jugadorActual.incrementarAcertadas();
+                }
                 break;
             case DOMINIO_DE_REVES:
                 this.puntosObtenidos += 8;
                 this.embocadas++;
+                this.embocadasAcertadas++;
+                if (jugadorActual != null) {
+                    jugadorActual.agregarPuntaje(8);
+                    jugadorActual.incrementarAcertadas();
+                }
                 break;
             case SIN_EMBOCADA:
-                //no se hace nada
+                this.embocadasDesacertadas++;
+                if (jugadorActual != null) {
+                    jugadorActual.incrementarDesacertadas();
+                }
                 break;
+        }
+    }
+
+    public void jugarTurno(int cantidadIntentos, Random generador) {
+        TipoEmbocada[] opciones = TipoEmbocada.values();
+        for (int i = 0; i < cantidadIntentos; i++) {
+            TipoEmbocada jugada = opciones[generador.nextInt(opciones.length)];
+            calcularPuntosJugada(jugada);
         }
     }
 

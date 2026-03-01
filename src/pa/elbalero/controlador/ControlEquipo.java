@@ -3,6 +3,7 @@ package pa.elbalero.controlador;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import javax.swing.UIManager;
 import pa.elbalero.modelo.Equipo;
 import pa.elbalero.modelo.Jugador;
 
@@ -57,10 +58,10 @@ public class ControlEquipo {
             Jugador jugadorDeTurno = jugadores[i];
 
             if (jugadorDeTurno != null) {
-//                controlJugador.setJugadorActual(jugadorDeTurno);
-//                controlJugador.jugarTurno(intentosPorJugador, generador);
-//                puntosTotales += controlJugador.getPuntosObtenidos();
-//                embocadasTotales += controlJugador.getEmbocadas();
+                controlJugador.setJugadorActual(jugadorDeTurno);
+                controlJugador.jugarTurno(intentosPorJugador, generador);
+                puntosTotales += controlJugador.getPuntosObtenidos();
+                embocadasTotales += controlJugador.getEmbocadas();
             }
 
         }
@@ -84,7 +85,7 @@ public class ControlEquipo {
                 Object[] fila = {
                     equipo.getProyectoCurricular(),
                     equipo.getNombreEquipo(),
-                    null,
+                    UIManager.getIcon("OptionPane.informationIcon"),
                     jugador.getNombre(),
                     jugador.getPuntaje(),
                     jugador.getEmbocadasAcertadas(),
@@ -132,7 +133,7 @@ public class ControlEquipo {
         if (jugador == null) {
             return null;
         }
-        //controlPrincipal.setJugadorActual(jugador);
+        controlPrincipal.setJugadorActual(jugador);
         controlPrincipal.ejecutarIntento(generador);
         return new Object[]{jugador.getPuntaje(), jugador.getEmbocadasAcertadas(), jugador.getEmbocadasDesacertadas()};
     }

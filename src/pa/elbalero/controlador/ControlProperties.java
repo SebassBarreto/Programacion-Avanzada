@@ -34,7 +34,6 @@ public class ControlProperties {
         Properties propiedades = new Properties();
         List<Equipo> listaEquipos = new ArrayList<>();
         Equipo nuevoEquipo;
-        Jugador[] arregloJugadores = new Jugador[3];
 
         try (FileInputStream entrada = new FileInputStream(archivo)) {
             propiedades.load(entrada);
@@ -46,6 +45,7 @@ public class ControlProperties {
                 String nombreEquipo = propiedades.getProperty(formato + "nombre");
                 String proyecto = propiedades.getProperty(formato + "proyecto");
 
+                Jugador[] arregloJugadores = new Jugador[3];
                 for (int j = 1; j <= 3; j++) {
                     String nombreJugador = propiedades.getProperty(formato + "j" + j + ".nombre");
                     String codigoJugador = propiedades.getProperty(formato + "j" + j + ".cod");
@@ -64,7 +64,7 @@ public class ControlProperties {
 
         Properties prop = new Properties();
         try (FileInputStream fis
-                = new FileInputStream("conteoEjecuciones.properties")) {
+                = new FileInputStream("Specs/data/conteoEjecuciones.properties")) {
             prop.load(fis);
             return Integer.parseInt(
                     prop.getProperty("ejecuciones", "0"));
@@ -78,7 +78,7 @@ public class ControlProperties {
         prop.setProperty("ejecuciones",
                 String.valueOf(ejecuciones));
 
-        try (FileOutputStream fos = new FileOutputStream("config.properties")) {
+        try (FileOutputStream fos = new FileOutputStream("Specs/data/conteoEjecuciones.properties")) {
             prop.store(fos, null);
         } catch (Exception e) {
         }
