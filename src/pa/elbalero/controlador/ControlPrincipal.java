@@ -43,7 +43,6 @@ public class ControlPrincipal {
         controlJugador = new ControlJugador(this);
         controlEquipo = new ControlEquipo(this, this.controlJugador);
         generadorAzarGlobal = new Random();
-        cargarDatosIniciales();
         //Por ultimo, inicializamos la Vista
         //Se hace al final para asegurar que toda la logica ya existe si la vista dispara un evento
         controlVista = new ControlVista(this);
