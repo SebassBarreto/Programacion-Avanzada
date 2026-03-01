@@ -24,6 +24,11 @@ import pa.elbalero.vista.PanelResultados;
 import pa.elbalero.vista.PanelSobreElJuego;
 import pa.elbalero.vista.Ventana;
 
+/**
+ * Controlador de la vista que implementa ActionListener para manejar
+ * todos los eventos de los botones de la interfaz grafica.
+ * Coordina la navegacion entre paneles y la interaccion con el controlador principal.
+ */
 public class ControlVista implements ActionListener {
 
     private ControlPrincipal controlPrincipal;
@@ -43,6 +48,11 @@ public class ControlVista implements ActionListener {
     private int indiceEquipo = 0;
     private int indiceJugador = 0;
 
+    /**
+     * Crea la ventana principal instancia todos los paneles y registra
+     * los ActionListeners de cada boton con su respectivo ActionCommand.
+     * @param controlPrincipal referencia al controlador principal del juego
+     */
     public ControlVista(ControlPrincipal controlPrincipal) {
         this.controlPrincipal = controlPrincipal;
         ventana = new Ventana(); //Creamos la ventana
@@ -95,12 +105,20 @@ public class ControlVista implements ActionListener {
         ventana.setVisible(true); //Ventana visible en pantalla    
     }
 
+    /**
+     * Reemplaza el contenido visible de la ventana por el panel recibido
+     * @param panel JPanel que se mostrara como contenido de la ventana
+     */
     public void cambiarPanel(javax.swing.JPanel panel) {
         ventana.setContentPane(panel);
         ventana.revalidate();
         ventana.repaint();
     }
 
+    /**
+     * Reproduce un archivo de sonido .wav desde la carpeta de recursos
+     * @param soundName nombre del archivo de sonido sin la extension .wav
+     */
     private void sonido(String soundName) { //Método de nuestros sonidos ;)
         try {
             String path = "/Sonido/" + soundName + ".wav";
@@ -114,22 +132,39 @@ public class ControlVista implements ActionListener {
         }
     }
 
+    /**
+     * Limpia todas las filas de la grilla de competencia dejandola vacia
+     */
     public void actualizarGrilla() {
         DefaultTableModel modelo = (DefaultTableModel) panelCompetencia.Grilla.getModel();
         modelo.setRowCount(0);
     }
 
+    /**
+     * Agrega una fila con datos al modelo de la grilla de competencia
+     * @param fila arreglo de objetos con los datos de la fila a insertar
+     */
     public void agregarFilaGrilla(Object[] fila) {
         DefaultTableModel modelo = (DefaultTableModel) panelCompetencia.Grilla.getModel();
         modelo.addRow(fila);
     }
 
+    /**
+     * Arranca el timer que controla los turnos de cada jugador.
+     * Ejecuta avanzarTiempo cada segundo hasta agotar el tiempo del jugador.
+     */
     private void iniciarTurnos() {
         tiempoRestante = controlPrincipal.getTiempoPorJugadorSegundos();
         timerTurno = new Timer(1000, e -> avanzarTiempo());
         timerTurno.start();
     }
 
+    /**
+     * Actualiza las celdas de puntaje e intentos de una fila especifica en la grilla
+     * @param indiceEquipo indice del equipo en la lista
+     * @param indiceJugador indice del jugador dentro del equipo
+     * @param datos arreglo con puntaje embocadas acertadas y desacertadas
+     */
     public void actualizarFila(int indiceEquipo, int indiceJugador, Object[] datos) {
     int fila = indiceEquipo * 3 + indiceJugador;
     DefaultTableModel modelo = (DefaultTableModel) panelCompetencia.Grilla.getModel();
@@ -144,6 +179,11 @@ public class ControlVista implements ActionListener {
     modelo.setValueAt(datos[0], fila, 8); // Total puntos 
 }
 
+    /**
+     * Metodo invocado cada segundo por el timer.
+     * Decrementa el tiempo restante ejecuta un intento del jugador activo
+     * y actualiza la grilla y el cronometro en pantalla.
+     */
     private void avanzarTiempo() {
         tiempoRestante--;
         // Jugador juega y se captura el resultado
@@ -161,6 +201,10 @@ public class ControlVista implements ActionListener {
         }
     }
 
+    /**
+     * Avanza al siguiente jugador o equipo en el orden de turnos.
+     * Si todos los equipos ya jugaron detiene el timer y muestra los resultados.
+     */
     private void siguienteJugador() {
         indiceJugador++;
         if (indiceJugador == 3) {
@@ -175,6 +219,10 @@ public class ControlVista implements ActionListener {
         tiempoRestante = controlPrincipal.getTiempoPorJugadorSegundos();
     }
 
+    /**
+     * Determina al ganador del torneo y configura el panel de resultados
+     * con los datos del equipo ganador antes de mostrarlo en pantalla.
+     */
     private void mostrarResultados() {
         controlPrincipal.determinarGanadorDesdeEstado();
         panelResultados.configurar(
@@ -185,6 +233,12 @@ public class ControlVista implements ActionListener {
         cambiarPanel(panelResultados);
     }
 
+    /**
+     * Maneja todos los eventos de los botones de la interfaz grafica.
+     * Cada ActionCommand enruta la accion correspondiente como cambiar de panel
+     * validar datos iniciar la competencia o guardar resultados.
+     * @param e evento de accion disparado por un boton
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equalsIgnoreCase("Jugar")) {

@@ -3,6 +3,10 @@ package pa.elbalero.vista;
 
 import pa.elbalero.controlador.ControlVista;
 
+/**
+ * Panel principal del menu de inicio del juego del balero.
+ * Contiene los botones de Jugar Sobre el juego Salir y Creditos.
+ */
 public class PanelPrincipal extends javax.swing.JPanel {
 
     public PanelPrincipal(ControlVista controlVista) {

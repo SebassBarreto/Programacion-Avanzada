@@ -10,6 +10,10 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import pa.elbalero.controlador.ControlVista;
 
+/**
+ * Panel de la vista que muestra la grilla de competencia con los equipos y jugadores.
+ * Incluye un cronometro visual y un sistema de resaltado por turnos usando un renderer personalizado.
+ */
 public class PanelCompetencia extends javax.swing.JPanel {
 
     public javax.swing.JLabel labelTimer;
@@ -24,6 +28,12 @@ public class PanelCompetencia extends javax.swing.JPanel {
         Grilla.setDefaultRenderer(Object.class, renderer);
     }
 
+    /**
+     * Marca visualmente al jugador y equipo activos en la grilla.
+     * El jugador en turno se muestra mas oscuro y su equipo en amarillo.
+     * @param equipo indice del equipo activo en la lista
+     * @param jugador indice del jugador activo dentro del equipo
+     */
     public void resaltarTurnoActual(int equipo, int jugador) {
         int filaActiva = equipo * 3 + jugador;
         renderer.setFilaActiva(filaActiva);
@@ -33,6 +43,10 @@ public class PanelCompetencia extends javax.swing.JPanel {
     
     
 
+    /**
+     * Crea y asigna el modelo de tabla con las columnas de la competencia.
+     * Las celdas no son editables y la columna de foto renderiza iconos.
+     */
     public void configurarTabla() {
 
         String[] columnas = {
@@ -77,6 +91,10 @@ public class PanelCompetencia extends javax.swing.JPanel {
 //                String.format("%02d:%02d", min, seg)
 //        );
 //    }
+    /**
+     * Actualiza el label del cronometro con el tiempo restante formateado como MM:SS
+     * @param segundos tiempo restante en segundos
+     */
     public void mostrarTiempo(int segundos) {
         int min = segundos / 60;
         int seg = segundos % 60;

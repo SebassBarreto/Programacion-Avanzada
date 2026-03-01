@@ -8,6 +8,10 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+/**
+ * Clase del modelo encargada de la persistencia mediante serializacion de objetos.
+ * Escribe y lee objetos Java en archivos binarios usando ObjectOutputStream y ObjectInputStream.
+ */
 public class ConexionSerializacion {
 
     /**

@@ -3,6 +3,10 @@ package pa.elbalero.vista;
 
 import pa.elbalero.controlador.ControlVista;
 
+/**
+ * Panel de la vista que muestra las reglas y descripcion del juego del balero.
+ * Incluye un boton para volver a la pantalla principal.
+ */
 public class PanelSobreElJuego extends javax.swing.JPanel {
 
     public PanelSobreElJuego(ControlVista controlVista) {

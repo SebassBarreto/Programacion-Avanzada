@@ -6,6 +6,11 @@ import pa.elbalero.modelo.Jugador;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Controlador encargado de coordinar la persistencia de resultados en el
+ * archivo de acceso aleatorio (RandomAccessFile). Registra al equipo ganador
+ * y consulta el historial de victorias.
+ */
 public class ControlRAF {
 
     private ControlPrincipal controlPrincipal;

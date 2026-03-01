@@ -1,6 +1,10 @@
 
 package pa.elbalero.vista;
 
+/**
+ * JFrame principal de la aplicacion del juego del balero.
+ * Sirve como contenedor donde se intercambian los diferentes paneles de la interfaz.
+ */
 public class Ventana extends javax.swing.JFrame {
 
     public Ventana() {

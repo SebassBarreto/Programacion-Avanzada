@@ -3,6 +3,10 @@ package pa.elbalero.vista;
 
 import pa.elbalero.controlador.ControlVista;
 
+/**
+ * Panel de la vista donde el usuario ingresa el tiempo total de la competencia en minutos.
+ * Incluye un campo de texto y un boton para confirmar el valor ingresado.
+ */
 public class PanelIngresarTiempo extends javax.swing.JPanel {
 
     public PanelIngresarTiempo(ControlVista controlVista) {

@@ -11,8 +11,9 @@ import pa.elbalero.modelo.Equipo;
 import pa.elbalero.modelo.Jugador;
 
 /**
- *
- * @author Asus
+ * Controlador encargado de la lectura y escritura de archivos de propiedades.
+ * Carga los equipos desde un archivo .properties y gestiona el conteo de ejecuciones
+ * del aplicativo para decidir entre carga inicial o precarga serializada.
  */
 public class ControlProperties {
 
@@ -56,6 +57,11 @@ public class ControlProperties {
         return listaEquipos;
     }
 
+    /**
+     * Lee el archivo conteoEjecuciones.properties para saber cuantas veces
+     * se ha ejecutado el aplicativo. Retorna 0 si el archivo no existe.
+     * @return numero de ejecuciones previas registradas
+     */
     public int obtenerNumeroEjecuciones() {
 
         Properties prop = new Properties();
@@ -69,6 +75,10 @@ public class ControlProperties {
         }
     }
 
+    /**
+     * Escribe el nuevo conteo de ejecuciones en el archivo de propiedades
+     * @param ejecuciones numero actualizado de ejecuciones a persistir
+     */
     public void actualizarEjecuciones(int ejecuciones) {
         Properties prop = new Properties();
         prop.setProperty("ejecuciones",

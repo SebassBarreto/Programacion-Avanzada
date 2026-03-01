@@ -8,6 +8,10 @@ import pa.elbalero.controlador.ControlVista;
 import pa.elbalero.modelo.Equipo;
 import pa.elbalero.modelo.Jugador;
 
+/**
+ * Panel de la vista que muestra los resultados finales de la competencia
+ * incluyendo el equipo ganador sus jugadores el puntaje y las embocadas acertadas.
+ */
 public class PanelResultados extends JPanel {
 
     public JButton jButtonGuardarYSalir;
@@ -24,6 +28,13 @@ public class PanelResultados extends JPanel {
         jButtonGuardarYSalir.setActionCommand("GuardarYSalir");
     }
 
+    /**
+     * Rellena los labels del panel con los datos del equipo ganador.
+     * Muestra nombre del equipo nombres de los tres jugadores puntaje total y embocadas.
+     * @param ganador equipo que resulto ganador de la competencia
+     * @param puntos puntaje total acumulado por el equipo ganador
+     * @param embocadas cantidad total de embocadas acertadas del equipo
+     */
     public void configurar(Equipo ganador, int puntos, int embocadas) {
         if (ganador == null) {
             return;

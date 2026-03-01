@@ -7,8 +7,9 @@ import pa.elbalero.modelo.Equipo;
 import pa.elbalero.modelo.ConexionSerializacion;
 
 /**
- *
- * @author Asus
+ * Controlador encargado de coordinar la serializacion y deserializacion
+ * de la lista de equipos. Delega las operaciones de entrada y salida
+ * al modelo ConexionSerializacion.
  */
 public class ControlSerializacion {
     
