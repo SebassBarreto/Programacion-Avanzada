@@ -1,52 +1,119 @@
-
 package pa.elbalero.vista;
 
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Font;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import pa.elbalero.controlador.ControlVista;
 
 public class PanelCompetencia extends javax.swing.JPanel {
 
+    public javax.swing.JLabel labelTimer;
+    private RendererTurno renderer;
+
     public PanelCompetencia(ControlVista controlVista) {
         initComponents();
-        
+        labelTimer = new JLabel("00:00");
+        labelTimer.setFont(new Font("Arial", Font.BOLD, 40));
+        add(labelTimer);
+        renderer = new RendererTurno();
+        Grilla.setDefaultRenderer(Object.class, renderer);
     }
+
+    public void resaltarTurnoActual(int equipo, int jugador) {
+        int filaActiva = equipo * 3 + jugador;
+        renderer.setFilaActiva(filaActiva);
+        Grilla.repaint();
+    }
+    
+    
 
     public void configurarTabla() {
 
-    String[] columnas = {
-        "Proyecto Curricular",
-        "Equipo",
-        "Foto",
-        "Jugador",
-        "Puntaje",
-        "Intentos Acertados",
-        "Intentos Desacertados",
-        "Intentos Totales",
-        "Total Puntos"
-    };
+        String[] columnas = {
+            "Proyecto Curricular",
+            "Equipo",
+            "Foto",
+            "Jugador",
+            "Puntaje",
+            "Intentos Acertados",
+            "Intentos Desacertados",
+            "Intentos Totales",
+            "Total Puntos"
+        };
 
-    DefaultTableModel modelo =
-            new DefaultTableModel(null, columnas) {
+        DefaultTableModel modelo = new DefaultTableModel(null, columnas) {
 
-        @Override
-        public boolean isCellEditable(int r, int c) {
-            return false;
+            @Override
+            public boolean isCellEditable(int r, int c) {
+                return false;
+            }
+
+            @Override
+            public Class<?> getColumnClass(int column) {
+                if (column == 2) {
+                    return ImageIcon.class;
+                }
+                return Object.class;
+            }
+        };
+
+        Grilla.setModel(modelo);
+
+        Grilla.setRowHeight(60); // para fotos
+    }
+
+//    public void mostrarTiempo(double minutos) {
+//        int totalSegundos = (int) Math.round(minutos * 60);
+//        int min = totalSegundos / 60;
+//        int seg = totalSegundos % 60;
+//
+//        labelTimer.setText(
+//                String.format("%02d:%02d", min, seg)
+//        );
+//    }
+    public void mostrarTiempo(int segundos) {
+        int min = segundos / 60;
+        int seg = segundos % 60;
+
+        labelTimer.setText(
+                String.format("%02d:%02d", min, seg)
+        );
+    }
+
+    class RendererTurno extends DefaultTableCellRenderer {
+
+        private int filaActiva;
+
+        public void setFilaActiva(int fila) {
+            this.filaActiva = fila;
         }
 
         @Override
-        public Class<?> getColumnClass(int column) {
-            if (column == 2)
-                return ImageIcon.class;
-            return Object.class;
+        public Component getTableCellRendererComponent(
+                JTable table, Object value,
+                boolean isSelected,
+                boolean hasFocus,
+                int row, int column) {
+
+            Component c
+                    = super.getTableCellRendererComponent(
+                            table, value, isSelected, hasFocus, row, column);
+
+            if (row == filaActiva) {
+                c.setBackground(Color.YELLOW);
+            } else {
+                c.setBackground(Color.WHITE);
+            }
+
+            return c;
         }
-    };
+    }
 
-    Grilla.setModel(modelo);
-
-    Grilla.setRowHeight(60); // para fotos
-}
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

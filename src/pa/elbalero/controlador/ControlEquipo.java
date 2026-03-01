@@ -98,4 +98,43 @@ public class ControlEquipo {
         }
     }
 
+    private Jugador obtenerJugador(int indiceEquipo, int indiceJugador) {
+        if (indiceEquipo >= equiposInscritos.size()) {
+            return null;
+        }
+        Equipo equipo = equiposInscritos.get(indiceEquipo);
+        if (equipo.getJugadores() == null
+                || indiceJugador >= equipo.getJugadores().length) {
+            return null;
+        }
+        return equipo.getJugadores()[indiceJugador];
+    }
+
+
+    public Jugador getJugador(int indiceEquipo, int indiceJugador) {
+        return obtenerJugador(indiceEquipo, indiceJugador);
+    }
+
+//    public String embocadaPuntos(int indiceEquipo, int indiceJugador){
+//        Jugador j = getJugador(int indiceEquipo, int indiceJugador);
+//        
+//        return 
+//    }
+    public Jugador obtenerJugadorActual(
+            int indiceEquipo,
+            int indiceJugador) {
+
+        return obtenerJugador(indiceEquipo, indiceJugador);
+    }
+
+    public Object[] ejecutarIntentoJugadorActual(int indiceEquipo, int indiceJugador, Random generador) {
+        Jugador jugador = obtenerJugador(indiceEquipo, indiceJugador);
+        if (jugador == null) {
+            return null;
+        }
+        //controlPrincipal.setJugadorActual(jugador);
+        controlPrincipal.ejecutarIntento(generador);
+        return new Object[]{jugador.getPuntaje(), jugador.getEmbocadasAcertadas(), jugador.getEmbocadasDesacertadas()};
+    }
+
 }

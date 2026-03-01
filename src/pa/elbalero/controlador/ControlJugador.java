@@ -11,49 +11,30 @@ public class ControlJugador {
     private Jugador jugadorActual;
     private int puntosObtenidos;
     private int embocadas;
-
+    private int embocadasDesacertadas;
+    private int embocadasAcertadas;
+    
     public ControlJugador(ControlPrincipal controlPrincipal) {
         this.controlPrincipal = controlPrincipal;
     }
 
- //Puntajes - Intentos Acertados - Intentos Deshacertados - Intentos totales
-//    public void setJugadorActual(Jugador jugador) {
-//        this.jugadorActual = jugador;
-//        this.puntosObtenidos = 0;
-//        this.embocadasDesacertadas = 0;
-//        this.embocadasAcertadas = 0;
-//        this.puntaje = 0;
-//    }
-
-    /**
-     * Simula el turno completo del jugador.
-     *
-     * @param cantidadIntentos Cuántas veces lanzará el balero este jugador.
-     * @param generador El objeto Random inyectado desde un controlador
-     * superior.
-     */
-    public void jugarTurno(int cantidadIntentos, Random generador) {
-        for (int i = 0; i < cantidadIntentos; i++) {
-            TipoEmbocada jugada = obtenerJugadaAleatoria(generador);
-            calcularPuntosJugada(jugada);
-        }
+    public void setJugadorActual(Jugador jugador) {
+        this.jugadorActual = jugador;
+        this.puntosObtenidos = 0;
+        this.embocadasDesacertadas = 0;
+        this.embocadasAcertadas = 0;
     }
 
-    //Saca una jugada aleatoria con los valores del enum entre 0 y la longitud del enum
-    private TipoEmbocada obtenerJugadaAleatoria(Random generador) {
-
-        TipoEmbocada[] opciones = TipoEmbocada.values();
-
-        return opciones[generador.nextInt(opciones.length)];
-    }
-
+    
+    
     //Calcula los puntos de una jugada con un switch case
-    private void calcularPuntosJugada(TipoEmbocada jugada) {
+    public void calcularPuntosJugada(TipoEmbocada jugada) {
 
         switch (jugada) {
             case SIMPLE:
                 this.puntosObtenidos += 2;
                 this.embocadas++;
+                
                 break;
             case DOBLE:
                 this.puntosObtenidos += 10;
@@ -88,5 +69,37 @@ public class ControlJugador {
     //getters para que el control equipo tome los resultados
     public Jugador getJugadorActual() {
         return jugadorActual;
+    }
+
+    public int getPuntosObtenidos() {
+        return puntosObtenidos;
+    }
+
+    public void setPuntosObtenidos(int puntosObtenidos) {
+        this.puntosObtenidos = puntosObtenidos;
+    }
+
+    public int getEmbocadas() {
+        return embocadas;
+    }
+
+    public void setEmbocadas(int embocadas) {
+        this.embocadas = embocadas;
+    }
+
+    public int getEmbocadasDesacertadas() {
+        return embocadasDesacertadas;
+    }
+
+    public void setEmbocadasDesacertadas(int embocadasDesacertadas) {
+        this.embocadasDesacertadas = embocadasDesacertadas;
+    }
+
+    public int getEmbocadasAcertadas() {
+        return embocadasAcertadas;
+    }
+
+    public void setEmbocadasAcertadas(int embocadasAcertadas) {
+        this.embocadasAcertadas = embocadasAcertadas;
     }
 }

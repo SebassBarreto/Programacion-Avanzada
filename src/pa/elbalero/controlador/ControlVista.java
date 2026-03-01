@@ -7,6 +7,7 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.ImageIcon;
+import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 import pa.elbalero.vista.Emergente;
 import pa.elbalero.vista.PanelCompetencia;
@@ -28,6 +29,12 @@ public class ControlVista implements ActionListener {
     private PanelIngresarTiempo panelIngresarTiempo;
     private PanelParametrosDelJuego panelParametrosDelJuego;
     private PanelCompetencia panelCompetencia;
+
+    private Timer timerTurno;
+
+    private int tiempoRestante;
+    private int indiceEquipo = 0;
+    private int indiceJugador = 0;
 
     public ControlVista(ControlPrincipal controlPrincipal) {
         this.controlPrincipal = controlPrincipal;
@@ -109,6 +116,56 @@ public class ControlVista implements ActionListener {
         modelo.addRow(fila);
     }
 
+    private void iniciarTurnos() {
+        tiempoRestante = controlPrincipal.getTiempoPorJugadorSegundos();
+        timerTurno = new Timer(1000, e -> avanzarTiempo());
+        timerTurno.start();
+    }
+
+    public void actualizarFila(int indiceEquipo, int indiceJugador, Object[] datos) {
+    int fila = indiceEquipo * 3 + indiceJugador;
+    DefaultTableModel modelo = (DefaultTableModel) panelCompetencia.Grilla.getModel();
+
+    int acertadas = (int) datos[1];
+    int desacertadas = (int) datos[2];
+
+    modelo.setValueAt(datos[0], fila, 4); // Puntaje
+    modelo.setValueAt(acertadas, fila, 5); // Acertadas
+    modelo.setValueAt(desacertadas, fila, 6); // Desacertadas
+    modelo.setValueAt(acertadas + desacertadas, fila, 7); // Total intentos 
+    modelo.setValueAt(datos[0], fila, 8); // Total puntos 
+}
+
+    private void avanzarTiempo() {
+        tiempoRestante--;
+        // Jugador juega y se captura el resultado
+        Object[] datos = controlPrincipal.ejecutarIntentoJugadorActual(indiceEquipo, indiceJugador);
+       // solo se actualiza si el jugador existe
+        if (datos != null) {
+            actualizarFila(indiceEquipo, indiceJugador, datos);
+        }
+        //Actualizar timer visual
+        panelCompetencia.mostrarTiempo(tiempoRestante);
+        //resaltar jugador activo
+        panelCompetencia.resaltarTurnoActual(indiceEquipo, indiceJugador);
+        if (tiempoRestante <= 0) {
+            siguienteJugador();
+        }
+    }
+
+    private void siguienteJugador() {
+        indiceJugador++;
+        if (indiceJugador == 3) {
+            indiceJugador = 0;
+            indiceEquipo++;
+        }
+        if (indiceEquipo == controlPrincipal.getEquiposInscritos().size()) {
+            timerTurno.stop();
+            return;
+        }
+        tiempoRestante = controlPrincipal.getTiempoPorJugadorSegundos();
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equalsIgnoreCase("Jugar")) {
@@ -149,10 +206,11 @@ public class ControlVista implements ActionListener {
             panelCompetencia.configurarTabla();
             controlPrincipal.cargarDatosAGrilla();
             cambiarPanel(panelCompetencia);
+            iniciarTurnos();
 
         } else if (e.getActionCommand().equalsIgnoreCase("SalirDeLaCompetencia")) {
             emergente.confirmacionSalirCompetencia();
-            
+
         } else if (e.getActionCommand().equalsIgnoreCase(",,,")) {
 
         } else if (e.getActionCommand().equalsIgnoreCase(",,")) {

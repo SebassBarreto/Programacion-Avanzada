@@ -3,19 +3,19 @@ package pa.elbalero.controlador;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import pa.elbalero.modelo.ConexionSerializacion;
 import pa.elbalero.modelo.Equipo;
+import pa.elbalero.modelo.TipoEmbocada;
 
 public class ControlPrincipal {
 
     private ControlVista controlVista;
     private ControlProperties controlProperties;
-    private ControlJuego controlJuego;
     private ControlEquipo controlEquipo;
     private ControlJugador controlJugador;
     private ControlRAF controlRAF;
@@ -28,56 +28,51 @@ public class ControlPrincipal {
     private Equipo equipoGanadorActual;
     private int puntosGanadorActual;
     private int embocadasGanadorActual;
+    private final Random generadorAzarGlobal;
 
     public ControlPrincipal() {
-
         //Inicializamos la lista dinamica vacia
         //this.equiposInscritos = new ArrayList<>();
         //Instanciamos los controladores de persistencia (Archivos)
-        this.controlProperties = new ControlProperties(this);
-        this.controlRAF = new ControlRAF(this);
-        this.controlSerializacion = new ControlSerializacion(this, new ConexionSerializacion());
+        controlProperties = new ControlProperties(this);
+        controlRAF = new ControlRAF(this);
+        controlSerializacion = new ControlSerializacion(this, new ConexionSerializacion());
 
         //Instanciamos el Motor del Juego (Inyeccion de dependencias en cascada)
-        this.controlJugador = new ControlJugador(this);
-        this.controlEquipo = new ControlEquipo(this, this.controlJugador);
-        this.controlJuego = new ControlJuego(this, this.controlEquipo, new Random());
-        
+        controlJugador = new ControlJugador(this);
+        controlEquipo = new ControlEquipo(this, this.controlJugador);
+        generadorAzarGlobal = new Random();
         cargarDatosIniciales();
         //Por ultimo, inicializamos la Vista
         //Se hace al final para asegurar que toda la logica ya existe si la vista dispara un evento
-        this.controlVista = new ControlVista(this);
+        controlVista = new ControlVista(this);
     }
 
     public File seleccionarArchivo() {
-
         JFileChooser chooser = new JFileChooser();
-
         int opcion = chooser.showOpenDialog(null);
-
         if (opcion == JFileChooser.APPROVE_OPTION) {
             return chooser.getSelectedFile();
         }
-
         return null;
     }
-    
+
     public void cargarDatosIniciales() {
         File archivo = seleccionarArchivo();
-         int ejecuciones = controlProperties.obtenerNumeroEjecuciones();
+        int ejecuciones = controlProperties.obtenerNumeroEjecuciones();
         if (ejecuciones == 0) {
             try {
                 cargarEquiposDesdeProperties(archivo);
             } catch (IOException ex) {
-                
+
             }
         } else {
             try {
                 precargarEquiposSerializados(archivo);
             } catch (IOException ex) {
-                
+
             } catch (ClassNotFoundException ex) {
-                
+
             }
         }
         //controlProperties.actualizarEjecuciones(ejecuciones + 1);
@@ -114,8 +109,8 @@ public class ControlPrincipal {
      */
     public void setTiempoDeLaCompetencia(int t) {
         tiempoCompetencia = t;
-        tiempoPorEquipo = tiempoCompetencia/controlEquipo.getCantidadEquipos();
-        tiempoPorJugador = tiempoPorEquipo/3;
+        tiempoPorEquipo = tiempoCompetencia / controlEquipo.getCantidadEquipos();
+        tiempoPorJugador = tiempoPorEquipo / 3;
     }
 
     /**
@@ -131,7 +126,7 @@ public class ControlPrincipal {
 
         //Delegando al motor del juego que haga los ciclos y calculos
         Object[] resultados;
-        resultados = controlJuego.iniciarTorneo((ArrayList<Equipo>) controlEquipo.getEquiposInscritos(), tiempoCompetencia);
+        resultados = iniciarTorneo((ArrayList<Equipo>) controlEquipo.getEquiposInscritos(), tiempoCompetencia);
 
         //Si el torneo arrojo resutlado valido entonces que lo guarde en las variables de clase o sea memoria VOLATIL
         if (resultados != null) {
@@ -154,13 +149,10 @@ public class ControlPrincipal {
         if (equipoGanadorActual == null) {
             return 0;
         }
-
         //Guardamos al ganador del momento
         controlRAF.registrarGanador(archivoDat, equipoGanadorActual, puntosGanadorActual, embocadasGanadorActual);
-
         //Leemos todo el archivo para saber cuantas veces ha ganado historicamente
         int victoriasHistoricas = controlRAF.contarVictoriasHistoricas(archivoDat, equipoGanadorActual.getNombreEquipo());
-
         return victoriasHistoricas;
     }
 
@@ -186,31 +178,133 @@ public class ControlPrincipal {
     public int getEmbocadasGanadorActual() {
         return embocadasGanadorActual;
     }
-    
-    public String parametrosDelJuego(){
-        
+
+    public String parametrosDelJuego() {
+
         String p = "<html>"
-        + "Tiempo total = " + tiempoCompetencia + "<br>"
-        + "Cantidad de equipos = " + controlEquipo.getCantidadEquipos() + "<br>"
-        + "Tiempo por equipo = " + tiempoPorEquipo + "<br>"
-        + "Tiempo por jugador = " + tiempoPorJugador + "<br><br>"
-        + "Si está de acuerdo con los parámetros, dé click en el botón "
-        + "<b>Aceptar</b>; de lo contrario oprima el botón "
-        + "<b>Volver</b> e ingrese nuevamente el tiempo."
-        + "</html>";       
-        
+                + "Tiempo total = " + tiempoCompetencia + "<br>"
+                + "Cantidad de equipos = " + controlEquipo.getCantidadEquipos() + "<br>"
+                + "Tiempo por equipo = " + tiempoPorEquipo + "<br>"
+                + "Tiempo por jugador = " + tiempoPorJugador + "<br><br>"
+                + "Si está de acuerdo con los parámetros, dé click en el botón "
+                + "<b>Aceptar</b>; de lo contrario oprima el botón "
+                + "<b>Volver</b> e ingrese nuevamente el tiempo."
+                + "</html>";
+
         return p;
     }
 
-    public void cargarDatosAGrilla(){
+    public void cargarDatosAGrilla() {
         controlEquipo.cargarDatosAGrilla();
     }
-    
-    public void agregarFilaGrilla(Object[] fila){
+
+    public void agregarFilaGrilla(Object[] fila) {
         controlVista.agregarFilaGrilla(fila);
     }
-    
-    public void actualizarGrilla(){
+
+    public void actualizarGrilla() {
         controlVista.actualizarGrilla();
     }
+
+    public int getTiempoPorJugadorSegundos() {
+        return (int) Math.round(tiempoPorJugador * 60);
+    }
+
+    /**
+     * Motor principal del juego. Recibe la lista de equipos inscritos y el
+     * tiempo total asignado, simula el torneo completo
+     *
+     * @param equiposParticipantes Lista dinámica (ArrayList) con los equipos.
+     * @param tiempoTotal El tiempo (en intentos) que jugará cada equipo.
+     * @return Un arreglo de objetos con el Equipo Ganador, sus Puntos y sus
+     * Aciertos, retornamos un map entry.
+     */
+    public Object[] iniciarTorneo(ArrayList<Equipo> equiposParticipantes, int tiempoTotal) {
+        if (equiposParticipantes == null || equiposParticipantes.isEmpty()) {
+            return null;
+        }
+
+        //Estructura de datos para guardar la tabla de posiciones temporal
+        //llave el objeto equipo
+        //valor un arreglo de enteros [Puntos, EmbocadasTotales]
+        Map<Equipo, int[]> tablaPosiciones = new HashMap<>();
+
+        //Fase 1 meter a los equipos a jugar
+        for (Equipo equipoActual : equiposParticipantes) {
+            //Le decimos quien va a jugar
+            controlEquipo.setEquipoActual(equipoActual);
+            //Le ordenamos jugar y recibimos los resultados [puntos, exitos]
+            int[] resultadosRonda = controlEquipo.jugarTurnoEquipo(tiempoTotal, generadorAzarGlobal);
+            //Guardamos el resultado de este equipo en la tabla
+            tablaPosiciones.put(equipoActual, resultadosRonda);
+        }
+
+        //Fase 2 encontramos al ganador aplicando las reglas
+        Equipo equipoGanador = null;
+        int maxPuntos = -1;
+        int minIntentosEmbocados;
+        minIntentosEmbocados = Integer.MAX_VALUE;
+
+        for (Map.Entry<Equipo, int[]> registro : tablaPosiciones.entrySet()) {
+            Equipo equipoEvaluado = registro.getKey();
+            int puntosObtenidos = registro.getValue()[0];
+            int embocadasObtenidas = registro.getValue()[1];
+
+            if (puntosObtenidos > maxPuntos) {
+                maxPuntos = puntosObtenidos;
+                minIntentosEmbocados = embocadasObtenidas;
+                equipoGanador = equipoEvaluado;
+            } //Regla desempate si tienen los mismos puntos, gana el de MENOS intentos embocados
+            else if (puntosObtenidos == maxPuntos) {
+                if (embocadasObtenidas < minIntentosEmbocados) {
+                    minIntentosEmbocados = embocadasObtenidas;
+                    equipoGanador = equipoEvaluado;
+                }
+            }
+        }
+
+        /* 
+         * Fase 3 Retornamos los datos del campein empacados en un arreglo de Objetos 
+         * para el ControlPrincipal .
+         * [0] = Entidad Equipo
+         * [1] = Integer (Puntos)
+         * [2] = Integer (Intentos Exitosos)
+         */
+        return new Object[]{equipoGanador, maxPuntos, minIntentosEmbocados};
+
+    }
+
+    //Saca una jugada aleatoria con los valores del enum entre 0 y la longitud del enum
+    private TipoEmbocada obtenerJugadaAleatoria(Random generador) {
+        TipoEmbocada[] opciones = TipoEmbocada.values();
+        return opciones[generador.nextInt(opciones.length)];
+    }
+
+    public void ejecutarIntento(Random r) {
+        TipoEmbocada jugada = obtenerJugadaAleatoria(r);
+        controlJugador.calcularPuntosJugada(jugada);
+    }
+
+    /**
+     * Simula el turno completo del jugador.
+     *
+     * @param cantidadIntentos Cuántas veces lanzará el balero este jugador.
+     * @param generador El objeto Random inyectado desde un controlador
+     * superior.
+     */
+    public void jugarTurno(int cantidadIntentos, Random generador) {
+        for (int i = 0; i < cantidadIntentos; i++) {
+            TipoEmbocada jugada = obtenerJugadaAleatoria(generador);
+            controlJugador.calcularPuntosJugada(jugada);
+        }
+    }
+
+    public Object[] ejecutarIntentoJugadorActual(int indiceEquipo,int indiceJugador) {
+        return controlEquipo.ejecutarIntentoJugadorActual(indiceEquipo,indiceJugador,generadorAzarGlobal);
+    }
+    
+//    public void setJugadorActual(Jugador jugador){
+//        controlJugador.setJugadorActual(jugador);
+//    }
+
 }
