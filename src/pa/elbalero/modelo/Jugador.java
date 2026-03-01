@@ -51,4 +51,28 @@ public class Jugador implements Serializable {
         return puntaje;
     }
 
+    public void setPuntaje(int puntaje) {
+        this.puntaje = puntaje;
+    }
+
+    public void setEmbocadasAcertadas(int embocadasAcertadas) {
+        this.embocadasAcertadas = embocadasAcertadas;
+    }
+
+    public void setEmbocadasDesacertadas(int embocadasDesacertadas) {
+        this.embocadasDesacertadas = embocadasDesacertadas;
+    }
+
+    public void agregarPuntaje(int puntos) {
+        this.puntaje += puntos;
+    }
+
+    public void incrementarAcertadas() {
+        this.embocadasAcertadas++;
+    }
+
+    public void incrementarDesacertadas() {
+        this.embocadasDesacertadas++;
+    }
+
 }

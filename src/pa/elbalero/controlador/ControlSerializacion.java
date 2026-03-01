@@ -18,7 +18,7 @@ public class ControlSerializacion {
     
     public ControlSerializacion(ControlPrincipal controlPrincipal, ConexionSerializacion conexionSerializacion) {
         this.controlPrincipal = controlPrincipal;
-        conexionSerializacion = new ConexionSerializacion();
+        this.conexionSerializacion = conexionSerializacion;
     }
     
     /**
