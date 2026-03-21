@@ -1,6 +1,6 @@
 <div align="center">
 
-# Pelea de Sumos - MVC Pattern
+# Balero - MVC Pattern
 
 
 ![Status](https://img.shields.io/badge/Status-active-success.svg) ![Java](https://img.shields.io/badge/Java-100.0%25-blue.svg) ![Languages](https://img.shields.io/badge/Languages-1-blue.svg)
