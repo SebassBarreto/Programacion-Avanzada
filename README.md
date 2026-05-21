@@ -1,4 +1,4 @@
-# SebassBarreto/Programacion-Avanzada — ¿qué es este repositorio y qué usa?
+# Programacion-Avanzada — ¿qué es este repositorio y qué usa?
 
 ## ¿Qué es este repositorio?
 **`SebassBarreto/Programacion-Avanzada`** es un repositorio orientado a prácticas/ejemplos de la asignatura **Programación Avanzada**, organizado por temas y ejercicios.
