@@ -1,0 +1,279 @@
+/* ============================================================
+   hijo-actividades.css — Actividades (Hijo) | divertido
+   ============================================================ */
+
+.dashboard-shell { min-height: 100vh; }
+
+/* Topbar hijo */
+.hijo-topbar{
+  position: sticky;
+  top: 0;
+  background: #1b2a4a;
+  color: #fff;
+  padding: 10px var(--sp-xl);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: var(--sp-md);
+  z-index: 50;
+}
+
+.topbar-brand{
+  font-family: var(--font-title);
+  font-weight: 900;
+  font-size: 1.2rem;
+  color: #ffd166;
+}
+
+.topbar-brand span { color:#ef476f; }
+
+.topbar-menu{ display:flex; gap: var(--sp-md); flex-wrap:wrap; }
+
+.topbar-link{
+  color: rgba(255,255,255,0.75);
+  font-weight: 900;
+  font-size: 0.9rem;
+  transition: color var(--ease);
+}
+.topbar-link:hover,
+.topbar-link.active{ color:#ffd166; }
+
+.topbar-right{ display:flex; align-items:center; gap: var(--sp-md); }
+
+.family-chip{
+  background: rgba(255,209,102,0.14);
+  color:#ffd166;
+  font-size: .78rem;
+  font-weight: 900;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  border:1px solid rgba(255,209,102,0.35);
+}
+
+.topbar-avatar{
+  background: rgba(239,71,111,0.18);
+  color:#ffb3c6;
+  width:38px; height:38px;
+  border-radius:50%;
+  font-weight: 900;
+  display:flex; align-items:center; justify-content:center;
+}
+
+/* HERO divertido */
+.kid-hero{
+  padding: var(--sp-xl);
+  margin-bottom: var(--sp-2xl);
+  background:
+    radial-gradient(1200px 500px at 20% -10%, rgba(255, 209, 102, .28), transparent 55%),
+    radial-gradient(900px 420px at 100% 0%, rgba(239, 71, 111, .18), transparent 55%),
+    linear-gradient(180deg, rgba(255,255,255,.85), rgba(255,255,255,.65));
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-2xl);
+  display:flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: var(--sp-xl);
+}
+
+.kid-hero-left{
+  display:flex;
+  gap: var(--sp-lg);
+  align-items:center;
+  flex: 1;
+}
+
+.mascot{
+  width: 86px;
+  height: 86px;
+  border-radius: 26px;
+  background: #fff;
+  border: 2px solid rgba(0,0,0,0.06);
+  box-shadow: var(--shadow-md);
+  position: relative;
+  flex: 0 0 auto;
+  transform: rotate(-2deg);
+}
+
+.mascot-face{
+  position:absolute;
+  inset: 12px;
+  border-radius: 18px;
+  background: rgba(255,209,102,0.22);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap: 10px;
+}
+
+.mascot-face .eye{
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: #1b2a4a;
+  display:inline-block;
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.8);
+}
+
+.mascot-face .smile{
+  position:absolute;
+  bottom: 14px;
+  width: 30px;
+  height: 16px;
+  border-bottom: 4px solid #1b2a4a;
+  border-radius: 0 0 18px 18px;
+}
+
+.mascot-body{
+  position:absolute;
+  left: 18px;
+  right: 18px;
+  bottom: -10px;
+  height: 16px;
+  border-radius: 999px;
+  background: rgba(239,71,111,0.22);
+  border: 1px solid rgba(239,71,111,0.22);
+}
+
+.mini-tips{
+  display:flex;
+  gap: var(--sp-sm);
+  margin-top: var(--sp-sm);
+  flex-wrap: wrap;
+}
+
+.tip{
+  background: rgba(255,255,255,0.7);
+  border: 1px dashed rgba(0,0,0,0.10);
+  border-radius: var(--radius-pill);
+  padding: 6px 10px;
+  font-weight: 800;
+  font-size: .85rem;
+}
+
+/* Decoraciones interactivos */
+.kid-hero-right{
+  width: 260px;
+  display:flex;
+  flex-direction: column;
+  align-items:flex-end;
+  gap: var(--sp-sm);
+  position: relative;
+}
+
+.toy{
+  width: 56px;
+  height: 56px;
+  border-radius: 18px;
+  border: 1px solid rgba(0,0,0,0.08);
+  background: rgba(255,255,255,0.75);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
+  font-size: 1.5rem;
+}
+.toy:hover{
+  transform: translateY(-2px) rotate(2deg) scale(1.03);
+  box-shadow: var(--shadow-md);
+  filter: saturate(1.1);
+}
+
+.toy-note{
+  margin-top: var(--sp-xs);
+  font-weight: 900;
+  color: var(--text-soft);
+  opacity: .8;
+  font-size: .8rem;
+}
+
+/* Section header */
+.page-header{ margin-bottom: var(--sp-xl); }
+
+/* Activity cards */
+.activity-card-group{
+  padding: var(--sp-xl);
+  margin-bottom: var(--sp-2xl);
+  border: 1px solid var(--border-soft);
+}
+
+.activity-ropa{ background: var(--orange-50) !important; }
+.activity-cocina{ background: var(--gold-50) !important; }
+.activity-bano{ background: var(--crimson-50) !important; }
+
+.activity-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: var(--sp-lg);
+  border-bottom: 1px solid var(--border-soft);
+  padding-bottom: var(--sp-md);
+  margin-bottom: var(--sp-lg);
+}
+
+.activity-meta{ display:flex; align-items:center; gap: var(--sp-sm); flex-wrap:wrap; }
+
+/* Details */
+.activity-details{
+  margin: var(--sp-md) 0 var(--sp-lg);
+  background: rgba(255,255,255,0.6);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-md);
+}
+
+.activity-details summary{
+  cursor: pointer;
+  font-weight: 900;
+  color: var(--slate-700);
+  list-style: none;
+}
+.activity-details summary::marker{ display:none; }
+
+.details-grid{
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-sm);
+  margin-top: var(--sp-md);
+  font-size: .92rem;
+}
+.details-grid span{ font-weight: 900; color: var(--text-soft); }
+
+/* Tasks */
+.task-list{ display:grid; gap: var(--sp-md); }
+
+.task-card{
+  background: rgba(255,255,255,0.82);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-xl);
+  padding: var(--sp-md);
+  display:grid;
+  grid-template-columns: 1.4fr auto auto;
+  gap: var(--sp-md);
+  align-items:center;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+
+.task-card:hover{
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.task-actions{ display:flex; gap: var(--sp-xs); flex-wrap:wrap; justify-content:flex-end; }
+
+.task-empty{
+  background: rgba(255,255,255,0.65);
+  border: 1px dashed var(--border-soft);
+  padding: var(--sp-md);
+  border-radius: var(--radius-xl);
+  color: var(--text-muted);
+  font-weight: 800;
+}
+
+/* Responsive */
+@media (max-width: 900px){
+  .kid-hero{ flex-direction: column; align-items: stretch; }
+  .kid-hero-right{ width: 100%; flex-direction: row; align-items:center; justify-content:flex-start; flex-wrap: wrap; }
+  .details-grid{ grid-template-columns: 1fr; }
+  .activity-header{ flex-direction: column; align-items:flex-start; }
+  .task-card{ grid-template-columns: 1fr; }
+  .task-actions{ justify-content:flex-start; }
+}

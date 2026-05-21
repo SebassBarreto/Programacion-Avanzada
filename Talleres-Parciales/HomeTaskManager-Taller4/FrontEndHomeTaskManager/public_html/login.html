@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HomeTaskManager — Iniciar sesión</title>
+
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  <!-- Lottie Web Component -->
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@2.0.8/dist/lottie-player.js"></script>
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="register.css"/>
+</head>
+<body class="public-layout auth-page-bg">
+
+  <!-- Fondo animado (mismo que register) -->
+  <div class="register-bg" aria-hidden="true">
+    <span class="bg-item i1">🧽</span><span class="bg-item i2">🧹</span><span class="bg-item i3">🧼</span>
+    <span class="bg-item i4">🫧</span><span class="bg-item i5">🍽️</span><span class="bg-item i6">🍴</span>
+    <span class="bg-item i7">🧺</span><span class="bg-item i8">🧴</span><span class="bg-item i9">🚿</span>
+    <span class="bg-item i10">🧻</span><span class="bg-item i11">🧼</span><span class="bg-item i12">🫧</span>
+    <span class="bg-item i13">🍽️</span><span class="bg-item i14">🧹</span><span class="bg-item i15">🧽</span>
+
+    <div class="bg-lottie l1">
+      <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_zrqthn6o.json" background="transparent" speed="1" loop autoplay></lottie-player>
+    </div>
+    <div class="bg-lottie l2">
+      <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_q5pk6p1k.json" background="transparent" speed="1" loop autoplay></lottie-player>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar-public" role="navigation" aria-label="Navegación principal">
+    <div class="navbar-logo">🏠 Home<span>Task</span>Manager</div>
+    <div class="navbar-links">
+      <a href="index.html">Inicio</a>
+      <a href="register.html">Registrarse</a>
+    </div>
+  </nav>
+
+  <!-- CONTENIDO -->
+  <main class="auth-page">
+    <section class="login-card animate__animated animate__fadeInUp">
+      <header class="register-header">
+        <h1 class="register-title">Iniciar sesión</h1>
+        <p class="register-subtitle">Ingresa con tu correo y contraseña.</p>
+      </header>
+
+      <form>
+        <div class="form-group">
+          <label class="form-label" for="login-email">Correo</label>
+          <input class="form-control" id="login-email" type="email" placeholder="tucorreo@email.com" required/>
+          <span class="field-error">Ingresa un correo válido.</span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="login-pass">Contraseña</label>
+          <input class="form-control" id="login-pass" type="password" placeholder="••••••••" required/>
+          <span class="field-error">Este campo es obligatorio.</span>
+        </div>
+
+        <div class="login-actions">
+          <a href="tutor-dashboard.html" class="btn btn-tutor btn-full">Iniciar sesión como Tutor</a>
+          <a href="hijo-dashboard.html" class="btn btn-hijo btn-full">Iniciar sesión como Hijo</a>
+        </div>
+
+        <p class="login-note">
+          ¿No tienes cuenta? <a href="register.html" class="link-accent">Crear cuenta</a>
+        </p>
+      </form>
+    </section>
+  </main>
+
+</body>
+</html>

@@ -1,0 +1,116 @@
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <script>
+            function FuncionDarClick() {
+                document.getElementById("demo2").innerHTML = "Este es el texto  que aparece despues de dar click en el boton.";
+            }
+        </script>
+
+        <script>
+            function myFun() {
+                document.getElementById("demo").innerHTML = "Contenido cambiado!";
+            }
+        </script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h3 id="demo" style="color:green;">
+            mi pagina
+        </h3>
+        <button type="button" onclick="myFun()"> Oprima aqui </button>
+        <script>
+            let a, b, c;
+            a = 2;
+            b = 3;
+            c = a + b;
+            console.log("El valor de c es " + c + ".")
+        </script>
+        <script>
+            let Name = "manzana";
+
+            function MyFunction() {
+                let num = 45;
+                console.log(Name);
+                console.log(num);
+            }
+        </script>
+        <button type="button" onclick="MyFunction()"> funcion </button>
+        <p id="MPP"></p>
+        <script>
+            document.getElementById("MPP").innerHTML = 10 * 2;
+        </script>
+        <script>
+            document.write(20 * 2);
+        </script>
+        <script>
+            window.alert(20 * 3);
+        </script>
+        <script>
+            window.prompt("Ingrese su dato");
+        </script>
+        <p id="p2"> hello wordl! </p>
+        <script>
+            document.getElementById("p2").style.color = "blue";
+        </script>
+        <button type="button" onclick="document.getElementById('p2').style.color = 'red'">
+            Presioname!
+        </button>
+
+        <input type="button" value="Ocultar texto" onclick="document.getElementById('p2').style.visibility = 'hidden'">
+        <input type="button" value="Mostrar texto" onclick="document.getElementById('p2').style.visibility = 'visible'">
+
+        <h2 onclick="this.innerHTML = 'ooops!'"> De click en este texto! </h2>
+
+        <div onmouseover="mSobre(this)" onmouseout="mAfuera(this)"
+             style="background-color:red;
+             width:120px;
+             height:20px;
+             padding:40px;">
+            Mouse sobre mi
+        </div> 
+
+        <script>
+            function mSobre(obj) {
+                obj.innerHTML = "gracias";
+            }
+            function mAfuera(obj) {
+                obj.innerHTML = "Mouse Sobre mi";
+            }
+        </script>
+
+        <div onmousedown="mOprimido(this)" onmouseup="mLibre(this)"
+             style="background-color:red;
+             width:120px;
+             height:20px;
+             padding:40px;">
+            Mantenme presionado
+        </div> 
+
+        <script>
+            function mOprimido(obj) {
+                obj.style.backgroundColor = "blue";
+                obj.innerHTML = "liberame";
+            }
+
+            function mLibre(obj) {
+                obj.style.backgroundColor = "red";
+                obj.innerHTML = "Gracias";
+            }
+        </script>
+
+        <button type="button" onclick="document.getElementById('demo1').innerHTML = Date()">
+            Oprima para mostrar la hora y fecha
+        </button>
+        <p id="demo1">
+        </p>
+
+        <h1>Bienvenido a mi Pagina</h1>
+        <p id="demo2">Este es el primer texto que aparece.</p>
+        <button type="button" onclick="FuncionDarClick()">Prueba la Funcion</button>
+
+
+
+    </body>
+</html>

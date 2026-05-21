@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HomeTaskManager — Dashboard Tutor</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="tutor-dashboard.css"/>
+</head>
+<body>
+
+  <div class="dashboard-shell">
+
+    <!-- TOPBAR -->
+    <header class="topbar tutor-topbar">
+      <div class="topbar-brand">🏠 Home<span>Task</span>Manager</div>
+
+      <nav class="topbar-menu">
+        <a class="topbar-link active" href="tutor-dashboard.html">📊 Dashboard</a>
+        <a class="topbar-link" href="tutor-actividades.html">📝 Actividades</a>
+        <a class="topbar-link" href="tutor-actividad-crear.html">➕ Crear actividad</a>
+        <a class="topbar-link" href="tutor-calendario.html">📅 Calendario</a>
+        <a class="topbar-link" href="tutor-familia.html">👨‍👩‍👧‍👦 Gestión Familiar</a>
+        <a class="topbar-link" href="login.html">🚪 Cerrar sesión</a>
+      </nav>
+
+      <div class="topbar-right">
+        <div class="family-chip">Familia activa: AAA-BBB-CCC</div>
+        <div class="topbar-avatar">YP</div>
+      </div>
+    </header>
+
+    <main class="page-content">
+
+      <!-- BIENVENIDA -->
+      <section class="welcome-card animate__animated animate__fadeInDown">
+        <div class="welcome-text">
+          <h2>Bienvenida de nuevo, Yasmina</h2>
+          <p>Aquí puedes supervisar el progreso de las actividades del hogar y gestionar las tareas familiares.</p>
+        </div>
+        <div class="welcome-illustration">🏡✨</div>
+      </section>
+
+      <!-- STATS -->
+      <section class="stats-grid">
+        <div class="stat-card pastel-orange">
+          <div class="stat-icon">📋</div>
+          <div class="stat-number">3</div>
+          <div class="stat-label">Total actividades activas</div>
+          <div class="stat-mini">En curso esta semana</div>
+        </div>
+        <div class="stat-card pastel-gold">
+          <div class="stat-icon">✅</div>
+          <div class="stat-number">1</div>
+          <div class="stat-label">Actividades completadas</div>
+          <div class="stat-mini">Últimos 7 días</div>
+        </div>
+        <div class="stat-card pastel-berry">
+          <div class="stat-icon">⏳</div>
+          <div class="stat-number">2</div>
+          <div class="stat-label">Actividades pendientes</div>
+          <div class="stat-mini">Prioridad media</div>
+        </div>
+        <div class="stat-card pastel-crimson">
+          <div class="stat-icon">⚠️</div>
+          <div class="stat-number">0</div>
+          <div class="stat-label">Fuera de plazo</div>
+          <div class="stat-mini">Sin retrasos</div>
+        </div>
+      </section>
+
+      <!-- ACTIVIDADES RECIENTES -->
+      <section class="card section-card full-width">
+        <div class="card-header">
+          <h3>Actividades recientes</h3>
+          <a href="tutor-actividades.html" class="link-accent">Ver todas</a>
+        </div>
+        <div class="card-body">
+          <div class="table-wrapper">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Tarea</th>
+                  <th>Quehacer</th>
+                  <th>Hijo asignado</th>
+                  <th>Fecha límite</th>
+                  <th>Estado</th>
+                  <th>Acción</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Lavar la ropa</td>
+                  <td>Ropa</td>
+                  <td>Julieth</td>
+                  <td>14 mayo 2026</td>
+                  <td><span class="badge badge-pending">Pendiente</span></td>
+                  <td><a class="btn btn-sm btn-outline-slate" href="tutor-actividades.html">Ver detalle</a></td>
+                </tr>
+                <tr>
+                  <td>Colgar la ropa</td>
+                  <td>Ropa</td>
+                  <td>Julieth</td>
+                  <td>14 mayo 2026</td>
+                  <td><span class="badge badge-pending">Pendiente</span></td>
+                  <td><a class="btn btn-sm btn-outline-slate" href="tutor-actividades.html">Ver detalle</a></td>
+                </tr>
+                <tr>
+                  <td>Limpiar la estufa</td>
+                  <td>Cocina</td>
+                  <td>Julieth</td>
+                  <td>15 mayo 2026</td>
+                  <td><span class="badge badge-done">Completada</span></td>
+                  <td><a class="btn btn-sm btn-outline-slate" href="tutor-actividades.html">Ver detalle</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- RESUMEN HIJOS -->
+      <section class="card section-card full-width">
+        <div class="card-header">
+          <h3>Resumen de hijos</h3>
+        </div>
+        <div class="card-body child-summary">
+          <div class="child-card">
+            <div class="child-avatar">J</div>
+            <div class="child-info">
+              <h4>Julieth</h4>
+              <p class="text-muted">Rendimiento semanal</p>
+              <div class="child-stats">
+                <span class="badge badge-pending">2 pendientes</span>
+                <span class="badge badge-done">1 completada</span>
+              </div>
+              <div class="progress-wrap">
+                <div class="progress-bar" style="width: 65%"></div>
+              </div>
+              <div class="progress-label">65% cumplimiento</div>
+            </div>
+            <div class="child-positive">⭐ Muy bien</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- GESTIÓN FAMILIAR -->
+      <section class="family-section">
+        <div class="family-header">
+          <h3>Gestión Familiar</h3>
+          <span class="family-status">Familia activa</span>
+        </div>
+
+        <p>Familia actual: <strong>AAA-BBB-CCC</strong></p>
+
+        <input type="radio" name="family-tab" id="tab-create" checked class="tab-toggle">
+        <input type="radio" name="family-tab" id="tab-join" class="tab-toggle">
+
+        <div class="family-tabs">
+          <label for="tab-create" class="tab-btn">Crear familia</label>
+          <label for="tab-join" class="tab-btn">Unirme a una familia</label>
+        </div>
+
+        <div class="family-tab-content create">
+          <h4 >Crear nueva familia</h4>
+          <p>Genera un nuevo código para conectar tutores e hijos.</p>
+          <button class="btn btn-primary">Generar ID</button>
+          <div class="family-alert">Ups, ya tienes una familia, no puedes crear otra.</div>
+          <div class="family-code">AAA-BBB-DDD</div>
+        </div>
+
+        <div class="family-tab-content join">
+          <h4>Unirme a una familia</h4>
+          <label class="form-label" for="family-code">Ingrese el ID de familia:</label>
+          <input class="form-control" id="family-code" type="text" placeholder="Ejemplo: AAA-BBB-CCC"/>
+          <button class="btn btn-outline-slate join-btn">Unirme</button>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</body>
+</html>

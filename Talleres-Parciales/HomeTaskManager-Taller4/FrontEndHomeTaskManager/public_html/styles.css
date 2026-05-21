@@ -1,0 +1,1365 @@
+/* ============================================================
+   HomeTaskManager — Global Stylesheet
+   Paleta: Dark Slate Gray · Sunset Orange · Boysenberry
+            Light Crimson · Goldenrod
+   Tipografía: Fredoka (títulos) + Nunito (cuerpo)
+   Layout: Sidebar fijo + contenido a la derecha
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap');
+
+/* ============================================================
+   1. VARIABLES CSS
+   ============================================================ */
+:root {
+
+  /* -- Colores base -- */
+  --slate:        #2A5F64;
+  --slate-50:     #D6E8EA;
+  --slate-200:    #8BBCC0;
+  --slate-400:    #2A5F64;
+  --slate-600:    #1E4549;
+  --slate-900:    #102628;
+
+  --orange:       #F45140;
+  --orange-50:    #FDE8E5;
+  --orange-200:   #F9B4AC;
+  --orange-400:   #F45140;
+  --orange-600:   #C02F20;
+  --orange-900:   #7A1A10;
+
+  --berry:        #922764;
+  --berry-50:     #F2D5E8;
+  --berry-200:    #C87AAE;
+  --berry-400:    #922764;
+  --berry-600:    #6A1A47;
+  --berry-900:    #3E0D2A;
+
+  --crimson:      #F25F88;
+  --crimson-50:   #FDE5EF;
+  --crimson-200:  #F89DC1;
+  --crimson-400:  #F25F88;
+  --crimson-600:  #C0285A;
+  --crimson-900:  #7A1438;
+
+  --gold:         #FBBD2F;
+  --gold-50:      #FEF5D0;
+  --gold-200:     #FDE48A;
+  --gold-400:     #FBBD2F;
+  --gold-600:     #C28A00;
+  --gold-900:     #7A5A00;
+
+  /* -- Neutros -- */
+  --bg:           #FAF9F7;
+  --surface:      #FFFFFF;
+  --border:       #E8E0D8;
+  --border-soft:  #F0EBE3;
+  --text:         #1C1A18;
+  --text-muted:   #9C9490;
+  --text-soft:    #6B6460;
+
+  /* -- Semánticos (estados) -- */
+  --success-bg:   #FEF5D0;
+  --success-text: #7A5A00;
+  --success-bold: #FBBD2F;
+
+  --pending-bg:   #FDE8E5;
+  --pending-text: #8A1F10;
+  --pending-bold: #F45140;
+
+  --progress-bg:  #D6E8EA;
+  --progress-text:#1A3D40;
+  --progress-bold:#2A5F64;
+
+  --late-bg:      #FDE8E5;
+  --late-text:    #7A1A10;
+  --late-bold:    #C02F20;
+
+  /* -- Roles -- */
+  --tutor-bg:     var(--berry-50);
+  --tutor-text:   var(--berry-600);
+  --tutor-bold:   var(--berry-400);
+
+  --hijo-bg:      var(--crimson-50);
+  --hijo-text:    var(--crimson-600);
+  --hijo-bold:    var(--crimson-400);
+
+  /* -- Tipografía -- */
+  --font-title:   'Fredoka', sans-serif;
+  --font-body:    'Nunito', sans-serif;
+
+  /* -- Espaciado -- */
+  --sp-xs:   4px;
+  --sp-sm:   8px;
+  --sp-md:   16px;
+  --sp-lg:   24px;
+  --sp-xl:   32px;
+  --sp-2xl:  48px;
+  --sp-3xl:  64px;
+
+  /* -- Bordes -- */
+  --radius-sm:  8px;
+  --radius-md:  12px;
+  --radius-lg:  18px;
+  --radius-xl:  24px;
+  --radius-pill:999px;
+
+  /* -- Sombras -- */
+  --shadow-sm:  0 2px 8px rgba(42,95,100,0.08);
+  --shadow-md:  0 4px 20px rgba(42,95,100,0.12);
+  --shadow-lg:  0 8px 36px rgba(42,95,100,0.16);
+  --shadow-card:0 2px 12px rgba(28,26,24,0.07);
+
+  /* -- Layout sidebar -- */
+  --sidebar-w:  260px;
+  --navbar-h:   64px;
+
+  /* -- Transiciones -- */
+  --ease:       0.2s ease;
+  --ease-bounce:0.3s cubic-bezier(0.34,1.56,0.64,1);
+}
+
+
+/* ============================================================
+   2. RESET Y BASE
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--text);
+  background-color: var(--bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+button, input, select, textarea {
+  font-family: var(--font-body);
+  font-size: 1rem;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+
+/* ============================================================
+   3. TIPOGRAFÍA
+   ============================================================ */
+
+/* Títulos con Fredoka */
+h1, h2, h3, h4, h5, h6,
+.title, .heading {
+  font-family: var(--font-title);
+  line-height: 1.2;
+  color: var(--text);
+}
+
+h1, .h1 { font-size: 2.5rem;  font-weight: 600; }
+h2, .h2 { font-size: 2rem;    font-weight: 600; }
+h3, .h3 { font-size: 1.5rem;  font-weight: 500; }
+h4, .h4 { font-size: 1.25rem; font-weight: 500; }
+h5, .h5 { font-size: 1.1rem;  font-weight: 500; }
+h6, .h6 { font-size: 1rem;    font-weight: 500; }
+
+/* Cuerpo con Nunito */
+p           { margin-bottom: var(--sp-md); }
+p:last-child{ margin-bottom: 0; }
+
+.text-sm   { font-size: 0.875rem; }
+.text-xs   { font-size: 0.75rem;  }
+.text-lg   { font-size: 1.125rem; }
+.text-xl   { font-size: 1.25rem;  }
+
+.text-muted  { color: var(--text-muted); }
+.text-soft   { color: var(--text-soft);  }
+.text-white  { color: #FFFFFF; }
+
+.fw-400 { font-weight: 400; }
+.fw-500 { font-weight: 500; }
+.fw-600 { font-weight: 600; }
+.fw-700 { font-weight: 700; }
+.fw-800 { font-weight: 800; }
+
+.text-center { text-align: center; }
+.text-right  { text-align: right;  }
+
+
+/* ============================================================
+   4. LAYOUT — PÁGINAS INTERNAS
+   (Sidebar fijo + contenido a la derecha)
+   ============================================================ */
+
+/* Wrapper raíz de páginas internas */
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ---------- Sidebar ---------- */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--sidebar-w);
+  height: 100vh;
+  background: var(--slate-900);
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  overflow-y: auto;
+  overflow-x: hidden;
+  transition: width var(--ease);
+}
+
+.sidebar-header {
+  padding: var(--sp-lg) var(--sp-md);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-sm);
+}
+
+.sidebar-logo {
+  font-family: var(--font-title);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--gold-400);
+  letter-spacing: 0.01em;
+}
+
+.sidebar-logo span {
+  color: var(--crimson-200);
+}
+
+.sidebar-role-badge {
+  margin: var(--sp-md);
+  padding: var(--sp-xs) var(--sp-md);
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.sidebar-role-badge.tutor {
+  background: var(--berry-400);
+  color: var(--berry-50);
+}
+
+.sidebar-role-badge.hijo {
+  background: var(--crimson-400);
+  color: var(--crimson-50);
+}
+
+.sidebar-nav {
+  flex: 1;
+  padding: var(--sp-sm) 0;
+}
+
+.sidebar-section-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.35);
+  padding: var(--sp-md) var(--sp-md) var(--sp-xs);
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-sm);
+  padding: 10px var(--sp-md);
+  color: rgba(255,255,255,0.65);
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-radius: 0;
+  transition: all var(--ease);
+  position: relative;
+}
+
+.sidebar-link:hover {
+  color: #fff;
+  background: rgba(255,255,255,0.06);
+}
+
+.sidebar-link.active {
+  color: var(--gold-400);
+  background: rgba(251,189,47,0.10);
+}
+
+.sidebar-link.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--gold-400);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.sidebar-link .icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar-footer {
+  padding: var(--sp-md);
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+/* ---------- Contenido principal ---------- */
+.main-content {
+  margin-left: var(--sidebar-w);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ---------- Top bar ---------- */
+.topbar {
+  position: sticky;
+  top: 0;
+  height: var(--navbar-h);
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--sp-xl);
+  z-index: 50;
+  box-shadow: var(--shadow-sm);
+}
+
+.topbar-title {
+  font-family: var(--font-title);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--slate-600);
+}
+
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-md);
+}
+
+/* ---------- Área de contenido ---------- */
+.page-content {
+  flex: 1;
+  padding: var(--sp-xl);
+}
+
+.page-header {
+  margin-bottom: var(--sp-xl);
+}
+
+.page-header h1 {
+  color: var(--slate-600);
+  margin-bottom: var(--sp-xs);
+}
+
+.page-header p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+
+/* ============================================================
+   5. LAYOUT — PÁGINAS PÚBLICAS (landing, login, register)
+   ============================================================ */
+
+.public-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navbar pública */
+.navbar-public {
+  height: var(--navbar-h);
+  background: var(--slate-900);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--sp-2xl);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow-md);
+}
+
+.navbar-logo {
+  font-family: var(--font-title);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--gold-400);
+}
+
+.navbar-logo span {
+  color: var(--crimson-200);
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-lg);
+}
+
+.navbar-links a {
+  color: rgba(255,255,255,0.75);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: color var(--ease);
+}
+
+.navbar-links a:hover {
+  color: var(--gold-400);
+}
+
+/* Pantalla centrada (login / register) */
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  padding: var(--sp-xl);
+}
+
+.auth-card {
+  background: var(--surface);
+  border-radius: var(--radius-xl);
+  padding: var(--sp-2xl);
+  width: 100%;
+  max-width: 440px;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-soft);
+}
+
+.auth-card-header {
+  text-align: center;
+  margin-bottom: var(--sp-xl);
+}
+
+.auth-logo {
+  font-family: var(--font-title);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--slate-600);
+  margin-bottom: var(--sp-xs);
+}
+
+.auth-logo span {
+  color: var(--orange-400);
+}
+
+.auth-subtitle {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+
+/* ============================================================
+   6. COMPONENTES — BOTONES
+   ============================================================ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-xs);
+  padding: 10px var(--sp-lg);
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1;
+  transition: all var(--ease-bounce);
+  cursor: pointer;
+  border: 2px solid transparent;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn:active {
+  transform: scale(0.96);
+}
+
+/* Primario — Sunset Orange */
+.btn-primary {
+  background: var(--orange-400);
+  color: var(--orange-50);
+  border-color: var(--orange-400);
+}
+.btn-primary:hover {
+  background: var(--orange-600);
+  border-color: var(--orange-600);
+  box-shadow: var(--shadow-md);
+}
+
+/* Secundario — Dark Slate */
+.btn-secondary {
+  background: var(--slate-400);
+  color: var(--slate-50);
+  border-color: var(--slate-400);
+}
+.btn-secondary:hover {
+  background: var(--slate-600);
+  border-color: var(--slate-600);
+  box-shadow: var(--shadow-md);
+}
+
+/* Acento — Goldenrod */
+.btn-gold {
+  background: var(--gold-400);
+  color: var(--gold-900);
+  border-color: var(--gold-400);
+}
+.btn-gold:hover {
+  background: var(--gold-600);
+  color: var(--gold-50);
+  border-color: var(--gold-600);
+  box-shadow: var(--shadow-md);
+}
+
+/* Tutor — Boysenberry */
+.btn-tutor {
+  background: var(--berry-400);
+  color: var(--berry-50);
+  border-color: var(--berry-400);
+}
+.btn-tutor:hover {
+  background: var(--berry-600);
+  border-color: var(--berry-600);
+  box-shadow: var(--shadow-md);
+}
+
+/* Hijo — Light Crimson */
+.btn-hijo {
+  background: var(--crimson-400);
+  color: var(--crimson-50);
+  border-color: var(--crimson-400);
+}
+.btn-hijo:hover {
+  background: var(--crimson-600);
+  border-color: var(--crimson-600);
+  box-shadow: var(--shadow-md);
+}
+
+/* Outline */
+.btn-outline-primary {
+  background: transparent;
+  color: var(--orange-400);
+  border-color: var(--orange-400);
+}
+.btn-outline-primary:hover {
+  background: var(--orange-50);
+}
+
+.btn-outline-slate {
+  background: transparent;
+  color: var(--slate-400);
+  border-color: var(--slate-400);
+}
+.btn-outline-slate:hover {
+  background: var(--slate-50);
+}
+
+/* Ghost */
+.btn-ghost {
+  background: transparent;
+  color: var(--text-soft);
+  border-color: transparent;
+}
+.btn-ghost:hover {
+  background: var(--border-soft);
+  color: var(--text);
+}
+
+/* Danger */
+.btn-danger {
+  background: var(--orange-600);
+  color: var(--orange-50);
+  border-color: var(--orange-600);
+}
+.btn-danger:hover {
+  background: var(--orange-900);
+  border-color: var(--orange-900);
+}
+
+/* Tamaños */
+.btn-sm {
+  padding: 6px var(--sp-md);
+  font-size: 0.85rem;
+  border-radius: var(--radius-sm);
+}
+
+.btn-lg {
+  padding: 14px var(--sp-xl);
+  font-size: 1.05rem;
+  border-radius: var(--radius-lg);
+}
+
+.btn-full {
+  width: 100%;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+
+/* ============================================================
+   7. COMPONENTES — FORMULARIOS
+   ============================================================ */
+
+.form-group {
+  margin-bottom: var(--sp-md);
+}
+
+.form-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--text-soft);
+  margin-bottom: var(--sp-xs);
+  font-family: var(--font-body);
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 10px var(--sp-md);
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text);
+  transition: border-color var(--ease), box-shadow var(--ease);
+  outline: none;
+}
+
+.form-control::placeholder {
+  color: var(--text-muted);
+}
+
+.form-control:focus {
+  border-color: var(--slate-400);
+  box-shadow: 0 0 0 3px rgba(42,95,100,0.12);
+}
+
+.form-control:focus.tutor {
+  border-color: var(--berry-400);
+  box-shadow: 0 0 0 3px rgba(146,39,100,0.12);
+}
+
+.form-control:focus.hijo {
+  border-color: var(--crimson-400);
+  box-shadow: 0 0 0 3px rgba(242,95,136,0.12);
+}
+
+.form-control.error {
+  border-color: var(--orange-600);
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 100px;
+  line-height: 1.5;
+}
+
+select.form-control {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239C9490' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 40px;
+  cursor: pointer;
+}
+
+.form-hint {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: var(--sp-xs);
+}
+
+.form-error {
+  font-size: 0.78rem;
+  color: var(--orange-600);
+  margin-top: var(--sp-xs);
+  font-weight: 600;
+}
+
+/* Radio y Checkbox personalizados */
+.form-check {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-sm);
+  cursor: pointer;
+  padding: var(--sp-xs) 0;
+}
+
+.form-check input[type="radio"],
+.form-check input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--slate-400);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.form-check-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-soft);
+  cursor: pointer;
+}
+
+/* Selector de rol (login/register) */
+.role-selector {
+  display: flex;
+  gap: var(--sp-sm);
+  margin-bottom: var(--sp-md);
+}
+
+.role-option {
+  flex: 1;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-md);
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--ease-bounce);
+  background: var(--surface);
+}
+
+.role-option:hover {
+  border-color: var(--slate-200);
+  transform: translateY(-2px);
+}
+
+.role-option.selected-tutor {
+  border-color: var(--berry-400);
+  background: var(--berry-50);
+}
+
+.role-option.selected-hijo {
+  border-color: var(--crimson-400);
+  background: var(--crimson-50);
+}
+
+.role-option .role-icon {
+  font-size: 2rem;
+  margin-bottom: var(--sp-xs);
+}
+
+.role-option .role-name {
+  font-family: var(--font-title);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+
+/* ============================================================
+   8. COMPONENTES — CARDS
+   ============================================================ */
+
+.card {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-soft);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  transition: box-shadow var(--ease), transform var(--ease);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.card-header {
+  padding: var(--sp-md) var(--sp-lg);
+  border-bottom: 1px solid var(--border-soft);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-md);
+}
+
+.card-header-slate  { background: var(--slate-900); }
+.card-header-orange { background: var(--orange-400); }
+.card-header-berry  { background: var(--berry-400);  }
+.card-header-crimson{ background: var(--crimson-400);}
+.card-header-gold   { background: var(--gold-400);   }
+
+.card-body {
+  padding: var(--sp-lg);
+}
+
+.card-footer {
+  padding: var(--sp-md) var(--sp-lg);
+  border-top: 1px solid var(--border-soft);
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--sp-sm);
+}
+
+/* Card de actividad */
+.activity-card {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-soft);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  transition: all var(--ease-bounce);
+}
+
+.activity-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+
+.activity-card-stripe {
+  height: 5px;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.activity-card-stripe.tutor   { background: var(--berry-400); }
+.activity-card-stripe.hijo    { background: var(--crimson-400); }
+.activity-card-stripe.pending { background: var(--orange-400); }
+.activity-card-stripe.done    { background: var(--gold-400); }
+.activity-card-stripe.late    { background: var(--orange-600); }
+
+.activity-card-body {
+  padding: var(--sp-md) var(--sp-lg);
+}
+
+.activity-card-title {
+  font-family: var(--font-title);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--slate-600);
+  margin-bottom: 4px;
+}
+
+.activity-card-meta {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-sm);
+  flex-wrap: wrap;
+  margin-bottom: var(--sp-md);
+}
+
+.activity-card-footer {
+  padding: var(--sp-sm) var(--sp-lg);
+  border-top: 1px solid var(--border-soft);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-sm);
+}
+
+/* Stat / métricas rápidas */
+.stat-card {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-soft);
+  padding: var(--sp-lg);
+  box-shadow: var(--shadow-card);
+  text-align: center;
+}
+
+.stat-card .stat-number {
+  font-family: var(--font-title);
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.stat-card .stat-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+
+
+/* ============================================================
+   9. COMPONENTES — BADGES Y TAGS
+   ============================================================ */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+
+/* Estados */
+.badge-done     { background: var(--success-bg);  color: var(--success-text); }
+.badge-pending  { background: var(--pending-bg);   color: var(--pending-text); }
+.badge-progress { background: var(--progress-bg);  color: var(--progress-text);}
+.badge-late     { background: var(--late-bg);      color: var(--late-text);    }
+
+/* Roles */
+.badge-tutor { background: var(--berry-50);  color: var(--berry-600);  }
+.badge-hijo  { background: var(--crimson-50);color: var(--crimson-600);}
+
+/* Colores base */
+.badge-slate   { background: var(--slate-50);   color: var(--slate-600);   }
+.badge-orange  { background: var(--orange-50);  color: var(--orange-600);  }
+.badge-berry   { background: var(--berry-50);   color: var(--berry-600);   }
+.badge-crimson { background: var(--crimson-50); color: var(--crimson-600); }
+.badge-gold    { background: var(--gold-50);    color: var(--gold-600);    }
+
+
+/* ============================================================
+   10. COMPONENTES — AVATAR
+   ============================================================ */
+
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-family: var(--font-title);
+  font-weight: 700;
+  flex-shrink: 0;
+  text-transform: uppercase;
+}
+
+.avatar-sm  { width: 32px; height: 32px; font-size: 0.8rem; }
+.avatar-md  { width: 42px; height: 42px; font-size: 1rem;   }
+.avatar-lg  { width: 56px; height: 56px; font-size: 1.25rem;}
+.avatar-xl  { width: 72px; height: 72px; font-size: 1.5rem; }
+
+.avatar-slate   { background: var(--slate-50);   color: var(--slate-600);   }
+.avatar-orange  { background: var(--orange-50);  color: var(--orange-600);  }
+.avatar-berry   { background: var(--berry-50);   color: var(--berry-600);   }
+.avatar-crimson { background: var(--crimson-50); color: var(--crimson-600); }
+.avatar-gold    { background: var(--gold-200);   color: var(--gold-900);    }
+
+
+/* ============================================================
+   11. COMPONENTES — TABLA
+   ============================================================ */
+
+.table-wrapper {
+  overflow-x: auto;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-soft);
+  box-shadow: var(--shadow-card);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--surface);
+  font-size: 0.9rem;
+}
+
+.table thead {
+  background: var(--slate-900);
+}
+
+.table thead th {
+  padding: var(--sp-md) var(--sp-lg);
+  text-align: left;
+  font-family: var(--font-title);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--slate-200);
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+.table tbody tr {
+  border-bottom: 1px solid var(--border-soft);
+  transition: background var(--ease);
+}
+
+.table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.table tbody tr:hover {
+  background: var(--bg);
+}
+
+.table td {
+  padding: var(--sp-md) var(--sp-lg);
+  color: var(--text);
+  vertical-align: middle;
+}
+
+
+/* ============================================================
+   12. COMPONENTES — CALENDARIO (base)
+   ============================================================ */
+
+.calendar-wrapper {
+  background: var(--surface);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-soft);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+.calendar-header {
+  background: var(--slate-900);
+  padding: var(--sp-md) var(--sp-xl);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.calendar-title {
+  font-family: var(--font-title);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--gold-400);
+}
+
+.calendar-nav {
+  display: flex;
+  gap: var(--sp-sm);
+}
+
+.calendar-nav button {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background var(--ease);
+}
+
+.calendar-nav button:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.calendar-day-name {
+  padding: var(--sp-sm);
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  background: var(--bg);
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.calendar-cell {
+  min-height: 90px;
+  padding: 6px;
+  border-right: 1px solid var(--border-soft);
+  border-bottom: 1px solid var(--border-soft);
+  position: relative;
+  vertical-align: top;
+}
+
+.calendar-cell:nth-child(7n) {
+  border-right: none;
+}
+
+.calendar-cell-number {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+  display: block;
+}
+
+.calendar-cell.today .calendar-cell-number {
+  background: var(--orange-400);
+  color: #fff;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.calendar-cell.other-month {
+  background: var(--bg);
+  opacity: 0.5;
+}
+
+/* Evento / tarea en el calendario */
+.cal-event {
+  display: block;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  font-size: 0.7rem;
+  font-weight: 700;
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  transition: opacity var(--ease);
+}
+
+.cal-event:hover {
+  opacity: 0.8;
+}
+
+.cal-event.tutor   { background: var(--berry-50);  color: var(--berry-700, var(--berry-600)); }
+.cal-event.hijo    { background: var(--crimson-50); color: var(--crimson-600); }
+.cal-event.done    { background: var(--gold-50);    color: var(--gold-600);    }
+.cal-event.late    { background: var(--orange-50);  color: var(--orange-600);  }
+
+
+/* ============================================================
+   13. COMPONENTES — ALERTAS Y NOTIFICACIONES
+   ============================================================ */
+
+.alert {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-md);
+  padding: var(--sp-md) var(--sp-lg);
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  margin-bottom: var(--sp-md);
+}
+
+.alert-icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.alert-info    { background: var(--progress-bg); color: var(--progress-text); border-left: 4px solid var(--slate-400);   }
+.alert-success { background: var(--success-bg);  color: var(--success-text);  border-left: 4px solid var(--gold-400);    }
+.alert-warning { background: var(--pending-bg);  color: var(--pending-text);  border-left: 4px solid var(--orange-400);  }
+.alert-danger  { background: var(--late-bg);     color: var(--late-text);     border-left: 4px solid var(--orange-600);  }
+
+
+/* ============================================================
+   14. COMPONENTES — DIVISORES Y UTILIDADES
+   ============================================================ */
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--border-soft);
+  margin: var(--sp-lg) 0;
+}
+
+.divider-text {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-md);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin: var(--sp-lg) 0;
+}
+
+.divider-text::before,
+.divider-text::after {
+  content: '';
+  flex: 1;
+  border-top: 1px solid var(--border-soft);
+}
+
+/* Grids utilitarios */
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--sp-md); }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-md); }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--sp-md); }
+
+/* Flex utilitarios */
+.flex         { display: flex; }
+.flex-col     { display: flex; flex-direction: column; }
+.items-center { align-items: center; }
+.items-start  { align-items: flex-start; }
+.justify-between { justify-content: space-between; }
+.justify-center  { justify-content: center; }
+.gap-xs { gap: var(--sp-xs); }
+.gap-sm { gap: var(--sp-sm); }
+.gap-md { gap: var(--sp-md); }
+.gap-lg { gap: var(--sp-lg); }
+.flex-1 { flex: 1; }
+.flex-wrap { flex-wrap: wrap; }
+
+/* Espaciado */
+.mt-xs { margin-top: var(--sp-xs); }
+.mt-sm { margin-top: var(--sp-sm); }
+.mt-md { margin-top: var(--sp-md); }
+.mt-lg { margin-top: var(--sp-lg); }
+.mt-xl { margin-top: var(--sp-xl); }
+.mb-xs { margin-bottom: var(--sp-xs); }
+.mb-sm { margin-bottom: var(--sp-sm); }
+.mb-md { margin-bottom: var(--sp-md); }
+.mb-lg { margin-bottom: var(--sp-lg); }
+.mb-xl { margin-bottom: var(--sp-xl); }
+
+/* Visibilidad */
+.hidden   { display: none; }
+.sr-only  {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Bordes redondeados rápidos */
+.rounded-sm  { border-radius: var(--radius-sm);  }
+.rounded-md  { border-radius: var(--radius-md);  }
+.rounded-lg  { border-radius: var(--radius-lg);  }
+.rounded-xl  { border-radius: var(--radius-xl);  }
+.rounded-full{ border-radius: var(--radius-pill); }
+
+/* Sombras */
+.shadow-sm { box-shadow: var(--shadow-sm); }
+.shadow-md { box-shadow: var(--shadow-md); }
+.shadow-lg { box-shadow: var(--shadow-lg); }
+
+/* Overflow */
+.overflow-hidden { overflow: hidden; }
+
+
+/* ============================================================
+   15. ANIMACIONES
+   ============================================================ */
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0);   }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1);    }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-16px); }
+  to   { opacity: 1; transform: translateX(0);     }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1);    }
+  50%       { transform: scale(1.04);}
+}
+
+.anim-fade-in     { animation: fadeIn     0.3s ease forwards; }
+.anim-scale-in    { animation: scaleIn    0.3s ease forwards; }
+.anim-slide-left  { animation: slideInLeft0.3s ease forwards; }
+.anim-pulse       { animation: pulse      1.5s ease infinite; }
+
+
+/* ============================================================
+   16. RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 900px) {
+  :root { --sidebar-w: 220px; }
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  :root { --sidebar-w: 0px; }
+
+  .sidebar {
+    width: 260px;
+    transform: translateX(-100%);
+    transition: transform var(--ease);
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .main-content {
+    margin-left: 0;
+  }
+
+  .grid-2,
+  .grid-3 { grid-template-columns: 1fr; }
+
+  .page-content { padding: var(--sp-md); }
+
+  .auth-card { padding: var(--sp-xl) var(--sp-md); }
+
+  h1, .h1 { font-size: 2rem; }
+  h2, .h2 { font-size: 1.6rem; }
+
+  .navbar-public { padding: 0 var(--sp-md); }
+}
+
+@media (max-width: 480px) {
+  .role-selector { flex-direction: column; }
+  .grid-4 { grid-template-columns: 1fr; }
+  .btn-lg { padding: 12px var(--sp-lg); }
+}

@@ -1,0 +1,128 @@
+/* ============================================================
+   tutor-tarea-editar.css — Editar tarea
+   ============================================================ */
+
+.dashboard-shell { min-height: 100vh; }
+
+.tutor-topbar {
+  position: sticky;
+  top: 0;
+  background: var(--slate-900);
+  color: #fff;
+  padding: 10px var(--sp-xl);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-md);
+  z-index: 50;
+}
+
+.topbar-brand {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--gold-400);
+}
+
+.topbar-brand span { color: var(--crimson-200); }
+
+.topbar-menu {
+  display: flex;
+  gap: var(--sp-md);
+  flex-wrap: wrap;
+}
+
+.topbar-link {
+  color: rgba(255,255,255,0.75);
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: color var(--ease);
+}
+
+.topbar-link:hover,
+.topbar-link.active { color: var(--gold-400); }
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-md);
+}
+
+.family-chip {
+  background: var(--gold-50);
+  color: var(--gold-600);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+}
+
+.topbar-avatar {
+  background: var(--berry-50);
+  color: var(--berry-600);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.edit-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--sp-lg);
+  margin-bottom: var(--sp-2xl);
+}
+
+.edit-card {
+  padding: var(--sp-2xl);
+  border-radius: var(--radius-xl);
+  background: var(--surface);
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--sp-md);
+  margin-top: var(--sp-xl);
+}
+
+/* Guardado */
+.save-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(16,38,40,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 100;
+}
+
+#guardado:target {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.save-box {
+  background: var(--surface);
+  padding: var(--sp-2xl);
+  border-radius: var(--radius-xl);
+  text-align: center;
+  max-width: 420px;
+  box-shadow: var(--shadow-lg);
+}
+
+.save-icon {
+  font-size: 2rem;
+  margin-bottom: var(--sp-sm);
+}
+
+@media (max-width: 768px) {
+  .edit-header { flex-direction: column; align-items: flex-start; }
+  .form-actions { flex-direction: column; align-items: stretch; }
+}

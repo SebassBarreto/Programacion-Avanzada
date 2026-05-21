@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HomeTaskManager — Crear actividad</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="tutor-actividad-crear.css"/>
+</head>
+<body>
+
+  <div class="dashboard-shell">
+
+    <!-- TOPBAR -->
+    <header class="topbar tutor-topbar">
+      <div class="topbar-brand">🏠 Home<span>Task</span>Manager</div>
+
+      <nav class="topbar-menu">
+        <a class="topbar-link" href="tutor-dashboard.html">📊 Dashboard</a>
+        <a class="topbar-link" href="tutor-actividades.html">📝 Actividades</a>
+        <a class="topbar-link active" href="tutor-actividad-crear.html">➕ Crear actividad</a>
+        <a class="topbar-link" href="tutor-calendario.html">📅 Calendario</a>
+        <a class="topbar-link" href="tutor-familia.html">👨‍👩‍👧‍👦 Gestión Familiar</a>
+        <a class="topbar-link" href="login.html">🚪 Cerrar sesión</a>
+      </nav>
+
+      <div class="topbar-right">
+        <div class="family-chip">Familia activa: AAA-BBB-CCC</div>
+        <div class="topbar-avatar">YP</div>
+      </div>
+    </header>
+
+    <main class="page-content">
+      <section class="create-header">
+        <div>
+          <h1>Crear actividad</h1>
+          <p class="text-muted">Registra una nueva actividad para la familia.</p>
+        </div>
+        <a href="tutor-actividades.html" class="btn btn-outline-slate">Volver</a>
+      </section>
+
+      <form class="create-card card" action="#creado">
+        <div class="grid-2">
+          <div class="form-group">
+            <label class="form-label" for="act-id">Id de la actividad</label>
+            <input class="form-control" id="act-id" type="text" value="ACT-NEW-003" disabled/>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="act-title">Título</label>
+            <input class="form-control" id="act-title" type="text" placeholder="Ej: Limpieza baño" required/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="act-desc">Descripción</label>
+          <textarea class="form-control" id="act-desc" rows="4" placeholder="Describe la actividad"></textarea>
+        </div>
+
+        <div class="grid-2">
+          <div class="form-group">
+            <label class="form-label" for="start-date">Fecha de Inicio</label>
+            <input class="form-control" id="start-date" type="date" value="2026-05-16"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="end-date">Fecha de Terminación</label>
+            <input class="form-control" id="end-date" type="date" value="2026-05-17"/>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="form-group">
+            <label class="form-label" for="act-type">Tipo de Actividad</label>
+            <select class="form-control" id="act-type">
+              <option>Física</option>
+              <option>Acompañamiento</option>
+              <option>Supervisión</option>
+              <option>Creativa</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="house-id">Id del quehacer</label>
+            <input class="form-control" id="house-id" type="text" placeholder="Ej: QH-BAN-30"/>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="form-group">
+            <label class="form-label" for="tutor-id">Id del tutor</label>
+            <input class="form-control" id="tutor-id" type="text" value="TUT-28765432" disabled/>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="child-id">Id del hijo</label>
+            <input class="form-control" id="child-id" type="text" placeholder="Ej: HJO-002"/>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button class="btn btn-outline-slate" type="reset">Limpiar</button>
+          <button class="btn btn-primary" type="submit">Crear actividad</button>
+        </div>
+
+        <!-- MENSAJE CREADO -->
+        <div id="creado" class="save-modal">
+          <div class="save-box">
+            <div class="save-icon">✅</div>
+            <h3>Actividad creada</h3>
+            <p>La actividad fue registrada correctamente.</p>
+            <a href="tutor-actividades.html" class="btn btn-primary btn-full">Ver actividades</a>
+          </div>
+        </div>
+      </form>
+    </main>
+  </div>
+</body>
+</html>

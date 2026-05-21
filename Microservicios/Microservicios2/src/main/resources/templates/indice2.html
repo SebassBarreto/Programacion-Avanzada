@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div><font color="black">
+            Pagina de mi Primer Proyecto ThymeLeaf
+            </font>
+        </div>
+        <div>
+            <ul>
+                <li th:each="usuario: ${usuarios}">
+                    <span th:text="${usuario.nombre}"> Nombre </span>
+                    <span th:text="${usuario.apellido}"> Apellido </span>
+                </li>
+            </ul>
+
+        </div>
+    </body>
+</html>
+
+

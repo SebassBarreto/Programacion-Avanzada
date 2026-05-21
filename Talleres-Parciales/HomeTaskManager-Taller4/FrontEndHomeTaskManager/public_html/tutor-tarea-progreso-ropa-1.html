@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HomeTaskManager — Progreso (Lavar la ropa)</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="tutor-tarea-progreso.css"/>
+</head>
+<body>
+
+  <div class="dashboard-shell">
+
+    <header class="topbar tutor-topbar">
+      <div class="topbar-brand">🏠 Home<span>Task</span>Manager</div>
+      <nav class="topbar-menu">
+        <a class="topbar-link" href="tutor-dashboard.html">📊 Dashboard</a>
+        <a class="topbar-link" href="tutor-actividades.html">📝 Actividades</a>
+        <a class="topbar-link" href="tutor-actividad-crear.html">➕ Crear actividad</a>
+        <a class="topbar-link" href="tutor-calendario.html">📅 Calendario</a>
+        <a class="topbar-link" href="tutor-familia.html">👨‍👩‍👧‍👦 Gestión Familiar</a>
+        <a class="topbar-link" href="login.html">🚪 Cerrar sesión</a>
+      </nav>
+      <div class="topbar-right">
+        <div class="family-chip">Familia activa: AAA-BBB-CCC</div>
+        <div class="topbar-avatar">YP</div>
+      </div>
+    </header>
+
+    <main class="page-content">
+      <section class="progress-header">
+        <div>
+          <h1>Progreso de tarea</h1>
+          <p class="text-muted">Seguimiento enviado por el hijo y evaluación del tutor.</p>
+        </div>
+        <a href="tutor-actividades.html" class="btn btn-outline-slate">Volver</a>
+      </section>
+
+      <section class="card summary-card">
+        <div>
+          <h2>Lavar la ropa</h2>
+          <p class="text-muted">Actividad: Ropa semanal · Asignada a: Julieth</p>
+        </div>
+        <div class="summary-badges">
+          <span class="badge badge-pending">Pendiente</span>
+          <span class="badge badge-warning">En revisión</span>
+          <span class="badge badge-info">Seguimiento enviado</span>
+        </div>
+      </section>
+
+      <section class="card progress-card">
+        <h3>Seguimiento enviado por el hijo</h3>
+        <div class="grid-2">
+          <div class="info-item">
+            <span>Valoración del trabajo realizado:</span>
+            <strong>Muy bien</strong>
+          </div>
+          <div class="info-item">
+            <span>Valoración de dificultad:</span>
+            <strong>Media</strong>
+          </div>
+          <div class="info-item">
+            <span>Comentarios del hijo:</span>
+            <p>Usé el ciclo correcto y separé colores.</p>
+          </div>
+          <div class="info-item">
+            <span>Fecha de envío:</span>
+            <strong>14 mayo 2026 · 16:10</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="card indicators-card">
+        <h3>Indicadores visuales</h3>
+        <div class="indicator">
+          <div class="indicator-label">Progreso</div>
+          <div class="indicator-bar"><span style="width: 78%"></span></div>
+          <div class="indicator-value">78%</div>
+        </div>
+        <div class="indicator">
+          <div class="indicator-label">Puntualidad</div>
+          <div class="indicator-bar green"><span style="width: 65%"></span></div>
+          <div class="indicator-value">Dentro del plazo</div>
+        </div>
+        <div class="indicator">
+          <div class="indicator-label">Cumplimiento</div>
+          <div class="indicator-bar blue"><span style="width: 80%"></span></div>
+          <div class="indicator-value">Alto</div>
+        </div>
+      </section>
+
+      <section class="card timeline-card">
+        <h3>Historial / timeline</h3>
+        <ul class="timeline">
+          <li><span class="dot"></span><div><strong>Creada</strong><p>12 mayo 2026 · 08:00</p></div></li>
+          <li><span class="dot"></span><div><strong>Asignada</strong><p>12 mayo 2026 · 09:15</p></div></li>
+          <li><span class="dot"></span><div><strong>Seguimiento entregado</strong><p>14 mayo 2026 · 16:10</p></div></li>
+        </ul>
+      </section>
+
+      <section class="card tutor-notes">
+        <h3>Observaciones del tutor</h3>
+        <p class="text-muted">Comentarios o retroalimentación del padre.</p>
+        <textarea class="form-control" rows="4" placeholder="Escribe tu observación aquí..."></textarea>
+        <div class="note-actions">
+          <button class="btn btn-outline-slate">Cancelar</button>
+          <button class="btn btn-primary">Guardar observación</button>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

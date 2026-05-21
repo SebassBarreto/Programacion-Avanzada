@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HomeTaskManager — Calendario</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="tutor-calendario.css"/>
+</head>
+<body>
+
+  <div class="dashboard-shell">
+
+    <!-- TOPBAR -->
+    <header class="topbar tutor-topbar">
+      <div class="topbar-brand">🏠 Home<span>Task</span>Manager</div>
+
+      <nav class="topbar-menu">
+        <a class="topbar-link" href="tutor-dashboard.html">📊 Dashboard</a>
+        <a class="topbar-link" href="tutor-actividades.html">📝 Actividades</a>
+        <a class="topbar-link" href="tutor-actividad-crear.html">➕ Crear actividad</a>
+        <a class="topbar-link active" href="tutor-calendario.html">📅 Calendario</a>
+        <a class="topbar-link" href="tutor-familia.html">👨‍👩‍👧‍👦 Gestión Familiar</a>
+        <a class="topbar-link" href="login.html">🚪 Cerrar sesión</a>
+      </nav>
+
+      <div class="topbar-right">
+        <div class="family-chip">Familia activa: AAA-BBB-CCC</div>
+        <div class="topbar-avatar">YP</div>
+      </div>
+    </header>
+
+    <main class="page-content">
+      <section class="calendar-header">
+        <div>
+          <h1>Calendario familiar</h1>
+          <p class="text-muted">Consulta fechas y tareas programadas.</p>
+        </div>
+        <div class="month-chip">Mayo 2026</div>
+      </section>
+
+      <!-- CALENDARIO -->
+      <section class="calendar-grid card">
+        <div class="day-head">Lun</div>
+        <div class="day-head">Mar</div>
+        <div class="day-head">Mié</div>
+        <div class="day-head">Jue</div>
+        <div class="day-head">Vie</div>
+        <div class="day-head">Sáb</div>
+        <div class="day-head">Dom</div>
+
+        <div class="day muted"><span>27</span></div>
+        <div class="day muted"><span>28</span></div>
+        <div class="day muted"><span>29</span></div>
+        <div class="day muted"><span>30</span></div>
+        <div class="day"><span>1</span></div>
+        <div class="day"><span>2</span></div>
+        <div class="day"><span>3</span></div>
+
+        <div class="day"><span>4</span></div>
+        <div class="day"><span>5</span></div>
+        <div class="day"><span>6</span></div>
+        <div class="day"><span>7</span></div>
+        <div class="day"><span>8</span></div>
+        <div class="day"><span>9</span></div>
+        <div class="day"><span>10</span></div>
+
+        <div class="day"><span>11</span></div>
+        <div class="day"><span>12</span>
+          <a href="tutor-calendario-detalle.html" class="event event-ropa">Lavar la ropa</a>
+        </div>
+        <div class="day"><span>13</span></div>
+        <div class="day"><span>14</span>
+          <a href="tutor-calendario-detalle.html" class="event event-ropa">Colgar la ropa</a>
+        </div>
+        <div class="day"><span>15</span>
+          <a href="tutor-calendario-detalle.html" class="event event-cocina">Limpiar estufa</a>
+        </div>
+        <div class="day"><span>16</span></div>
+        <div class="day"><span>17</span></div>
+
+        <div class="day"><span>18</span></div>
+        <div class="day"><span>19</span></div>
+        <div class="day"><span>20</span></div>
+        <div class="day"><span>21</span></div>
+        <div class="day"><span>22</span></div>
+        <div class="day"><span>23</span></div>
+        <div class="day"><span>24</span></div>
+
+        <div class="day"><span>25</span></div>
+        <div class="day"><span>26</span></div>
+        <div class="day"><span>27</span></div>
+        <div class="day"><span>28</span></div>
+        <div class="day"><span>29</span></div>
+        <div class="day"><span>30</span></div>
+        <div class="day"><span>31</span></div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

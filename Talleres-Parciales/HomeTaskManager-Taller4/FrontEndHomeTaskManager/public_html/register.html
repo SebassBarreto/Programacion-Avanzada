@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HomeTaskManager — Registrarse</title>
+
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  <!-- Lottie Web Component -->
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@2.0.8/dist/lottie-player.js"></script>
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="register.css"/>
+</head>
+<body class="public-layout register-page">
+
+  <!-- Fondo animado -->
+  <div class="register-bg" aria-hidden="true">
+    <span class="bg-item i1">🧽</span><span class="bg-item i2">🧹</span><span class="bg-item i3">🧼</span>
+    <span class="bg-item i4">🫧</span><span class="bg-item i5">🍽️</span><span class="bg-item i6">🍴</span>
+    <span class="bg-item i7">🧺</span><span class="bg-item i8">🧴</span><span class="bg-item i9">🚿</span>
+    <span class="bg-item i10">🧻</span><span class="bg-item i11">🧼</span><span class="bg-item i12">🫧</span>
+    <span class="bg-item i13">🍽️</span><span class="bg-item i14">🧹</span><span class="bg-item i15">🧽</span>
+
+    <div class="bg-lottie l1">
+      <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_zrqthn6o.json" background="transparent" speed="1" loop autoplay></lottie-player>
+    </div>
+    <div class="bg-lottie l2">
+      <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_q5pk6p1k.json" background="transparent" speed="1" loop autoplay></lottie-player>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar-public" role="navigation" aria-label="Navegación principal">
+    <div class="navbar-logo">🏠 Home<span>Task</span>Manager</div>
+    <div class="navbar-links">
+      <a href="index.html">Inicio</a>
+      <a href="login.html">Iniciar sesión</a>
+    </div>
+  </nav>
+
+  <!-- CONTENIDO -->
+  <main class="auth-page">
+    <form class="register-card animate__animated animate__fadeInUp" action="#success" method="get">
+      <header class="register-header">
+        <h1 class="register-title">Crear cuenta</h1>
+        <p class="register-subtitle">Un registro simple, por pasos, pensado para toda la familia.</p>
+      </header>
+
+      <!-- Wizard toggles -->
+      <input type="radio" name="wizard" id="step-1" checked class="wizard-toggle"/>
+      <input type="radio" name="wizard" id="step-2" class="wizard-toggle"/>
+      <input type="radio" name="wizard" id="step-3" class="wizard-toggle"/>
+
+      <div class="wizard-steps">
+        <label for="step-1" class="wizard-step">
+          <span class="step-dot">1</span>
+          <span class="step-label">Datos</span>
+        </label>
+        <div class="step-line"></div>
+        <label for="step-2" class="wizard-step">
+          <span class="step-dot">2</span>
+          <span class="step-label">Rol</span>
+        </label>
+        <div class="step-line"></div>
+        <label for="step-3" class="wizard-step">
+          <span class="step-dot">3</span>
+          <span class="step-label">Familia</span>
+        </label>
+      </div>
+
+      <!-- PASO 1 -->
+      <section class="wizard-panel step-1">
+        <h2 class="panel-title">Paso 1 · Datos personales</h2>
+
+        <div class="grid-2">
+          <div class="form-group">
+            <label class="form-label" for="nombre">Nombre</label>
+            <input class="form-control" id="nombre" name="nombre" type="text" placeholder="Ej: Camila" required/>
+            <span class="field-error">Este campo es obligatorio.</span>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="apellido">Apellido</label>
+            <input class="form-control" id="apellido" name="apellido" type="text" placeholder="Ej: Rojas" required/>
+            <span class="field-error">Este campo es obligatorio.</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="email">Correo</label>
+          <input class="form-control" id="email" name="email" type="email" placeholder="tucorreo@email.com" required/>
+          <span class="field-error">Ingresa un correo válido.</span>
+        </div>
+
+        <div class="grid-2">
+          <div class="form-group">
+            <label class="form-label" for="doc-type">Tipo de documento</label>
+            <select class="form-control" id="doc-type" name="doc-type" required>
+              <option value="" disabled selected>Selecciona</option>
+              <option value="cc">Cédula de Ciudadanía</option>
+              <option value="ti">Tarjeta de identidad</option>
+              <option value="rc">Registro civil</option>
+            </select>
+            <span class="field-error">Este campo es obligatorio.</span>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="doc-number">Número</label>
+            <input class="form-control" id="doc-number" name="doc-number" type="text" placeholder="Ej: 1032..." required/>
+            <span class="field-error">Este campo es obligatorio.</span>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="form-group">
+            <label class="form-label" for="password">Contraseña</label>
+            <input class="form-control" id="password" name="password" type="password" placeholder="••••••••" required/>
+            <span class="field-error">Este campo es obligatorio.</span>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="password2">Confirmar contraseña</label>
+            <input class="form-control" id="password2" name="password2" type="password" placeholder="••••••••" required/>
+            <span class="field-error">Este campo es obligatorio.</span>
+          </div>
+        </div>
+
+        <div class="wizard-actions">
+          <label for="step-2" class="btn btn-primary">Siguiente</label>
+        </div>
+      </section>
+
+      <!-- PASO 2 -->
+      <section class="wizard-panel step-2">
+        <h2 class="panel-title">Paso 2 · Rol</h2>
+
+        <div class="role-selector">
+          <label class="role-option tutor">
+            <input type="radio" name="role" id="role-tutor" value="tutor" required/>
+            <div class="role-icon">🧑‍🏫</div>
+            <div class="role-name">Tutor</div>
+            <div class="role-desc">Asigna actividades y da seguimiento.</div>
+          </label>
+
+          <label class="role-option hijo">
+            <input type="radio" name="role" id="role-hijo" value="hijo"/>
+            <div class="role-icon">🧒</div>
+            <div class="role-name">Hijo</div>
+            <div class="role-desc">Recibe tareas y registra avances.</div>
+          </label>
+        </div>
+
+        <div class="tutor-extra">
+          <div class="form-group">
+            <label class="form-label" for="tutor-type">Tipo de tutor</label>
+            <select class="form-control" id="tutor-type" name="tutor-type">
+              <option value="" disabled selected>Selecciona</option>
+              <option value="padre">Padre</option>
+              <option value="madre">Madre</option>
+              <option value="abuelo">Abuelo</option>
+              <option value="abuela">Abuela</option>
+              <option value="otro">Otro</option>
+            </select>
+            <span class="form-hint">Si eliges “Otro”, escribe cuál.</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="tutor-other">¿Cuál?</label>
+            <input class="form-control" id="tutor-other" name="tutor-other" type="text" placeholder="Ej: Tía, padrino..."/>
+          </div>
+        </div>
+
+        <div class="wizard-actions">
+          <label for="step-1" class="btn btn-outline-slate">Volver</label>
+          <label for="step-3" class="btn btn-primary">Siguiente</label>
+        </div>
+      </section>
+
+      <!-- PASO 3 -->
+<section class="wizard-panel step-3">
+  <h2 class="panel-title">Paso 3 · Familia</h2>
+
+  <p class="panel-desc">
+    El ID de familia lo genera el sistema cuando un tutor crea la familia. Luego lo comparte con los demás integrantes.
+  </p>
+
+  <div class="family-block">
+    <div class="form-group">
+      <label class="form-label">¿Ya perteneces a una familia?</label>
+      <div class="family-options">
+        <label class="family-option">
+          <input type="radio" name="family" id="family-yes" value="yes" required/>
+          Sí
+        </label>
+        <label class="family-option">
+          <input type="radio" name="family" id="family-no" value="no"/>
+          No
+        </label>
+      </div>
+      <span class="field-error">Selecciona una opción.</span>
+    </div>
+
+    <div class="family-id">
+      <label class="form-label" for="family-id">Ingrese el ID de familia:</label>
+      <input class="form-control" id="family-id" name="family-id" type="text" placeholder="Ej: FAM-72X9-UD"/>
+    </div>
+  </div>
+
+  <div class="wizard-actions">
+    <label for="step-2" class="btn btn-outline-slate">Volver</label>
+    <button class="btn btn-primary" type="submit">Registrar y guardar</button>
+  </div>
+</section>
+
+      <!-- SUCCESS OVERLAY -->
+      <div id="success" class="success-overlay" aria-live="polite">
+        <div class="success-card animate__animated animate__fadeInDown">
+          <div class="success-icon">✅</div>
+          <h2>¡Registro exitoso!</h2>
+          <p class="success-message success-tutor">Se creó tu cuenta de tutor. Ya puedes iniciar sesión y crear tu familia.</p>
+          <p class="success-message success-hijo">Se creó tu cuenta de hijo. Inicia sesión para ver tus tareas.</p>
+          <a href="login.html" class="btn btn-primary btn-full">Ir a iniciar sesión</a>
+        </div>
+      </div>
+
+    </form>
+  </main>
+
+</body>
+</html>

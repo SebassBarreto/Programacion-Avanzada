@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<!--
+los datos enviados se pueden mostrar en la vista de resultados haciendo referencia 
+a ellos por su nombre (por defecto, el nombre del parámetro del método, en este caso, saludo). 
+El nombre se muestra en la expresión <p th:text="'nombre: ' + ${saludo.nombre}" />. 
+Del mismo modo, el contenido se muestra en la expresión <p th:text="'contenido: ' + ${saludo.contenido}" />. 
+-->
+<html xmlns:th="https://www.thymeleaf.org">
+    <head> 
+        <title>Mostrando los resultados</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </head>
+    <body>
+        <h1>Resultado</h1>
+        <p th:text="'nombre: ' + ${saludo.nombre}" />
+        <p th:text="'mensaje ' + ${saludo.contenido}" />
+        <a href="/saludo">Enviar otro menesaje</a>
+    </body>
+</html>

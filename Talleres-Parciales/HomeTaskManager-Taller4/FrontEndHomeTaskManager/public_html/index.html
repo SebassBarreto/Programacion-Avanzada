@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>HomeTaskManager — Organiza el hogar en familia</title>
+
+        <!-- Fuentes -->
+        <link rel="preconnect" href="https://fonts.googleapis.com"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+        <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+
+        <!-- Animate.css — animaciones de entrada -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+        <!-- Lottie Web player -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+
+        <!-- Estilos: primero globales, luego los propios de esta página -->
+        <link rel="stylesheet" href="styles.css"/>
+        <link rel="stylesheet" href="index.css"/>
+    </head>
+    <body>
+
+        <!-- ══ NAVBAR ══ -->
+        <nav class="navbar-landing" role="navigation" aria-label="Navegación principal">
+            <div class="nav-logo">
+                🏠 <span class="brand-home">Home</span><span class="accent">Task</span>Manager
+            </div>
+            <div class="nav-actions">
+                <a href="login.html"><button class="btn-nav-login">Iniciar sesión</button></a>
+                <a href="register.html"><button class="btn-nav-register">✨ Registrarse</button></a>
+            </div>
+        </nav>
+
+        <!-- ══ HERO ══ -->
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero-blob blob-1" aria-hidden="true"></div>
+            <div class="hero-blob blob-2" aria-hidden="true"></div>
+
+            <div class="hero-inner">
+
+                <div class="hero-text animate__animated animate__fadeInLeft">
+                    <div class="hero-eyebrow">🏡 Para familias con amor</div>
+                    <h1 class="hero-title" id="hero-title">
+                        <span class="brand-home">Home</span><span class="brand-task">Task</span><br>
+                        <span class="brand-manager">Manager</span>
+                    </h1>
+                    <p class="hero-desc">
+                        La plataforma que conecta tutores e hijos para organizar las tareas del hogar de forma divertida, clara y responsable. ¡Porque crecer en casa también es aprender!
+                    </p>
+                    <div class="hero-cta">
+                        <a href="register.html"><button class="btn-hero-primary">🚀 Comenzar gratis</button></a>
+                        <a href="login.html"><button class="btn-hero-secondary">Iniciar sesión</button></a>
+                    </div>
+                </div>
+
+                <!-- Personajes Lottie -->
+                <div class="characters-stage animate__animated animate__fadeInRight" aria-hidden="true">
+                    <div class="lottie-char pos-center" id="lottie-house"><div class="char-label">Tu hogar</div></div>
+                    <div class="lottie-char pos-tl"     id="lottie-calendar"><div class="char-label">Calendario</div></div>
+                    <div class="lottie-char pos-tr"     id="lottie-pencil"><div class="char-label">Tareas</div></div>
+                    <div class="lottie-char pos-bl"     id="lottie-broom"><div class="char-label">Limpieza</div></div>
+                    <div class="lottie-char pos-br"     id="lottie-star"><div class="char-label">Logros</div></div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ══ PROBLEMÁTICA ══ -->
+        <section class="landing-section" aria-labelledby="problem-title">
+            <div class="section-inner">
+                <div class="section-eyebrow">El reto en casa</div>
+                <h2 class="section-heading" id="problem-title">¿Por qué es tan difícil organizar<br>las tareas del hogar?</h2>
+                <p class="section-sub">Muchas familias luchan cada día con el mismo problema: nadie sabe quién hace qué, cuándo, ni cómo va el progreso.</p>
+                <div class="problem-grid">
+                    <div>
+                        <div class="problem-card animate__animated animate__fadeInUp">
+                            <div class="problem-card-icon">😵‍💫</div>
+                            <h3>Sin seguimiento claro</h3>
+                            <p>Los tutores no saben si los hijos completaron sus actividades, y los hijos no recuerdan qué tenían pendiente.</p>
+                        </div>
+                        <div class="problem-card animate__animated animate__fadeInUp" style="animation-delay:.15s">
+                            <div class="problem-card-icon">📆</div>
+                            <h3>Sin organización en el tiempo</h3>
+                            <p>Las tareas no tienen fechas claras, lo que genera olvidos, conflictos y estrés innecesario en la familia.</p>
+                        </div>
+                    </div>
+                    <div class="problem-highlight animate__animated animate__fadeInRight">
+                        <h3>HomeTaskManager lo resuelve</h3>
+                        <p>Un espacio centralizado donde el tutor asigna actividades con fecha límite y cada hijo las ve en su propio calendario. El seguimiento es claro, justo y motivador.</p>
+                        <div class="problem-stats">
+                            <div class="stat-bubble"><div class="num">📋</div><div class="lbl">Actividades organizadas</div></div>
+                            <div class="stat-bubble"><div class="num">📅</div><div class="lbl">Fechas límite visibles</div></div>
+                            <div class="stat-bubble"><div class="num">✅</div><div class="lbl">Seguimiento en tiempo real</div></div>
+                            <div class="stat-bubble"><div class="num">💬</div><div class="lbl">Comentarios y valoraciones</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══ PARA QUIÉN ══ -->
+        <section class="landing-section landing-section-alt" aria-labelledby="forwhom-title">
+            <div class="section-inner">
+                <div class="section-eyebrow">Pensado para ti</div>
+                <h2 class="section-heading" id="forwhom-title">Ideal para familias que quieren crecer juntas</h2>
+                <p class="section-sub">Diseñado para hogares que creen en la crianza respetuosa, el aprendizaje en familia y la autonomía desde pequeños.</p>
+                <div class="features-grid">
+                    <div class="feature-card animate__animated animate__zoomIn">
+                        <span class="feature-icon">👨‍👩‍👧‍👦</span>
+                        <h3>Familias</h3>
+                        <p>Un espacio compartido donde padres e hijos colaboran, se comunican y se organizan juntos de forma sencilla y divertida.</p>
+                    </div>
+                    <div class="feature-card animate__animated animate__zoomIn" style="animation-delay:.1s">
+                        <span class="feature-icon">💚</span>
+                        <h3>Crianza respetuosa</h3>
+                        <p>Sin regaños ni imposiciones. Las tareas se asignan con claridad, los logros se celebran y el esfuerzo siempre cuenta.</p>
+                    </div>
+                    <div class="feature-card animate__animated animate__zoomIn" style="animation-delay:.2s">
+                        <span class="feature-icon">🌱</span>
+                        <h3>Autonomía y responsabilidad</h3>
+                        <p>Los niños aprenden a gestionar sus compromisos, verlos en su calendario y completarlos con orgullo.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══ CÓMO FUNCIONA ══ -->
+        <section class="landing-section" aria-labelledby="howto-title">
+            <div class="section-inner">
+                <div class="section-eyebrow berry">Así de fácil</div>
+                <h2 class="section-heading" id="howto-title">¿Cómo funciona?</h2>
+                <p class="section-sub">En tres pasos simples, toda la familia está organizada.</p>
+                <div class="steps-row">
+                    <div class="step animate__animated animate__fadeInLeft">
+                        <div class="step-bubble">📝</div>
+                        <div class="step-num">Paso 1</div>
+                        <h3>El tutor crea actividades</h3>
+                        <p>Asigna tareas del hogar con descripción, fecha de inicio, fecha límite y el hijo responsable.</p>
+                    </div>
+                    <div class="step-arrow" aria-hidden="true">→</div>
+                    <div class="step animate__animated animate__fadeInUp" style="animation-delay:.1s">
+                        <div class="step-bubble">📅</div>
+                        <div class="step-num">Paso 2</div>
+                        <h3>El hijo ve su calendario</h3>
+                        <p>Cada hijo accede a su vista personal, ve sus tareas organizadas por fecha y registra su avance.</p>
+                    </div>
+                    <div class="step-arrow" aria-hidden="true">→</div>
+                    <div class="step animate__animated animate__fadeInRight" style="animation-delay:.2s">
+                        <div class="step-bubble">📊</div>
+                        <div class="step-num">Paso 3</div>
+                        <h3>El tutor revisa el progreso</h3>
+                        <p>Consulta qué se completó, lee los comentarios y ve las valoraciones de dificultad.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══ IDEAL PARA ══ -->
+        <section class="landing-section landing-section-dark" aria-labelledby="ideal-title">
+            <div class="section-inner">
+                <div class="section-eyebrow gold">Valores que nos mueven</div>
+                <h2 class="section-heading light" id="ideal-title">Hecho con amor para el hogar</h2>
+                <p class="section-sub light">Creemos que las tareas del hogar son una oportunidad de aprendizaje, no un castigo.</p>
+                <div class="ideal-tags">
+                    <div class="ideal-tag animate__animated animate__bounceIn"                            ><span class="tag-icon">🏡</span> Familias</div>
+                    <div class="ideal-tag animate__animated animate__bounceIn" style="animation-delay:.05s"><span class="tag-icon">💚</span> Crianza respetuosa</div>
+                    <div class="ideal-tag animate__animated animate__bounceIn" style="animation-delay:.10s"><span class="tag-icon">🌱</span> Autonomía infantil</div>
+                    <div class="ideal-tag animate__animated animate__bounceIn" style="animation-delay:.15s"><span class="tag-icon">🤝</span> Trabajo en equipo</div>
+                    <div class="ideal-tag animate__animated animate__bounceIn" style="animation-delay:.20s"><span class="tag-icon">⭐</span> Refuerzo positivo</div>
+                    <div class="ideal-tag animate__animated animate__bounceIn" style="animation-delay:.25s"><span class="tag-icon">📚</span> Aprendizaje desde casa</div>
+                    <div class="ideal-tag animate__animated animate__bounceIn" style="animation-delay:.30s"><span class="tag-icon">🎯</span> Responsabilidad</div>
+                    <div class="ideal-tag animate__animated animate__bounceIn" style="animation-delay:.35s"><span class="tag-icon">🕐</span> Organización</div>
+                    <div class="ideal-tag animate__animated animate__bounceIn" style="animation-delay:.40s"><span class="tag-icon">😄</span> Diversión</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══ EQUIPO ══ -->
+        <section class="landing-section landing-section-alt" aria-labelledby="team-title">
+            <div class="section-inner">
+                <div class="section-eyebrow berry">Quiénes somos</div>
+                <h2 class="section-heading" id="team-title">El equipo detrás de HomeTaskManager</h2>
+                <p class="section-sub">Estudiantes de Ingeniería de Sistemas de la Universidad Distrital Francisco José de Caldas, apasionados por construir soluciones que impacten familias reales.</p>
+                <div class="team-grid">
+
+                    <div class="team-card animate__animated animate__fadeInUp">
+                        <div class="team-avatar-wrap">
+                            <div class="team-avatar">VA</div>
+                            <div class="team-sparkle">🌸</div>
+                        </div>
+                        <div class="team-name">Valentina Aguilar Perdomo</div>
+                        <div class="team-role">Desarrolladora</div>
+                        <a href="https://www.linkedin.com/in/valen-aguilar-/" target="_blank" rel="noopener noreferrer" class="team-linkedin">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                            LinkedIn
+                        </a>
+                    </div>
+
+                    <div class="team-card animate__animated animate__fadeInUp" style="animation-delay:.1s">
+                        <div class="team-avatar-wrap">
+                            <div class="team-avatar">LC</div>
+                            <div class="team-sparkle">🚀</div>
+                        </div>
+                        <div class="team-name">Luis Sebastián Correa Barreto</div>
+                        <div class="team-role">Desarrollador</div>
+                        <a href="https://www.linkedin.com/in/luis-correa-60a729365/" target="_blank" rel="noopener noreferrer" class="team-linkedin">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                            LinkedIn
+                        </a>
+                    </div>
+
+                    <div class="team-card animate__animated animate__fadeInUp" style="animation-delay:.2s">
+                        <div class="team-avatar-wrap">
+                            <div class="team-avatar">SV</div>
+                            <div class="team-sparkle">⭐</div>
+                        </div>
+                        <div class="team-name">Sergio Steven Vanegas Cuervo</div>
+                        <div class="team-role">Desarrollador</div>
+                        <a href="https://www.linkedin.com/in/sergio-vanegas-612a82407/" target="_blank" rel="noopener noreferrer" class="team-linkedin">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                            LinkedIn
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ══ CTA FINAL ══ -->
+        <section class="cta-section" aria-labelledby="cta-title">
+            <h2 id="cta-title" class="animate__animated animate__pulse animate__infinite">¿Listo para organizar tu hogar? 🏠</h2>
+            <p>Únete a HomeTaskManager y convierte las tareas del hogar en momentos de aprendizaje familiar.</p>
+            <div class="cta-btns">
+                <a href="register.html"><button class="btn-cta-white">✨ Crear cuenta gratis</button></a>
+                <a href="login.html"><button class="btn-cta-outline">Ya tengo cuenta</button></a>
+            </div>
+        </section>
+
+        <!-- ══ FOOTER ══ -->
+        <footer class="site-footer" role="contentinfo">
+            <div class="footer-logo">🏠 Home<span>Task</span>Manager</div>
+            <div class="footer-copy">© 2026 HomeTaskManager · Todos los derechos reservados</div>
+            <div class="footer-uni">Universidad Distrital Francisco José de Caldas<br>Ingeniería de Sistemas</div>
+        </footer>
+
+        <!-- ══ LOTTIE — personajes animados ══ -->
+        <script>
+            // Animaciones Lottie desde lottie.host (URLs estables y sin CORS)
+            const chars = [
+                {id: 'lottie-house', src: 'https://lottie.host/9a8f4b1e-5c2d-4e8a-b3f6-7d9c0e2a1b4f/house.json', fallback: '🏠'},
+                {id: 'lottie-calendar', src: 'https://lottie.host/2b3c4d5e-6f7a-8b9c-0d1e-2f3a4b5c6d7e/calendar.json', fallback: '📅'},
+                {id: 'lottie-pencil', src: 'https://lottie.host/3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f/pencil.json', fallback: '✏️'},
+                {id: 'lottie-broom', src: 'https://lottie.host/4d5e6f7a-8b9c-0d1e-2f3a-4b5c6d7e8f9a/broom.json', fallback: '🧹'},
+                {id: 'lottie-star', src: 'https://lottie.host/5e6f7a8b-9c0d-1e2f-3a4b-5c6d7e8f9a0b/star.json', fallback: '⭐'},
+            ];
+
+            // URLs alternativas verificadas de LottieFiles assets públicos
+            const stableUrls = [
+                {id: 'lottie-house', src: 'https://assets2.lottiefiles.com/packages/lf20_sz8xMD.json'},
+                {id: 'lottie-calendar', src: 'https://assets10.lottiefiles.com/packages/lf20_tknl2ln3.json'},
+                {id: 'lottie-pencil', src: 'https://assets9.lottiefiles.com/packages/lf20_vnikrcia.json'},
+                {id: 'lottie-broom', src: 'https://assets4.lottiefiles.com/packages/lf20_obhph8rs.json'},
+                {id: 'lottie-star', src: 'https://assets3.lottiefiles.com/packages/lf20_ydo1amjm.json'},
+            ];
+
+            const emojiFallbacks = {
+                'lottie-house': '🏠',
+                'lottie-calendar': '📅',
+                'lottie-pencil': '✏️',
+                'lottie-broom': '🧹',
+                'lottie-star': '⭐',
+            };
+
+            // Carga con fallback a emoji si la URL falla
+            stableUrls.forEach(({ id, src }) => {
+                const container = document.getElementById(id);
+                if (!container)
+                    return;
+
+                const anim = lottie.loadAnimation({
+                    container,
+                    renderer: 'svg',
+                    loop: true,
+                    autoplay: true,
+                    path: src,
+                });
+
+                // Si falla la carga, mostrar emoji grande centrado
+                anim.addEventListener('data_failed', () => {
+                    const label = container.querySelector('.char-label');
+                    container.innerHTML = '';
+                    const span = document.createElement('span');
+                    span.style.cssText = 'font-size:4rem; display:flex; align-items:center; justify-content:center; height:100%;';
+                    span.textContent = emojiFallbacks[id];
+                    container.appendChild(span);
+                    if (label)
+                        container.appendChild(label);
+                });
+
+                // Hover: acelera la animación
+                container.addEventListener('mouseenter', () => anim.setSpeed(2.5));
+                container.addEventListener('mouseleave', () => anim.setSpeed(1));
+            });
+        </script>
+
+    </body>
+</html>

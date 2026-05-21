@@ -1,0 +1,54 @@
+========================================================
+ DESCRIPCIÓN DE LA BASE DE DATOS — PROYECTO MINIPIGS
+========================================================
+
+Nombre de la base de datos : minipig_db
+Motor de base de datos     : MySQL
+Puerto                     : 3306
+Host                       : localhost
+
+--------------------------------------------------------
+ CREDENCIALES DE ACCESO
+--------------------------------------------------------
+Usuario    : root
+Contraseña : (vacía / sin contraseña)
+
+--------------------------------------------------------
+ TABLA: minipigs
+--------------------------------------------------------
+Descripción: Almacena la información de cada minipig
+             registrado en el sistema.
+
+Campos:
+  - codigo         VARCHAR  NOT NULL  PRIMARY KEY  — Código único de identificación
+  - nombre         VARCHAR            — Nombre del minipig
+  - sexo           VARCHAR            — Sexo del minipig (M / H)
+  - id_microchip   VARCHAR  UNIQUE    — Identificador del microchip implantado
+  - raza           VARCHAR            — Raza del minipig
+  - color          VARCHAR            — Color del pelaje
+  - peso           VARCHAR            — Peso en kilogramos
+  - altura         VARCHAR            — Altura en centímetros
+  - caracteristica1 VARCHAR           — Primera característica física o de comportamiento
+  - caracteristica2 VARCHAR           — Segunda característica física o de comportamiento
+  - url_foto       VARCHAR            — Ruta o URL de la fotografía del minipig
+
+--------------------------------------------------------
+ SCRIPT DE CREACIÓN
+--------------------------------------------------------
+Ver archivo: data/minipigs.sql
+
+El script incluye:
+  1. Creación de la base de datos  (CREATE DATABASE IF NOT EXISTS minipig_db)
+  2. Selección de la base de datos (USE minipig_db)
+  3. Creación de la tabla          (CREATE TABLE IF NOT EXISTS minipigs)
+  4. Datos de ejemplo              (INSERT INTO minipigs ...)
+
+--------------------------------------------------------
+ CONFIGURACIÓN EN ARCHIVO PROPERTIES
+--------------------------------------------------------
+El archivo data/minipigs.properties contiene las claves:
+  db.URLDB=jdbc:mysql://localhost:3306/minipig_db
+  db.usuario=root
+  db.contrasena=
+
+========================================================

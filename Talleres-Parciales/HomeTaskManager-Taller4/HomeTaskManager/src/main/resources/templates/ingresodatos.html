@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Actividad</title>
+</head>
+<body>
+    <h1 th:if="${actividad.idActividad == null}">Crear Nueva Actividad</h1>
+    <h1 th:if="${actividad.idActividad != null}">Editar Actividad</h1>
+    
+    <form th:if="${actividad.idActividad == null}" th:action="@{/actividad/actividad}" th:object="${actividad}" method="post">
+        <label for="titulo">Título:</label>
+        <input type="text" id="titulo" th:field="*{titulo}" required>
+        <br/>
+        
+        <label for="descripcion">Descripción:</label>
+        <textarea id="descripcion" th:field="*{descripcion}" required></textarea>
+        <br/>
+        
+        <label for="tipoActividad">Tipo de Actividad:</label>
+        <select id="tipoActividad" th:field="*{tipoActividad}" required>
+            <option value="">Selecciona un tipo</option>
+            <option value="Académica">Académica</option>
+            <option value="Doméstica">Doméstica</option>
+            <option value="Extracurricular">Extracurricular</option>
+            <option value="Recreativa">Recreativa</option>
+        </select>
+        <br/>
+        
+        <label for="fechaInicio">Fecha Inicio:</label>
+        <input type="date" id="fechaInicio" th:field="*{fechaInicio}" required>
+        <br/>
+        
+        <label for="fechaTerminacion">Fecha Terminación:</label>
+        <input type="date" id="fechaTerminacion" th:field="*{fechaTerminacion}" required>
+        <br/>
+        
+        <label for="idQuehacer">ID Quehacer:</label>
+        <input type="number" id="idQuehacer" th:field="*{idQuehacer}" required>
+        <br/>
+        
+        <label for="idTutor">ID Tutor:</label>
+        <input type="number" id="idTutor" th:field="*{idTutor}" required>
+        <br/>
+        
+        <label for="idHijoAcargo">ID Hijo a Cargo:</label>
+        <input type="number" id="idHijoAcargo" th:field="*{idHijoAcargo}" required>
+        <br/>
+        
+        <button type="submit">Crear Actividad</button>
+        <a href="/actividad/actividades">Cancelar</a>
+    </form>
+
+    <form th:if="${actividad.idActividad != null}" th:action="@{/actividad/actualizaractividad/{id}(id=${actividad.idActividad})}" th:object="${actividad}" method="post">
+        <label for="titulo">Título:</label>
+        <input type="text" id="titulo" th:field="*{titulo}" required>
+        <br/>
+        
+        <label for="descripcion">Descripción:</label>
+        <textarea id="descripcion" th:field="*{descripcion}" required></textarea>
+        <br/>
+        
+        <label for="tipoActividad">Tipo de Actividad:</label>
+        <select id="tipoActividad" th:field="*{tipoActividad}" required>
+            <option value="Académica">Académica</option>
+            <option value="Doméstica">Doméstica</option>
+            <option value="Extracurricular">Extracurricular</option>
+            <option value="Recreativa">Recreativa</option>
+        </select>
+        <br/>
+        
+        <label for="fechaInicio">Fecha Inicio:</label>
+        <input type="date" id="fechaInicio" th:field="*{fechaInicio}" required>
+        <br/>
+        
+        <label for="fechaTerminacion">Fecha Terminación:</label>
+        <input type="date" id="fechaTerminacion" th:field="*{fechaTerminacion}" required>
+        <br/>
+        
+        <label for="idQuehacer">ID Quehacer:</label>
+        <input type="number" id="idQuehacer" th:field="*{idQuehacer}" required>
+        <br/>
+        
+        <label for="idTutor">ID Tutor:</label>
+        <input type="number" id="idTutor" th:field="*{idTutor}" required>
+        <br/>
+        
+        <label for="idHijoAcargo">ID Hijo a Cargo:</label>
+        <input type="number" id="idHijoAcargo" th:field="*{idHijoAcargo}" required>
+        <br/>
+        
+        <button type="submit">Guardar Cambios</button>
+        <a href="/actividad/actividades">Cancelar</a>
+    </form>
+</body>
+</html>

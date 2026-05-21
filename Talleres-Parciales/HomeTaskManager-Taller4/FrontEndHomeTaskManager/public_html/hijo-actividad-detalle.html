@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HomeTaskManager — Detalle de actividad</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="hijo-actividad-detalle.css"/>
+</head>
+<body>
+
+  <div class="dashboard-shell">
+
+    <!-- TOPBAR -->
+    <header class="topbar hijo-topbar">
+      <div class="topbar-brand">🏠 Home<span>Task</span>Manager</div>
+
+      <nav class="topbar-menu">
+        <a class="topbar-link" href="hijo-dashboard.html">🏠 Inicio</a>
+        <a class="topbar-link active" href="hijo-actividades.html">📝 Mis actividades</a>
+        <a class="topbar-link" href="hijo-calendario.html">📅 Mi calendario</a>
+        <a class="topbar-link" href="login.html">🚪 Cerrar sesión</a>
+      </nav>
+
+      <div class="topbar-right">
+        <div class="family-chip">Familia: AAA-BBB-CCC</div>
+        <div class="topbar-avatar">JL</div>
+      </div>
+    </header>
+
+    <main class="page-content">
+
+      <section class="detail-header">
+        <div>
+          <h1>Detalle de actividad</h1>
+          <p class="text-muted">Consulta la información de la actividad y sus tareas.</p>
+        </div>
+        <a href="hijo-actividades.html" class="btn btn-outline-slate">Volver</a>
+      </section>
+
+      <!-- RESUMEN ACTIVIDAD -->
+      <section class="card activity-summary">
+        <div>
+          <h2>Ropa semanal</h2>
+          <p class="text-muted">Quehacer: Ropa · Tipo: Física</p>
+        </div>
+
+        <div class="summary-badges">
+          <span class="badge badge-pending">2 tareas</span>
+          <span class="badge badge-warning">Vence: 14 mayo 2026</span>
+          <span class="badge badge-info">Id: ACT-ROP-001</span>
+        </div>
+      </section>
+
+      <!-- DETALLES -->
+      <section class="card activity-details">
+        <h3>Datos de la actividad</h3>
+        <div class="details-grid">
+          <div><span>Id actividad:</span> ACT-ROP-001</div>
+          <div><span>Id Quehacer:</span> QH-ROP-10</div>
+          <div><span>Fecha de inicio:</span> 12 mayo 2026</div>
+          <div><span>Fecha de terminación:</span> 14 mayo 2026</div>
+          <div><span>Tutor:</span> TUT-28765432</div>
+          <div><span>Hijo asignado:</span> Julieth (HJO-001)</div>
+        </div>
+      </section>
+
+      <!-- TAREAS -->
+      <section class="card tasks-card">
+        <div class="tasks-header">
+          <div>
+            <h3>Tareas de esta actividad</h3>
+            <p class="text-muted">Marca como hecha cuando termines (no puedes editar ni eliminar).</p>
+          </div>
+        </div>
+
+        <div class="task-list">
+          <div class="task-row">
+            <div class="task-main">
+              <h4>Lavar la ropa</h4>
+              <p class="text-muted">Límite: 14 mayo 2026</p>
+            </div>
+            <div class="task-badges">
+              <span class="badge badge-pending">Pendiente</span>
+              <span class="badge badge-warning">A tiempo</span>
+            </div>
+            <div class="task-actions">
+              <a href="hijo-actividad-hecha.html" class="btn btn-sm btn-primary">Marcar como hecha</a>
+            </div>
+          </div>
+
+          <div class="task-row">
+            <div class="task-main">
+              <h4>Colgar la ropa</h4>
+              <p class="text-muted">Límite: 14 mayo 2026</p>
+            </div>
+            <div class="task-badges">
+              <span class="badge badge-pending">Pendiente</span>
+              <span class="badge badge-warning">A tiempo</span>
+            </div>
+            <div class="task-actions">
+              <a href="hijo-actividad-hecha.html" class="btn btn-sm btn-primary">Marcar como hecha</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- INFO EXTRA -->
+      <section class="card helper-card">
+        <h3>Consejos</h3>
+        <ul class="helper-list">
+          <li>Si terminas una tarea, envía el seguimiento con un comentario.</li>
+          <li>Revisa tu calendario para ver próximas fechas.</li>
+          <li>Si te retrasas, igual puedes enviar el seguimiento (tu tutor lo verá).</li>
+        </ul>
+      </section>
+
+    </main>
+  </div>
+</body>
+</html>

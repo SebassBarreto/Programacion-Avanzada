@@ -1,0 +1,55 @@
+h2-database:
+
+CONFIGURACIÓN DE LA BASE DE DATOS
+
+1. Para acceder a la consola H2:
+url: localhost:9090/h2-ui
+
+2. En el archivo application.properties debe ir la siguiente configuracion:
+
+spring.application.name=HomeTaskManager
+server.port=9090
+
+spring.datasource.url=jdbc:h2:mem:bdh2
+spring.datasource.username=
+spring.datasource.password=
+
+spring.jpa.show-sql=true
+spring.jpa.hibernate.ddl-auto=update
+
+spring.h2.console.enabled=true
+localhost:9090/h2-console
+spring.h2.console.path=/h2-ui
+
+
+2. SCRIPT SQL
+
+1 ARCHIVO: data.sql
+
+Ubicación: HomeTaskManager\data\data.sql
+
+Este archivo contiene datos de insercion iniciales para poblar la base de datos con datos 
+de prueba
+
+================================================================================
+3. CREDENCIALES YA EN LA CONSOLA DE H2
+================================================================================
+
+
+Saved Settings: Generic H2(Embedded)
+Setting Name:   Generic H2(Embedded)
+
+
+Driver Class: org.h2.Driver
+JDBC URL: jdbc:h2:mem:actividades
+User Name: sa
+Password:
+
+Dé click en Test Connection y deberia aparecer:
+
+Test successful
+
+Finalmente, dé click en Connect
+
+Allí le desplegará una consola ejecute el script sql alli pegándolo en la consola y presione, Run
+para ejecutar las inserciones iniciales

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Página de inicio</title>
+        <meta charset="UTF-8">
+    </head>
+    <body bgcolor="lightblue">
+        <div>
+            <h1>Personas Disponibles</h1>
+        </div>
+        <div th:if="${usuarios!=null and !usuarios.empty}">
+            <!--<center>-->
+                <table border="1">
+                    <tr>
+                        <th>Cedula</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                    </tr>
+                    <tr th:each="usuario : ${usuarios}">
+                        <td th:text="${usuario.cedula}"></td> 
+                        <td th:text="${usuario.nombre}"></td>  
+                        <td th:text="${usuario.apellido}"></td>
+                    </tr>
+                </table>
+            <!--</center>-->
+        </div>
+         <div th:if="${usuarios==null or usuarios.empty}">
+             <center>La lista NO tiene información</center>
+          </div>
+    </body>
+</html>

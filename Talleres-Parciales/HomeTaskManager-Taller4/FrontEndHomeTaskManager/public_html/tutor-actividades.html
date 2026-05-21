@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HomeTaskManager — Actividades (Tutor)</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="tutor-actividades.css"/>
+</head>
+<body>
+
+  <div class="dashboard-shell">
+
+    <!-- TOPBAR -->
+    <header class="topbar tutor-topbar">
+      <div class="topbar-brand">🏠 Home<span>Task</span>Manager</div>
+
+      <nav class="topbar-menu">
+        <a class="topbar-link" href="tutor-dashboard.html">📊 Dashboard</a>
+        <a class="topbar-link active" href="tutor-actividades.html">📝 Actividades</a>
+        <a class="topbar-link" href="tutor-actividad-crear.html">➕ Crear actividad</a>
+        <a class="topbar-link" href="tutor-calendario.html">📅 Calendario</a>
+        <a class="topbar-link" href="tutor-familia.html">👨‍👩‍👧‍👦 Gestión Familiar</a>
+        <a class="topbar-link" href="login.html">🚪 Cerrar sesión</a>
+      </nav>
+
+      <div class="topbar-right">
+        <div class="family-chip">Familia activa: AAA-BBB-CCC</div>
+        <div class="topbar-avatar">YP</div>
+      </div>
+    </header>
+
+    <main class="page-content">
+
+      <section class="page-header-activities">
+        <div>
+          <h1>Actividades familiares</h1>
+          <p class="text-muted">Gestiona las actividades del hogar y sus tareas asociadas.</p>
+        </div>
+        <a href="tutor-actividad-crear.html" class="btn btn-primary">Crear actividad</a>
+      </section>
+
+      <!-- ACTIVIDAD: ROPA -->
+      <section class="activity-card-group card activity-ropa">
+        <input type="checkbox" id="remove-act-ropa" class="activity-remove-toggle">
+
+        <div class="activity-header">
+          <div>
+            <h2>Ropa</h2>
+            <p class="text-muted">Quehacer doméstico: Ropa</p>
+          </div>
+          <div class="activity-meta">
+            <span class="badge badge-pending">2 tareas</span>
+            <div class="activity-actions">
+              <a href="tutor-actividad-editar.html" class="btn btn-sm btn-outline-slate">Editar actividad</a>
+              <a href="tutor-tarea-agregar.html" class="btn btn-sm btn-primary">Agregar tarea</a>
+              <label for="remove-act-ropa" class="btn btn-sm btn-danger">Eliminar actividad</label>
+            </div>
+          </div>
+        </div>
+
+        <details class="activity-details">
+          <summary>Ver detalles</summary>
+          <div class="details-grid">
+            <div><span>Id actividad:</span> ACT-ROP-001</div>
+            <div><span>Título:</span> Ropa semanal</div>
+            <div><span>Descripción:</span> Actividades para el cuidado y orden de la ropa.</div>
+            <div><span>Fecha de Inicio:</span> 12 mayo 2026</div>
+            <div><span>Fecha de Terminación:</span> 14 mayo 2026</div>
+            <div><span>Tipo de Actividad:</span> Física</div>
+            <div><span>Id Quehacer:</span> QH-ROP-10</div>
+            <div><span>Id Tutor:</span> TUT-28765432</div>
+            <div><span>Id Hijo:</span> HJO-001</div>
+          </div>
+        </details>
+
+        <div class="task-list">
+          <div class="task-item">
+            <input type="checkbox" id="remove-task-ropa-1" class="task-remove-toggle">
+            <input type="checkbox" id="modal-task-ropa-1" class="task-modal-toggle">
+
+            <div class="task-card">
+              <div class="task-info">
+                <h3>Lavar la ropa</h3>
+                <p class="text-muted">Asignada a: Julieth · Límite: 14 mayo 2026</p>
+              </div>
+              <div class="task-badges">
+                <span class="badge badge-pending">Pendiente</span>
+              </div>
+              <div class="task-actions">
+                <a href="tutor-tarea-progreso-ropa-1.html" class="btn btn-sm btn-outline-slate">Ver progreso</a>
+                <a href="tutor-tarea-editar.html" class="btn btn-sm btn-outline-slate">Editar tarea</a>
+                <label for="modal-task-ropa-1" class="btn btn-sm btn-danger">Eliminar</label>
+              </div>
+            </div>
+
+            <div class="delete-modal">
+              <div class="delete-dialog">
+                <h4>¿Eliminar tarea?</h4>
+                <p>Esto quitará <strong>Lavar la ropa</strong> de la actividad <strong>Ropa</strong>.</p>
+                <div class="delete-actions">
+                  <label for="modal-task-ropa-1" class="btn btn-sm btn-outline-slate">Cancelar</label>
+                  <label for="remove-task-ropa-1" class="btn btn-sm btn-danger">Sí, eliminar</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="task-item">
+            <input type="checkbox" id="remove-task-ropa-2" class="task-remove-toggle">
+            <input type="checkbox" id="modal-task-ropa-2" class="task-modal-toggle">
+
+            <div class="task-card">
+              <div class="task-info">
+                <h3>Colgar la ropa</h3>
+                <p class="text-muted">Asignada a: Julieth · Límite: 14 mayo 2026</p>
+              </div>
+              <div class="task-badges">
+                <span class="badge badge-pending">Pendiente</span>
+              </div>
+              <div class="task-actions">
+                <a href="tutor-tarea-progreso-ropa-2.html" class="btn btn-sm btn-outline-slate">Ver progreso</a>
+                <a href="tutor-tarea-editar.html" class="btn btn-sm btn-outline-slate">Editar tarea</a>
+                <label for="modal-task-ropa-2" class="btn btn-sm btn-danger">Eliminar</label>
+              </div>
+            </div>
+
+            <div class="delete-modal">
+              <div class="delete-dialog">
+                <h4>¿Eliminar tarea?</h4>
+                <p>Esto quitará <strong>Colgar la ropa</strong> de la actividad <strong>Ropa</strong>.</p>
+                <div class="delete-actions">
+                  <label for="modal-task-ropa-2" class="btn btn-sm btn-outline-slate">Cancelar</label>
+                  <label for="remove-task-ropa-2" class="btn btn-sm btn-danger">Sí, eliminar</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ACTIVIDAD: COCINA -->
+      <section class="activity-card-group card activity-cocina">
+        <input type="checkbox" id="remove-act-cocina" class="activity-remove-toggle">
+
+        <div class="activity-header">
+          <div>
+            <h2>Cocina</h2>
+            <p class="text-muted">Quehacer doméstico: Cocina</p>
+          </div>
+          <div class="activity-meta">
+            <span class="badge badge-done">1 tarea</span>
+            <div class="activity-actions">
+              <a href="tutor-actividad-editar.html" class="btn btn-sm btn-outline-slate">Editar actividad</a>
+              <a href="tutor-tarea-agregar.html" class="btn btn-sm btn-primary">Agregar tarea</a>
+              <label for="remove-act-cocina" class="btn btn-sm btn-danger">Eliminar actividad</label>
+            </div>
+          </div>
+        </div>
+
+        <details class="activity-details">
+          <summary>Ver detalles</summary>
+          <div class="details-grid">
+            <div><span>Id actividad:</span> ACT-COC-002</div>
+            <div><span>Título:</span> Cocina limpia</div>
+            <div><span>Descripción:</span> Actividades de limpieza y cuidado de cocina.</div>
+            <div><span>Fecha de Inicio:</span> 13 mayo 2026</div>
+            <div><span>Fecha de Terminación:</span> 15 mayo 2026</div>
+            <div><span>Tipo de Actividad:</span> Supervisión</div>
+            <div><span>Id Quehacer:</span> QH-COC-20</div>
+            <div><span>Id Tutor:</span> TUT-28765432</div>
+            <div><span>Id Hijo:</span> HJO-001</div>
+          </div>
+        </details>
+
+        <div class="task-list">
+          <div class="task-item">
+            <input type="checkbox" id="remove-task-cocina-1" class="task-remove-toggle">
+            <input type="checkbox" id="modal-task-cocina-1" class="task-modal-toggle">
+
+            <div class="task-card">
+              <div class="task-info">
+                <h3>Limpiar la estufa</h3>
+                <p class="text-muted">Asignada a: Julieth · Límite: 15 mayo 2026</p>
+              </div>
+              <div class="task-badges">
+                <span class="badge badge-done">Completada</span>
+              </div>
+              <div class="task-actions">
+                <a href="tutor-tarea-progreso-cocina-1.html" class="btn btn-sm btn-outline-slate">Ver progreso</a>
+                <a href="tutor-tarea-editar.html" class="btn btn-sm btn-outline-slate">Editar tarea</a>
+                <label for="modal-task-cocina-1" class="btn btn-sm btn-danger">Eliminar</label>
+              </div>
+            </div>
+
+            <div class="delete-modal">
+              <div class="delete-dialog">
+                <h4>¿Eliminar tarea?</h4>
+                <p>Esto quitará <strong>Limpiar la estufa</strong> de la actividad <strong>Cocina</strong>.</p>
+                <div class="delete-actions">
+                  <label for="modal-task-cocina-1" class="btn btn-sm btn-outline-slate">Cancelar</label>
+                  <label for="remove-task-cocina-1" class="btn btn-sm btn-danger">Sí, eliminar</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ACTIVIDAD: BAÑO -->
+      <section class="activity-card-group card activity-bano">
+        <input type="checkbox" id="remove-act-bano" class="activity-remove-toggle">
+
+        <div class="activity-header">
+          <div>
+            <h2>Baño</h2>
+            <p class="text-muted">Quehacer doméstico: Baño</p>
+          </div>
+          <div class="activity-meta">
+            <span class="badge badge-pending">0 tareas</span>
+            <div class="activity-actions">
+              <a href="tutor-actividad-editar.html" class="btn btn-sm btn-outline-slate">Editar actividad</a>
+              <a href="tutor-tarea-agregar.html" class="btn btn-sm btn-primary">Agregar tarea</a>
+              <label for="remove-act-bano" class="btn btn-sm btn-danger">Eliminar actividad</label>
+            </div>
+          </div>
+        </div>
+
+        <details class="activity-details">
+          <summary>Ver detalles</summary>
+          <div class="details-grid">
+            <div><span>Id actividad:</span> ACT-BAN-003</div>
+            <div><span>Título:</span> Baño limpio</div>
+            <div><span>Descripción:</span> Limpieza general del baño y organización.</div>
+            <div><span>Fecha de Inicio:</span> 16 mayo 2026</div>
+            <div><span>Fecha de Terminación:</span> 17 mayo 2026</div>
+            <div><span>Tipo de Actividad:</span> Física</div>
+            <div><span>Id Quehacer:</span> QH-BAN-30</div>
+            <div><span>Id Tutor:</span> TUT-28765432</div>
+            <div><span>Id Hijo:</span> HJO-001</div>
+          </div>
+        </details>
+
+        <div class="task-empty">Aún no hay tareas creadas para esta actividad.</div>
+      </section>
+
+    </main>
+  </div>
+</body>
+</html>
